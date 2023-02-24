@@ -3,7 +3,10 @@ import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
 @Entity()
 export class Post{
     @PrimaryGeneratedColumn()
+
     idPost : number;
+    @Column()
+    title : string;
     @Column()
     salary : number;
     @Column()
