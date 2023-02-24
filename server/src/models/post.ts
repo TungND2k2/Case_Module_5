@@ -24,6 +24,6 @@ export class Post{
     recruitmentsNumber : number;
     @Column({nullable:true})
     status : string;
-@Column({nullable:true})
+    @Column({nullable:true})
     image : string;
 }

@@ -26,7 +26,7 @@ __decorate([
     __metadata("design:type", String)
 ], Employer.prototype, "employerPassword", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ nullable: true }),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Employer.prototype, "address", void 0);
 __decorate([

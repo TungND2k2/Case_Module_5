@@ -5,10 +5,10 @@ export class Employer{
     @PrimaryGeneratedColumn()
     idEmployer : number;
     @Column()
-   employerName : string;
+    employerName : string;
     @Column()
     employerPassword : string;
-    @Column({nullable:true})
+    @Column()
     address : string;
     @Column({nullable:true})
     description :string;

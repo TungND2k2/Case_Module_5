@@ -1,10 +1,13 @@
 import express from 'express';
-// import {router} from "./src/routers/router";
 import bodyParser from "body-parser";
 import session from "express-session";
 import {AppDataSource} from "./src/data-source";
 
 import cors from 'cors';
+<<<<<<< HEAD
+=======
+import employer from "./src/routes/employer";
+>>>>>>> 1264cffe76c0a5bba9f56384d3bcabc673aaaf77
 import {router} from "./src/routes/router";
 
 const app = express();

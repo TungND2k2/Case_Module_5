@@ -38,6 +38,7 @@ class PostController {
                 let id = req.params.id;
                 let post = {
                     title: req.body.title,
+                    idEmployer: req.body.idEmployer,
                     salary: req.body.salary,
                     workLocation: req.body.workLocation,
                     position: req.body.position,

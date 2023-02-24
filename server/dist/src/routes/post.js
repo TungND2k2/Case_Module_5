@@ -13,5 +13,5 @@ exports.PostRouter.post('/', postController_1.default.create);
 exports.PostRouter.put('/:id', postController_1.default.update);
 exports.PostRouter.delete('/:id', postController_1.default.delete);
 exports.PostRouter.get('/search', postController_1.default.search);
-exports.PostRouter.get('/detail', jobDetailController_1.default.getAll);
+exports.PostRouter.get('/detail', jobDetailController_1.default.getAllJobDetail);
 //# sourceMappingURL=post.js.map
