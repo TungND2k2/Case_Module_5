@@ -6,7 +6,7 @@ import postController from "../controllers/postController";
 import employerRouter from "./employer";
 import {userRouter} from "./user.router";
 export const router = Router()
-router.get('/find-by-name', postController.searchPost);
+router.get('/find-by-name', postController.search);
 router.use('/employer',employerRouter)
 router.use('/posts',postRouter);
 router.use('/users',userRouter);

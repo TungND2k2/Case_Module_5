@@ -12,7 +12,7 @@ const postController_1 = __importDefault(require("../controllers/postController"
 const employer_1 = __importDefault(require("./employer"));
 const user_router_1 = require("./user.router");
 exports.router = (0, express_1.Router)();
-exports.router.get('/find-by-name', postController_1.default.searchPost);
+exports.router.get('/find-by-name', postController_1.default.search);
 exports.router.use('/employer', employer_1.default);
 exports.router.use('/posts', postRouter_1.postRouter);
 exports.router.use('/users', user_router_1.userRouter);
