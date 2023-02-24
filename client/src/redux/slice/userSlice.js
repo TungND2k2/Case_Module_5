@@ -5,7 +5,7 @@ const initialState = {
     show:localStorage.getItem('show'),
 }
 const blogSlice = createSlice({
-    name: 'user',
+    name: 'users',
     initialState,
     reducers: {},
     extraReducers: builder => {

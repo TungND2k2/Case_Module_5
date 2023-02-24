@@ -8,12 +8,12 @@ export default function RegisterUser() {
     const dispatch = useDispatch();
     const navigate = useNavigate()
     const initialValuesAdd = {
-        userName: "",
+        username: "",
         userPassword: "",
         userPasswordAgain: "",
     };
     const validationSchema = Yup.object().shape({
-        userName: Yup.string().required("Vui lòng nhập tên đăng nhập"),
+        username: Yup.string().required("Vui lòng nhập tên đăng nhập"),
         userPassword: Yup.string()
             .required("Vui lòng nhập mật khẩu")
             .min(6, "Mật khẩu phải có ít nhất 6 ký tự")
@@ -53,7 +53,7 @@ export default function RegisterUser() {
                                     <Form className="signin-form">
                                         <div className="form-group">
                                             <Field type="text" className="form-control" placeholder="Username"
-                                                   name="userName" required/>
+                                                   name="username" required/>
                                         </div>
                                         <div className="form-group">
                                             <Field id="password-field" type="password" className="form-control"

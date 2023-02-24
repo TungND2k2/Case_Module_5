@@ -1,14 +1,14 @@
 import {Link, useNavigate} from "react-router-dom";
 import {Field, Form, Formik} from "formik";
 import {useDispatch, useSelector} from "react-redux";
-import { userLogin} from "../../service/userServices";
+import {userLogin} from "../../service/userServices";
 
 
 export default function LoginUser() {
     const dispatch = useDispatch();
     const navigate = useNavigate()
     const initialValuesAdd = {
-        userName: "",
+        username: "",
         userPassword: "",
     };
     const handleSubmit = async (values) => {
@@ -23,7 +23,8 @@ export default function LoginUser() {
 
     return (
         <>
-            <body className="img js-fullheight" style={{background: 'url(images/bg.jpg', width : "auto",height : "900px"}}>
+            <body className="img js-fullheight"
+                  style={{background: 'url(images/bg.jpg', width: "auto", height: "900px"}}>
             <section className="ftco-section">
                 <div className="container">
                     <div className="row justify-content-center">
@@ -61,7 +62,8 @@ export default function LoginUser() {
                                                 </label>
                                             </div>
                                             <div className="w-50 text-md-right">
-                                                <Link to="/users/register" style={{color: '#fff'}}>Register Now !!</Link>
+                                                <Link to="/users/register" style={{color: '#fff'}}>Register Now
+                                                    !!</Link>
                                             </div>
                                         </div>
                                     </Form>
