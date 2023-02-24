@@ -12,7 +12,22 @@ class PostService {
     }
 
     getAll = async () => {
-        let sql = 'select * from post'
+        let sql = `select idPost,
+                          title,
+                          salary,
+                          workLocation,
+                          position,
+                          experience,
+                          workTime,
+                          endTime,
+                          p.description,
+                          recruitmentsNumber,
+                          p.status,
+                          e.employerName,
+                          image
+                   from post p
+                            join employer e on p.idEmployer = e.idEmployer
+                   order by idPost DESC`
         let post = await this.postRepository.query(sql);
         return post;
     }
@@ -47,14 +62,15 @@ class PostService {
                           experience,
                           workTime,
                           endTime,
-                          post.description,
+                          p.description,
                           recruitmentsNumber,
-                          post.status,
+                          p.status,
+                          e.employerName,
                           image
-                   from post
-                            join job_detail jd on post.idPost = jd.postId
-                            join job j on jd.jobId = j.jobId
-                   where (1=1)`
+                   from post p join employer e on p.idEmployer = e.idEmployer
+                               join job_detail jd on p.idPost = jd.postId
+                               join job j on jd.jobId = j.jobId
+                   where (1 = 1)`
         if (req.query.title !== undefined) {
             sql += `and title like '%${req.query.title}'`
         }
@@ -73,7 +89,7 @@ class PostService {
         if (req.query.jobName !== undefined) {
             sql += `and jobName like '%${req.query.jobName}'`
         }
-        sql += `group by idPost`
+        sql += `group by idPost order by idPost DESC`
         let post = await this.postRepository.query(sql);
         return post;
     }
