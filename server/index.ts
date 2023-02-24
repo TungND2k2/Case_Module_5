@@ -1,11 +1,11 @@
 import express from 'express';
-// import {router} from "./src/routers/router";
 import bodyParser from "body-parser";
 import session from "express-session";
 import {AppDataSource} from "./src/data-source";
 
 import cors from 'cors';
 import employer from "./src/routes/employer";
+import {router} from "./src/routes/router";
 
 const app = express();
 AppDataSource.initialize().then(() => {
@@ -20,7 +20,7 @@ app.use(session({
     saveUninitialized: true,
     secret: 'somesecret',
     cookie: { maxAge: 100000 }}));
-app.use('', employer);
+app.use('', router);
 
 app.listen(4000, () => {
     console.log('Server is running')
