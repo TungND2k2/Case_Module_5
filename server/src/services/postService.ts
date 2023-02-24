@@ -12,7 +12,7 @@ class PostService {
     }
 
     getAll = async () => {
-        let sql = 'select * from post'
+        let sql = 'select * from post order by idPost DESC '
         let post = await this.postRepository.query(sql);
         return post;
     }
@@ -73,7 +73,7 @@ class PostService {
         if (req.query.jobName !== undefined) {
             sql += `and jobName like '%${req.query.jobName}'`
         }
-        sql += `group by idPost`
+        sql += `group by idPost order by idPost DESC`
         let post = await this.postRepository.query(sql);
         return post;
     }

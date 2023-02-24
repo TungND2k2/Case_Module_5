@@ -11,9 +11,9 @@ export class Employer{
     @Column({nullable:true})
     address : string;
     @Column({nullable:true})
-    description :number;
+    description :string;
     @Column({nullable:true})
-    staffNumber: string;
+    staffNumber: number;
     @Column({nullable:true})
     brand : string;
 }

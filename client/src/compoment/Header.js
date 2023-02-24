@@ -24,12 +24,11 @@ export default function Header(){
                             <ul className="navbar-nav ml-auto">
                                 <li className="nav-item active">
                                     <Link to="/home"> <a className="nav-link" href="">Home
-                                        <span className="sr-only">(current)</span>
+                                        <span className="sr-only"></span>
                                     </a></Link>
 
                                 </li>
-
-                                <li className="nav-item"><a className="nav-link" href="">Jobs</a></li>
+                                <Link to="/jobs"><li className="nav-item"><a className="nav-link" href="">Jobs</a></li></Link>
 
                                 <li className="nav-item"><a className="nav-link" href="">About us</a></li>
 
@@ -48,6 +47,9 @@ export default function Header(){
                                 {(show==='true'|| show===null||show===true) && <>
                                     <li className="nav-item"><a className="nav-link" href="">Sign In </a></li>
                                     <Link to="/login"> <li className="nav-item"><a className="nav-link" href="">Sign In Employer</a></li></Link>
+                                </>}
+                                {(show==='false'||show===false) &&<>
+                                        <li className="nav-item"><a className="nav-link" href="">{localStorage.getItem('name')}</a></li>
                                 </>}
                                 {(show==='false'||show===false) &&<>
                                         <li className="nav-item" onClick={()=>{

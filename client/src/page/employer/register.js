@@ -46,7 +46,7 @@ export default function RegisterEmploy(){
                     <div className="row justify-content-center">
                         <div className="col-md-6 col-lg-4">
                             <div className="login-wrap p-0">
-                                <h3 className="mb-4 text-center">Have an account?</h3>
+                                <h3 className="mb-4 text-center">Register</h3>
                                 <Formik initialValues={initialValuesAdd} onSubmit={handleSubmit}
                                         validationSchema={validationSchema}
                                 >
