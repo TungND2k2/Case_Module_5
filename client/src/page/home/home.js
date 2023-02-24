@@ -149,7 +149,7 @@ export default function Home(){
 
                         <div className="col-lg-4 col-md-6">
                             <div className="service-item">
-                                <a href="#" className="services-item-image"><img src={'/assets/images/blog-1-370x270.jpg'}
+                                <a href="#" className="services-item-image"><img src={'/assets/images/post-1-370x270.jpg'}
                                                                                  className="img-fluid" alt=""/></a>
 
                                 <div className="down-content">

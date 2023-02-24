@@ -25,6 +25,9 @@ export class Post{
     recruitmentsNumber : number;
     @Column()
     status : string;
-@Column()
+    @Column()
     image : string;
+    @Column()
+    idEmployer :number;
+
 }
