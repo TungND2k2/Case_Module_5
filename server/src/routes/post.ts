@@ -2,7 +2,6 @@ import {Router} from "express";
 import homeController from "../controllers/postController";
 import JobDetailController from "../controllers/jobDetailController";
 import postController from "../controllers/postController";
-import {auth} from "../middleware/auth";
 
 export const PostRouter = Router();
 PostRouter.get('/',postController.getAll);

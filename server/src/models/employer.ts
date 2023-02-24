@@ -10,10 +10,10 @@ export class Employer{
     employerPassword : string;
     @Column()
     address : string;
-    @Column()
+    @Column({nullable:true})
     description :string;
-    @Column()
+    @Column({nullable:true})
     staffNumber: number;
-    @Column()
+    @Column({nullable:true})
     brand : string;
 }

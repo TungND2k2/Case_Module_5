@@ -17,6 +17,7 @@ const blogSlice = createSlice({
             localStorage.setItem("id_employer", payload.data.id_employer)
             localStorage.setItem("access_token", payload.data.token)
             localStorage.setItem("status",payload.data)
+            localStorage.setItem("name",payload.data.employerName)
             state.show=false
             localStorage.setItem('show',state.show)
         });

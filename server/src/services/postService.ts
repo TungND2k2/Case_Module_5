@@ -3,7 +3,7 @@ import {Post} from "../models/post";
 import {AppDataSource} from "../data-source";
 import {Request, Response} from "express";
 
-//
+
 class PostService {
     private postRepository;
 

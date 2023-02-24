@@ -4,28 +4,26 @@ import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
 export class Post{
     @PrimaryGeneratedColumn()
     idPost : number;
-    @Column({nullable: true})
+    @Column({nullable:true})
     idEmployer : number;
-    @Column({nullable: true})
-    title : string;
-    @Column({nullable: true})
+    @Column({nullable:true})
     salary : number;
-    @Column({nullable: true})
+    @Column({nullable:true})
     workLocation : string;
-    @Column({nullable: true})
+    @Column({nullable:true})
     position : string;
-    @Column({nullable: true})
+    @Column({nullable:true})
     experience: string;
-    @Column({nullable: true})
+    @Column({nullable:true})
     workTime : string;
-    @Column({type : "datetime",nullable: true})
+    @Column({type : "datetime",nullable:true})
     endTime : string;
-    @Column({nullable: true})
+    @Column({nullable:true})
     description : string;
-    @Column({nullable: true})
+    @Column({nullable:true})
     recruitmentsNumber : number;
-    @Column({nullable: true})
+    @Column({nullable:true})
     status : string;
-    @Column()
+    @Column({nullable:true})
     image : string;
 }
