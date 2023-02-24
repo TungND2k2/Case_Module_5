@@ -1,28 +1,31 @@
-import {JobDetail} from "../models/jobDetail"
 import {AppDataSource} from "../data-source";
 
-class JobDetailServices {
+import {JobDetail} from "../models/jobDetail";
+
+class JobDetailService {
     private jobDetailRepository
 
     constructor() {
         this.jobDetailRepository = AppDataSource.getRepository(JobDetail)
     }
-
-    getAll = async () => {
-        let sql = `select * from job_detail`
-        let jobs = await this.jobDetailRepository.query(sql)
-        return jobs;
-    }
-
-    save = async (jobDetail) => {
-        return this.jobDetailRepository.save(jobDetail)
-    }
-    remove = async (id)=>{
-        let postDetail = await this.jobDetailRepository.findOneBy({postId:id});
-        if(!postDetail){
-            return null;
+    getAll = async ()=>{
+        let sql = `select * from job_detail`;
+        let jobDetails = await this.jobDetailRepository.query(sql);
+        if (!jobDetails) {
+            return 'No job found'
         }
-        return this.jobDetailRepository.delete({postId: id});
+        return jobDetails;
     }
+    save = async (jobDetail) => {
+        return   this.jobDetailRepository.save(jobDetail)
+    }
+    removeJobDetail = async (idJobDetails) => {
+        let jobDetails = await this.jobDetailRepository.findOneBy({idJobDetails : idJobDetails});
+        if(! jobDetails){
+            return null
+        }
+        return this.jobDetailRepository.delete({idJobDetails : idJobDetails});
+    }
+
 }
-export default new JobDetailServices();
+export default new JobDetailService();
