@@ -1,13 +1,13 @@
 import { Request, Response } from "express";
 declare class PostController {
-    private postService;
+    private postServices;
+    private jobDetailServices;
     constructor();
-    getAllPost: (req: Request, res: Response) => Promise<void>;
-    findByIdPost: (req: Request, res: Response) => Promise<void>;
-    createPost: (req: Request, res: Response) => Promise<void>;
-    editPost: (req: Request, res: Response) => Promise<void>;
-    deletePost: (req: Request, res: Response) => Promise<void>;
-    searchPost: (req: Request, res: Response) => Promise<void>;
+    getAll: (req: Request, res: Response) => Promise<void>;
+    create: (req: Request, res: Response) => Promise<void>;
+    update: (req: Request, res: Response) => Promise<void>;
+    delete: (req: Request, res: Response) => Promise<void>;
+    search: (req: Request, res: Response) => Promise<void>;
 }
 declare const _default: PostController;
 export default _default;
