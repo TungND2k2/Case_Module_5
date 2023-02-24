@@ -3,7 +3,7 @@ export declare class Employer {
     employerName: string;
     employerPassword: string;
     address: string;
-    description: number;
-    staffNumber: string;
+    description: string;
+    staffNumber: number;
     brand: string;
 }

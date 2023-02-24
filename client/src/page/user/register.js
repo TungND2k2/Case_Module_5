@@ -1,75 +1,79 @@
 import {useDispatch} from "react-redux";
 import {useNavigate} from "react-router-dom";
-import {register} from "../../service/employerService";
+import {userRegister} from "../../service/userServices";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import * as Yup from "yup";
 
-export default function RegisterEmploy(){
+export default function RegisterUser() {
     const dispatch = useDispatch();
     const navigate = useNavigate()
     const initialValuesAdd = {
-        employerName: "",
-        employerPassword: "",
-        employerPasswordAgain: "",
+        username: "",
+        userPassword: "",
+        userPasswordAgain: "",
     };
     const validationSchema = Yup.object().shape({
-        employerName: Yup.string().required("Vui lòng nhập tên đăng nhập"),
-        employerPassword: Yup.string()
+        username: Yup.string().required("Vui lòng nhập tên đăng nhập"),
+        userPassword: Yup.string()
             .required("Vui lòng nhập mật khẩu")
             .min(6, "Mật khẩu phải có ít nhất 6 ký tự")
-            .max(14, "Mật khẩu phải có nhiều nhất 14 ký tự")
+            .max(14, "Mật khẩu chỉ có nhiều nhất 14 ký tự")
     });
     const handleSubmit = async (values) => {
-        if(values.employerPassword!==values.employerPasswordAgain){
+        if (values.userPassword !== values.userPasswordAgain) {
             alert('Password is incorrect')
-        }else {
-            let data={
-                employerName:values.employerName,
-                employerPassword:values.employerPassword
+        } else {
+            let data = {
+                username: values.username,
+                userPassword: values.userPassword
             }
-            await dispatch(register(data));
+            await dispatch(userRegister(data));
             alert('Registered successfully')
-            navigate('/login')
+            navigate('/users/login')
         }
 
     };
-    return(
+    return (
         <>
-            <body className="img js-fullheight" style={{backgroundImage: 'url(images/bg.jpg'}}>
+            <body className="img js-fullheight" style={{background: 'url(images/bg.jpg'}}>
             <section className="ftco-section">
                 <div className="container">
                     <div className="row justify-content-center">
                         <div className="col-md-6 text-center mb-5">
-                            <h2 className="heading-section">Employer</h2>
+                            <h2 className="heading-section">User</h2>
                         </div>
                     </div>
                     <div className="row justify-content-center">
                         <div className="col-md-6 col-lg-4">
                             <div className="login-wrap p-0">
-                                <h3 className="mb-4 text-center">Register</h3>
+                                <h3 className="mb-4 text-center">Have an account?</h3>
                                 <Formik initialValues={initialValuesAdd} onSubmit={handleSubmit}
                                         validationSchema={validationSchema}
                                 >
-                                    <Form  className="signin-form">
+                                    <Form className="signin-form">
                                         <div className="form-group">
-                                            <Field type="text" className="form-control" placeholder="Username" name="employerName" required/>
+                                            <Field type="text" className="form-control" placeholder="Username"
+                                                   name="username" required/>
                                         </div>
                                         <div className="form-group">
-                                            <Field id="password-field" type="password" className="form-control" name="employerPassword"
+                                            <Field id="password-field" type="password" className="form-control"
+                                                   name="userPassword"
                                                    placeholder="Password" required/>
                                             <span toggle="#password-field"
                                                   className="fa fa-fw fa-eye field-icon toggle-password"></span>
-                                            <ErrorMessage name={'employerPassword'}/>
+                                            <ErrorMessage name={'userPassword'}/>
                                         </div>
                                         <div className="form-group">
-                                            <Field id="password-field" type="password" className="form-control" name="employerPasswordAgain"
+                                            <Field id="password-field" type="password" className="form-control"
+                                                   name="userPasswordAgain"
                                                    placeholder="Password Again" required/>
                                             <span toggle="#password-field"
                                                   className="fa fa-fw fa-eye field-icon toggle-password"></span>
                                         </div>
                                         <div className="form-group">
-                                            <button type="submit" className="form-control btn btn-primary submit px-3">Sign
-                                                In
+                                            <button type="submit"
+                                                    className="form-control btn btn-primary submit px-3">Sign
+                                                Up
                                             </button>
                                         </div>
                                         <div className="form-group d-md-flex">
@@ -98,8 +102,6 @@ export default function RegisterEmploy(){
                     </div>
                 </div>
             </section>
-
-
             </body>
         </>
     )

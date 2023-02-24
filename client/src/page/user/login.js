@@ -1,75 +1,57 @@
-import {useDispatch} from "react-redux";
-import {useNavigate} from "react-router-dom";
-import {register} from "../../service/employerService";
-import {ErrorMessage, Field, Form, Formik} from "formik";
-import * as Yup from "yup";
+import {Link, useNavigate} from "react-router-dom";
+import {Field, Form, Formik} from "formik";
+import {useDispatch, useSelector} from "react-redux";
+import {userLogin} from "../../service/userServices";
 
-export default function RegisterEmploy(){
+
+export default function LoginUser() {
     const dispatch = useDispatch();
     const navigate = useNavigate()
     const initialValuesAdd = {
-        employerName: "",
-        employerPassword: "",
-        employerPasswordAgain: "",
+        username: "",
+        userPassword: "",
     };
-    const validationSchema = Yup.object().shape({
-        employerName: Yup.string().required("Vui lòng nhập tên đăng nhập"),
-        employerPassword: Yup.string()
-            .required("Vui lòng nhập mật khẩu")
-            .min(6, "Mật khẩu phải có ít nhất 6 ký tự")
-            .max(14, "Mật khẩu phải có nhiều nhất 14 ký tự")
-    });
     const handleSubmit = async (values) => {
-        if(values.employerPassword!==values.employerPasswordAgain){
-            alert('Password is incorrect')
-        }else {
-            let data={
-                employerName:values.employerName,
-                employerPassword:values.employerPassword
-            }
-            await dispatch(register(data));
-            alert('Registered successfully')
-            navigate('/login')
+        await dispatch(userLogin(values));
+        if (localStorage.getItem('status') === 'Wrong User' && 'Wrong Password') {
+            alert('User or password incorrect')
+            navigate(('/users/login'))
+        } else {
+            navigate('/home')
         }
-
     };
-    return(
+
+    return (
         <>
-            <body className="img js-fullheight" style={{backgroundImage: 'url(images/bg.jpg'}}>
+            <body className="img js-fullheight"
+                  style={{background: 'url(images/bg.jpg', width: "auto", height: "900px"}}>
             <section className="ftco-section">
                 <div className="container">
                     <div className="row justify-content-center">
                         <div className="col-md-6 text-center mb-5">
-                            <h2 className="heading-section">Employer</h2>
+                            <h2 className="heading-section">User</h2>
                         </div>
                     </div>
                     <div className="row justify-content-center">
                         <div className="col-md-6 col-lg-4">
                             <div className="login-wrap p-0">
-                                <h3 className="mb-4 text-center">Register</h3>
-                                <Formik initialValues={initialValuesAdd} onSubmit={handleSubmit}
-                                        validationSchema={validationSchema}
-                                >
-                                    <Form  className="signin-form">
+                                <h3 className="mb-4 text-center">Have an account?</h3>
+                                <Formik initialValues={initialValuesAdd} onSubmit={handleSubmit}>
+                                    <Form className="signin-form">
                                         <div className="form-group">
-                                            <Field type="text" className="form-control" placeholder="Username" name="employerName" required/>
+                                            <Field type="text" className="form-control" placeholder="Username"
+                                                   name="username" required/>
                                         </div>
                                         <div className="form-group">
-                                            <Field id="password-field" type="password" className="form-control" name="employerPassword"
+                                            <Field id="password-field" type="password" className="form-control"
+                                                   name="userPassword"
                                                    placeholder="Password" required/>
                                             <span toggle="#password-field"
                                                   className="fa fa-fw fa-eye field-icon toggle-password"></span>
-                                            <ErrorMessage name={'employerPassword'}/>
                                         </div>
                                         <div className="form-group">
-                                            <Field id="password-field" type="password" className="form-control" name="employerPasswordAgain"
-                                                   placeholder="Password Again" required/>
-                                            <span toggle="#password-field"
-                                                  className="fa fa-fw fa-eye field-icon toggle-password"></span>
-                                        </div>
-                                        <div className="form-group">
-                                            <button type="submit" className="form-control btn btn-primary submit px-3">Sign
-                                                In
+                                            <button type="submit"
+                                                    className="form-control btn btn-primary submit px-3">Sign In
                                             </button>
                                         </div>
                                         <div className="form-group d-md-flex">
@@ -80,11 +62,11 @@ export default function RegisterEmploy(){
                                                 </label>
                                             </div>
                                             <div className="w-50 text-md-right">
-                                                <a href="#" style={{color: '#fff'}}>Forgot Password</a>
+                                                <Link to="/users/register" style={{color: '#fff'}}>Register Now
+                                                    !!</Link>
                                             </div>
                                         </div>
                                     </Form>
-
                                 </Formik>
                                 <p className="w-100 text-center">&mdash; Or Sign In With &mdash;</p>
                                 <div className="social d-flex text-center">
@@ -98,8 +80,6 @@ export default function RegisterEmploy(){
                     </div>
                 </div>
             </section>
-
-
             </body>
         </>
     )

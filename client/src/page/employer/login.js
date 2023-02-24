@@ -4,8 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {login, register} from "../../service/employerService";
 
 
-
-export default function LoginEmploy(){
+export default function LoginEmploy() {
     const dispatch = useDispatch();
     const navigate = useNavigate()
     const initialValuesAdd = {
@@ -14,19 +13,18 @@ export default function LoginEmploy(){
     };
     const handleSubmit = async (values) => {
         await dispatch(login(values));
-        if (localStorage.getItem('status')==='Wrong User'&&'Wrong Password'){
+        if (localStorage.getItem('status') === 'Wrong User' && 'Wrong Password') {
             alert('User or password incorrect')
             navigate(('/login'))
 
-        }
-        else {
+        } else {
             navigate('/home')
         }
     };
 
-    return(
+    return (
         <>
-            <body className="img js-fullheight" style={{backgroundImage: 'url(images/bg.jpg'}}>
+            <body className="img js-fullheight" style={{backgroundImage: 'url(images/bg.jpg', width : "auto",height : "900px"}}>
             <section className="ftco-section">
                 <div className="container">
                     <div className="row justify-content-center">
@@ -41,16 +39,19 @@ export default function LoginEmploy(){
                                 <Formik initialValues={initialValuesAdd} onSubmit={handleSubmit}>
                                     <Form className="signin-form">
                                         <div className="form-group">
-                                            <Field type="text" className="form-control" placeholder="Username" name="employerName" required/>
+                                            <Field type="text" className="form-control" placeholder="Username"
+                                                   name="employerName" required/>
                                         </div>
                                         <div className="form-group">
-                                            <Field id="password-field" type="password" className="form-control" name="employerPassword"
+                                            <Field id="password-field" type="password" className="form-control"
+                                                   name="employerPassword"
                                                    placeholder="Password" required/>
                                             <span toggle="#password-field"
                                                   className="fa fa-fw fa-eye field-icon toggle-password"></span>
                                         </div>
                                         <div className="form-group">
-                                            <button type="submit" className="form-control btn btn-primary submit px-3">Sign
+                                            <button type="submit"
+                                                    className="form-control btn btn-primary submit px-3">Sign
                                                 In
                                             </button>
                                         </div>
@@ -62,7 +63,8 @@ export default function LoginEmploy(){
                                                 </label>
                                             </div>
                                             <div className="w-50 text-md-right">
-                                                <Link to="/register"> <a href="#" style={{color: '#fff'}}>Register Now !!</a></Link>
+                                                <Link to="/register"> <a href="#" style={{color: '#fff'}}>Register Now
+                                                    !!</a></Link>
                                             </div>
                                         </div>
                                     </Form>

@@ -4,7 +4,6 @@ import session from "express-session";
 import {AppDataSource} from "./src/data-source";
 
 import cors from 'cors';
-import employer from "./src/routes/employer";
 import {router} from "./src/routes/router";
 
 const app = express();

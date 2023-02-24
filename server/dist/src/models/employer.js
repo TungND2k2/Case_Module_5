@@ -31,11 +31,11 @@ __decorate([
 ], Employer.prototype, "address", void 0);
 __decorate([
     (0, typeorm_1.Column)({ nullable: true }),
-    __metadata("design:type", Number)
+    __metadata("design:type", String)
 ], Employer.prototype, "description", void 0);
 __decorate([
     (0, typeorm_1.Column)({ nullable: true }),
-    __metadata("design:type", String)
+    __metadata("design:type", Number)
 ], Employer.prototype, "staffNumber", void 0);
 __decorate([
     (0, typeorm_1.Column)({ nullable: true }),

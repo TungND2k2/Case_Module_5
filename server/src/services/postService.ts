@@ -1,42 +1,56 @@
-import {AppDataSource} from "../data-source";
 import {Post} from "../models/post";
+
+import {AppDataSource} from "../data-source";
 import {Request, Response} from "express";
-class PostService{
-    private postRepository
+
+
+class PostService {
+    private postRepository;
+
     constructor() {
-        this.postRepository = AppDataSource.getRepository(Post)
+        this.postRepository = AppDataSource.getRepository(Post);
     }
+
     getAll = async () => {
-        let sql = `select * from post join job_detail jd on post.idPost = jd.postId join job j on jd.jobId = j.jobId`;
-        let posts = await this.postRepository.query(sql);
-        if (!posts) {
-            return 'No posts found'
-        }
-        return posts;
+        let sql = `select idPost,
+                          title,
+                          salary,
+                          workLocation,
+                          position,
+                          experience,
+                          workTime,
+                          endTime,
+                          p.description,
+                          recruitmentsNumber,
+                          p.status,
+                          e.employerName,
+                          image
+                   from post p
+                            join employer e on p.idEmployer = e.idEmployer
+                   order by idPost DESC`
+        let post = await this.postRepository.query(sql);
+        return post;
     }
     save = async (post) => {
-        return   this.postRepository.save(post)
+        return this.postRepository.save(post);
     }
-    updatePost = async (idPost, newPost) => {
-        let posts = await this.postRepository.findOneBy({idPost: idPost})
-        if (!posts) {
-            return null
-        }
-        return await this.postRepository.update({idPost: idPost}, newPost)
-    }
-    removePost = async (idPost) => {
-        let posts = await this.postRepository.findOneBy({idPost : idPost});
-        if(!posts){
-            return null
-        }
-        return this.postRepository.delete({idPost : idPost});
-    }
-    findById = async (idPost)=> {
-        let posts = await this.postRepository.findOneBy({idPost :idPost});
-        if (!posts) {
+    update = async (id, newPost) => {
+        let post = await this.postRepository.findOneBy({idPost: id});
+        if (!post) {
             return null;
         }
-        return posts
+        console.log(newPost)
+        newPost.idPost = id;
+        return this.postRepository.update({idPost: id}, newPost);
+
+    }
+    delete = async (id) => {
+        let post = await this.postRepository.findOneBy({idPost: id});
+        if (!post) {
+            return null;
+        } else {
+            return this.postRepository.delete({idPost: id});
+        }
     }
     search = async (req: Request, res: Response) => {
         console.log(req.query)
@@ -48,14 +62,15 @@ class PostService{
                           experience,
                           workTime,
                           endTime,
-                          post.description,
+                          p.description,
                           recruitmentsNumber,
-                          post.status,
+                          p.status,
+                          e.employerName,
                           image
-                   from post
-                            join job_detail jd on post.idPost = jd.postId
-                            join job j on jd.jobId = j.jobId
-                   where (1=1)`
+                   from post p join employer e on p.idEmployer = e.idEmployer
+                               join job_detail jd on p.idPost = jd.postId
+                               join job j on jd.jobId = j.jobId
+                   where (1 = 1)`
         if (req.query.title !== undefined) {
             sql += `and title like '%${req.query.title}'`
         }
@@ -74,10 +89,10 @@ class PostService{
         if (req.query.jobName !== undefined) {
             sql += `and jobName like '%${req.query.jobName}'`
         }
-        sql += `group by idPost`
+        sql += `group by idPost order by idPost DESC`
         let post = await this.postRepository.query(sql);
         return post;
     }
-
 }
+
 export default new PostService();
