@@ -1,41 +1,42 @@
-import {Post} from "../models/post";
-
 import {AppDataSource} from "../data-source";
+import {Post} from "../models/post";
 import {Request, Response} from "express";
-
-//
-class PostService {
-    private postRepository;
-
+class PostService{
+    private postRepository
     constructor() {
-        this.postRepository = AppDataSource.getRepository(Post);
+        this.postRepository = AppDataSource.getRepository(Post)
     }
-
     getAll = async () => {
-        let sql = 'select * from post'
-        let post = await this.postRepository.query(sql);
-        return post;
+        let sql = `select * from post join job_detail jd on post.idPost = jd.postId join job j on jd.jobId = j.jobId`;
+        let posts = await this.postRepository.query(sql);
+        if (!posts) {
+            return 'No posts found'
+        }
+        return posts;
     }
     save = async (post) => {
-        return this.postRepository.save(post);
+        return   this.postRepository.save(post)
     }
-    update = async (id, newPost) => {
-        let post = await this.postRepository.findOneBy({idPost: id});
-        if (!post) {
+    updatePost = async (idPost, newPost) => {
+        let posts = await this.postRepository.findOneBy({idPost: idPost})
+        if (!posts) {
+            return null
+        }
+        return await this.postRepository.update({idPost: idPost}, newPost)
+    }
+    removePost = async (idPost) => {
+        let posts = await this.postRepository.findOneBy({idPost : idPost});
+        if(!posts){
+            return null
+        }
+        return this.postRepository.delete({idPost : idPost});
+    }
+    findById = async (idPost)=> {
+        let posts = await this.postRepository.findOneBy({idPost :idPost});
+        if (!posts) {
             return null;
         }
-        console.log(newPost)
-        newPost.idPost = id;
-        return this.postRepository.update({idPost: id}, newPost);
-
-    }
-    delete = async (id) => {
-        let post = await this.postRepository.findOneBy({idPost: id});
-        if (!post) {
-            return null;
-        } else {
-            return this.postRepository.delete({idPost: id});
-        }
+        return posts
     }
     search = async (req: Request, res: Response) => {
         console.log(req.query)
@@ -77,6 +78,6 @@ class PostService {
         let post = await this.postRepository.query(sql);
         return post;
     }
-}
 
+}
 export default new PostService();
