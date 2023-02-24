@@ -2,20 +2,20 @@ import {createAsyncThunk} from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const userRegister = createAsyncThunk (
-    'register',
+    'users/register',
     async (data) => {
-        const response = await axios.post('http://localhost:4000/user/register',data);
+        const response = await axios.post('http://localhost:4000/users/register',data);
         return data;
     }
 )
 export const userLogin = createAsyncThunk (
-    'login',
+    'users/login',
     async (data) => {
-        return await axios.post('http://localhost:4000/user/login', data);
+        return await axios.post('http://localhost:4000/users/login', data);
     }
 )
 export const userLogout = createAsyncThunk (
-    'user/logout',
+    'users/logout',
     async () => {
         return false
     }

@@ -15,7 +15,7 @@ export default function LoginUser() {
         await dispatch(userLogin(values));
         if (localStorage.getItem('status') === 'Wrong User' && 'Wrong Password') {
             alert('User or password incorrect')
-            navigate(('/user/login'))
+            navigate(('/users/login'))
         } else {
             navigate('/home')
         }
@@ -61,7 +61,7 @@ export default function LoginUser() {
                                                 </label>
                                             </div>
                                             <div className="w-50 text-md-right">
-                                                <Link to="/user/register" style={{color: '#fff'}}>Register Now !!</Link>
+                                                <Link to="/users/register" style={{color: '#fff'}}>Register Now !!</Link>
                                             </div>
                                         </div>
                                     </Form>

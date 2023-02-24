@@ -1,4 +1,4 @@
-export default function Home(){
+export default function Home() {
     return (
         <>
             <div className="banner header-text">
@@ -41,8 +41,10 @@ export default function Home(){
 
                                     <h6>$60 000</h6>
 
-                                    <h4><small><i className="fa fa-briefcase"></i> Medical / Health Jobs <br/> <strong><i
-                                        className="fa fa-building"></i> BMI Kings Park Hospital</strong></small></h4>
+                                    <h4><small><i className="fa fa-briefcase"></i> Medical / Health Jobs <br/>
+                                        <strong><i
+                                            className="fa fa-building"></i> BMI Kings Park Hospital</strong></small>
+                                    </h4>
 
                                     <small>
                                         <strong title="Posted on"><i
@@ -63,8 +65,10 @@ export default function Home(){
 
                                     <h6>$60 000</h6>
 
-                                    <h4><small><i className="fa fa-briefcase"></i> Medical / Health Jobs <br/> <strong><i
-                                        className="fa fa-building"></i> BMI Kings Park Hospital</strong></small></h4>
+                                    <h4><small><i className="fa fa-briefcase"></i> Medical / Health Jobs <br/>
+                                        <strong><i
+                                            className="fa fa-building"></i> BMI Kings Park Hospital</strong></small>
+                                    </h4>
 
                                     <small>
                                         <strong title="Posted on"><i
@@ -85,8 +89,10 @@ export default function Home(){
 
                                     <h6>$60 000</h6>
 
-                                    <h4><small><i className="fa fa-briefcase"></i> Medical / Health Jobs <br/> <strong><i
-                                        className="fa fa-building"></i> BMI Kings Park Hospital</strong></small></h4>
+                                    <h4><small><i className="fa fa-briefcase"></i> Medical / Health Jobs <br/>
+                                        <strong><i
+                                            className="fa fa-building"></i> BMI Kings Park Hospital</strong></small>
+                                    </h4>
 
                                     <small>
                                         <strong title="Posted on"><i
@@ -149,8 +155,9 @@ export default function Home(){
 
                         <div className="col-lg-4 col-md-6">
                             <div className="service-item">
-                                <a href="#" className="services-item-image"><img src={'/assets/images/blog-1-370x270.jpg'}
-                                                                                 className="img-fluid" alt=""/></a>
+                                <a href="#" className="services-item-image"><img
+                                    src={'/assets/images/blog-1-370x270.jpg'}
+                                    className="img-fluid" alt=""/></a>
 
                                 <div className="down-content">
                                     <h4><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit hic</a>

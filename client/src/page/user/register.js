@@ -1,10 +1,10 @@
 import {useDispatch} from "react-redux";
 import {useNavigate} from "react-router-dom";
-import { userRegister} from "../../service/userServices";
+import {userRegister} from "../../service/userServices";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import * as Yup from "yup";
 
-export default function RegisterUser(){
+export default function RegisterUser() {
     const dispatch = useDispatch();
     const navigate = useNavigate()
     const initialValuesAdd = {
@@ -20,20 +20,20 @@ export default function RegisterUser(){
             .max(14, "Mật khẩu chỉ có nhiều nhất 14 ký tự")
     });
     const handleSubmit = async (values) => {
-        if(values.userPassword!==values.userPasswordAgain){
+        if (values.userPassword !== values.userPasswordAgain) {
             alert('Password is incorrect')
-        }else {
-            let data={
-                userName:values.userName,
-                userPassword:values.userPassword
+        } else {
+            let data = {
+                username: values.username,
+                userPassword: values.userPassword
             }
             await dispatch(userRegister(data));
             alert('Registered successfully')
-            navigate('/user/login')
+            navigate('/users/login')
         }
 
     };
-    return(
+    return (
         <>
             <body className="img js-fullheight" style={{background: 'url(images/bg.jpg'}}>
             <section className="ftco-section">
@@ -50,25 +50,29 @@ export default function RegisterUser(){
                                 <Formik initialValues={initialValuesAdd} onSubmit={handleSubmit}
                                         validationSchema={validationSchema}
                                 >
-                                    <Form  className="signin-form">
+                                    <Form className="signin-form">
                                         <div className="form-group">
-                                            <Field type="text" className="form-control" placeholder="Username" name="userName" required/>
+                                            <Field type="text" className="form-control" placeholder="Username"
+                                                   name="userName" required/>
                                         </div>
                                         <div className="form-group">
-                                            <Field id="password-field" type="password" className="form-control" name="userPassword"
+                                            <Field id="password-field" type="password" className="form-control"
+                                                   name="userPassword"
                                                    placeholder="Password" required/>
                                             <span toggle="#password-field"
                                                   className="fa fa-fw fa-eye field-icon toggle-password"></span>
                                             <ErrorMessage name={'userPassword'}/>
                                         </div>
                                         <div className="form-group">
-                                            <Field id="password-field" type="password" className="form-control" name="userPasswordAgain"
+                                            <Field id="password-field" type="password" className="form-control"
+                                                   name="userPasswordAgain"
                                                    placeholder="Password Again" required/>
                                             <span toggle="#password-field"
                                                   className="fa fa-fw fa-eye field-icon toggle-password"></span>
                                         </div>
                                         <div className="form-group">
-                                            <button type="submit" className="form-control btn btn-primary submit px-3">Sign
+                                            <button type="submit"
+                                                    className="form-control btn btn-primary submit px-3">Sign
                                                 Up
                                             </button>
                                         </div>
