@@ -1,10 +1,10 @@
 import {Router} from "express";
-import {userRouter} from "./userRouter";
 import {postRouter} from "./postRouter";
 import {jobRouter} from "./jobRouter";
 import {jobDetailRouter} from "./jobDetailRouter";
 import postController from "../controllers/postController";
 import employerRouter from "./employer";
+import {userRouter} from "./user.router";
 export const router = Router()
 router.get('/find-by-name', postController.searchPost);
 router.use('/employer',employerRouter)
