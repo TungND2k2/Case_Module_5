@@ -1,5 +1,6 @@
 export declare class Post {
     idPost: number;
+    title: string;
     salary: number;
     workLocation: string;
     position: string;

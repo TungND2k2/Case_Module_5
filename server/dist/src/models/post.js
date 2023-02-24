@@ -19,6 +19,10 @@ __decorate([
 ], Post.prototype, "idPost", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], Post.prototype, "title", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
     __metadata("design:type", Number)
 ], Post.prototype, "salary", void 0);
 __decorate([

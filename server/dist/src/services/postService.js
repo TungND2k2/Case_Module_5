@@ -1,34 +1,40 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const post_1 = require("../models/post");
 const data_source_1 = require("../data-source");
+const post_1 = require("../models/post");
 class PostService {
     constructor() {
         this.getAll = async () => {
-            let sql = 'select * from post';
-            let post = await this.postRepository.query(sql);
-            return post;
+            let sql = `select * from post join job_detail jd on post.idPost = jd.postId join job j on jd.jobId = j.jobId`;
+            let posts = await this.postRepository.query(sql);
+            if (!posts) {
+                return 'No posts found';
+            }
+            return posts;
         };
         this.save = async (post) => {
             return this.postRepository.save(post);
         };
-        this.update = async (id, newPost) => {
-            let post = await this.postRepository.findOneBy({ idPost: id });
-            if (!post) {
+        this.updatePost = async (idPost, newPost) => {
+            let posts = await this.postRepository.findOneBy({ idPost: idPost });
+            if (!posts) {
                 return null;
             }
-            console.log(newPost);
-            newPost.idPost = id;
-            return this.postRepository.update({ idPost: id }, newPost);
+            return await this.postRepository.update({ idPost: idPost }, newPost);
         };
-        this.delete = async (id) => {
-            let post = await this.postRepository.findOneBy({ idPost: id });
-            if (!post) {
+        this.removePost = async (idPost) => {
+            let posts = await this.postRepository.findOneBy({ idPost: idPost });
+            if (!posts) {
                 return null;
             }
-            else {
-                return this.postRepository.delete({ idPost: id });
+            return this.postRepository.delete({ idPost: idPost });
+        };
+        this.findById = async (idPost) => {
+            let posts = await this.postRepository.findOneBy({ idPost: idPost });
+            if (!posts) {
+                return null;
             }
+            return posts;
         };
         this.search = async (req, res) => {
             console.log(req.query);
