@@ -1,8 +1,10 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import {getPosts} from "../../service/postService";
+import {useSearchParams} from "react-router-dom";
 
 export default function ListPost() {
+    const search=useSearchParams()
     const dispatch = useDispatch()
     let post = useSelector(state => {
         return state.post.post
