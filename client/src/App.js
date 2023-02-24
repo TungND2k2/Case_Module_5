@@ -6,16 +6,20 @@ import LoginEmploy from "./page/employer/login";
 import RegisterEmploy from "./page/employer/register";
 import Footer from "./compoment/Footer";
 import Logout from "./page/employer/logout";
+import LoginUser from "./page/user/login";
+import RegisterUser from "./page/user/register";
 function App() {
   return (
     <>
-        <Header></Header>
+        <Header/>
         <Routes>
-            <Route path="home" element={<Home/>}></Route>
-            <Route path="login" element={<LoginEmploy/>}></Route>
-            <Route path="register" element={<RegisterEmploy/>}></Route>
+            <Route path="home" element={<Home/>}/>
+            <Route path="login" element={<LoginEmploy/>}/>
+            <Route path="user/login" element={<LoginUser/>}/>
+            <Route path="user/register" element={<RegisterUser/>}/>
+            <Route path="register" element={<RegisterEmploy/>}/>
         </Routes>
-        <Footer></Footer>
+        <Footer/>
     </>
   );
 }

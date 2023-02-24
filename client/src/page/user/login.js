@@ -1,22 +1,21 @@
 import {Link, useNavigate} from "react-router-dom";
 import {Field, Form, Formik} from "formik";
 import {useDispatch, useSelector} from "react-redux";
-import {login, register} from "../../service/employerService";
+import { userLogin} from "../../service/userServices";
 
 
-export default function LoginEmploy() {
+export default function LoginUser() {
     const dispatch = useDispatch();
     const navigate = useNavigate()
     const initialValuesAdd = {
-        employerName: "",
-        employerPassword: "",
+        userName: "",
+        userPassword: "",
     };
     const handleSubmit = async (values) => {
-        await dispatch(login(values));
+        await dispatch(userLogin(values));
         if (localStorage.getItem('status') === 'Wrong User' && 'Wrong Password') {
             alert('User or password incorrect')
-            navigate(('/login'))
-
+            navigate(('/user/login'))
         } else {
             navigate('/home')
         }
@@ -24,12 +23,12 @@ export default function LoginEmploy() {
 
     return (
         <>
-            <body className="img js-fullheight" style={{backgroundImage: 'url(images/bg.jpg', width : "auto",height : "900px"}}>
+            <body className="img js-fullheight" style={{background: 'url(images/bg.jpg', width : "auto",height : "900px"}}>
             <section className="ftco-section">
                 <div className="container">
                     <div className="row justify-content-center">
                         <div className="col-md-6 text-center mb-5">
-                            <h2 className="heading-section">Employer</h2>
+                            <h2 className="heading-section">User</h2>
                         </div>
                     </div>
                     <div className="row justify-content-center">
@@ -40,19 +39,18 @@ export default function LoginEmploy() {
                                     <Form className="signin-form">
                                         <div className="form-group">
                                             <Field type="text" className="form-control" placeholder="Username"
-                                                   name="employerName" required/>
+                                                   name="username" required/>
                                         </div>
                                         <div className="form-group">
                                             <Field id="password-field" type="password" className="form-control"
-                                                   name="employerPassword"
+                                                   name="userPassword"
                                                    placeholder="Password" required/>
                                             <span toggle="#password-field"
                                                   className="fa fa-fw fa-eye field-icon toggle-password"></span>
                                         </div>
                                         <div className="form-group">
                                             <button type="submit"
-                                                    className="form-control btn btn-primary submit px-3">Sign
-                                                In
+                                                    className="form-control btn btn-primary submit px-3">Sign In
                                             </button>
                                         </div>
                                         <div className="form-group d-md-flex">
@@ -63,8 +61,7 @@ export default function LoginEmploy() {
                                                 </label>
                                             </div>
                                             <div className="w-50 text-md-right">
-                                                <Link to="/register"> <a href="#" style={{color: '#fff'}}>Register Now
-                                                    !!</a></Link>
+                                                <Link to="/user/register" style={{color: '#fff'}}>Register Now !!</Link>
                                             </div>
                                         </div>
                                     </Form>
@@ -81,8 +78,6 @@ export default function LoginEmploy() {
                     </div>
                 </div>
             </section>
-
-
             </body>
         </>
     )

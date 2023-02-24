@@ -46,8 +46,11 @@ export default function Header(){
                                     </div>
                                 </li>
                                 {(show==='true'|| show===null||show===true) && <>
-                                    <li className="nav-item"><a className="nav-link" href="">Sign In </a></li>
+                                    <li className="nav-item">
+                                        <a className="nav-link" href="">Sign In </a>
+                                    </li>
                                     <Link to="/login"> <li className="nav-item"><a className="nav-link" href="">Sign In Employer</a></li></Link>
+                                    <Link to="/user/login"> <li className="nav-item"><a className="nav-link" href="">Sign In User</a></li></Link>
                                 </>}
                                 {(show==='false'||show===false) &&<>
                                         <li className="nav-item" onClick={()=>{

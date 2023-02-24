@@ -1,19 +1,19 @@
 import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
 
 @Entity()
-export class Employer{
+export class Employer {
     @PrimaryGeneratedColumn()
-    idEmployer : number;
+    idEmployer: number;
     @Column()
-   employerName : string;
+    employerName: string;
     @Column()
-    employerPassword : string;
-    @Column({nullable:true})
-    address : string;
-    @Column({nullable:true})
-    description :number;
-    @Column({nullable:true})
+    employerPassword: string;
+    @Column({nullable: true})
+    address: string;
+    @Column({nullable: true})
+    description: number;
+    @Column({nullable: true})
     staffNumber: string;
-    @Column({nullable:true})
-    brand : string;
+    @Column({nullable: true})
+    brand: string;
 }

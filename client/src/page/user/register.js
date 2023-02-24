@@ -1,58 +1,75 @@
-import {Link, useNavigate} from "react-router-dom";
-import {Field, Form, Formik} from "formik";
-import {useDispatch, useSelector} from "react-redux";
-import {login, register} from "../../service/employerService";
+import {useDispatch} from "react-redux";
+import {useNavigate} from "react-router-dom";
+import { userRegister} from "../../service/userServices";
+import {ErrorMessage, Field, Form, Formik} from "formik";
+import * as Yup from "yup";
 
-
-export default function LoginEmploy() {
+export default function RegisterUser(){
     const dispatch = useDispatch();
     const navigate = useNavigate()
     const initialValuesAdd = {
-        employerName: "",
-        employerPassword: "",
+        userName: "",
+        userPassword: "",
+        userPasswordAgain: "",
     };
+    const validationSchema = Yup.object().shape({
+        userName: Yup.string().required("Vui lòng nhập tên đăng nhập"),
+        userPassword: Yup.string()
+            .required("Vui lòng nhập mật khẩu")
+            .min(6, "Mật khẩu phải có ít nhất 6 ký tự")
+            .max(14, "Mật khẩu chỉ có nhiều nhất 14 ký tự")
+    });
     const handleSubmit = async (values) => {
-        await dispatch(login(values));
-        if (localStorage.getItem('status') === 'Wrong User' && 'Wrong Password') {
-            alert('User or password incorrect')
-            navigate(('/login'))
-
-        } else {
-            navigate('/home')
+        if(values.userPassword!==values.userPasswordAgain){
+            alert('Password is incorrect')
+        }else {
+            let data={
+                userName:values.userName,
+                userPassword:values.userPassword
+            }
+            await dispatch(userRegister(data));
+            alert('Registered successfully')
+            navigate('/user/login')
         }
-    };
 
-    return (
+    };
+    return(
         <>
-            <body className="img js-fullheight" style={{backgroundImage: 'url(images/bg.jpg', width : "auto",height : "900px"}}>
+            <body className="img js-fullheight" style={{background: 'url(images/bg.jpg'}}>
             <section className="ftco-section">
                 <div className="container">
                     <div className="row justify-content-center">
                         <div className="col-md-6 text-center mb-5">
-                            <h2 className="heading-section">Employer</h2>
+                            <h2 className="heading-section">User</h2>
                         </div>
                     </div>
                     <div className="row justify-content-center">
                         <div className="col-md-6 col-lg-4">
                             <div className="login-wrap p-0">
                                 <h3 className="mb-4 text-center">Have an account?</h3>
-                                <Formik initialValues={initialValuesAdd} onSubmit={handleSubmit}>
-                                    <Form className="signin-form">
+                                <Formik initialValues={initialValuesAdd} onSubmit={handleSubmit}
+                                        validationSchema={validationSchema}
+                                >
+                                    <Form  className="signin-form">
                                         <div className="form-group">
-                                            <Field type="text" className="form-control" placeholder="Username"
-                                                   name="employerName" required/>
+                                            <Field type="text" className="form-control" placeholder="Username" name="userName" required/>
                                         </div>
                                         <div className="form-group">
-                                            <Field id="password-field" type="password" className="form-control"
-                                                   name="employerPassword"
+                                            <Field id="password-field" type="password" className="form-control" name="userPassword"
                                                    placeholder="Password" required/>
+                                            <span toggle="#password-field"
+                                                  className="fa fa-fw fa-eye field-icon toggle-password"></span>
+                                            <ErrorMessage name={'userPassword'}/>
+                                        </div>
+                                        <div className="form-group">
+                                            <Field id="password-field" type="password" className="form-control" name="userPasswordAgain"
+                                                   placeholder="Password Again" required/>
                                             <span toggle="#password-field"
                                                   className="fa fa-fw fa-eye field-icon toggle-password"></span>
                                         </div>
                                         <div className="form-group">
-                                            <button type="submit"
-                                                    className="form-control btn btn-primary submit px-3">Sign
-                                                In
+                                            <button type="submit" className="form-control btn btn-primary submit px-3">Sign
+                                                Up
                                             </button>
                                         </div>
                                         <div className="form-group d-md-flex">
@@ -63,11 +80,11 @@ export default function LoginEmploy() {
                                                 </label>
                                             </div>
                                             <div className="w-50 text-md-right">
-                                                <Link to="/register"> <a href="#" style={{color: '#fff'}}>Register Now
-                                                    !!</a></Link>
+                                                <a href="#" style={{color: '#fff'}}>Forgot Password</a>
                                             </div>
                                         </div>
                                     </Form>
+
                                 </Formik>
                                 <p className="w-100 text-center">&mdash; Or Sign In With &mdash;</p>
                                 <div className="social d-flex text-center">
@@ -81,8 +98,6 @@ export default function LoginEmploy() {
                     </div>
                 </div>
             </section>
-
-
             </body>
         </>
     )
