@@ -3,7 +3,9 @@ import {userRouter} from "./userRouter";
 import {postRouter} from "./postRouter";
 import {jobRouter} from "./jobRouter";
 import {jobDetailRouter} from "./jobDetailRouter";
+import postController from "../controllers/postController";
 export const router = Router()
+router.get('/find-by-name', postController.searchPost);
 router.use('/posts',postRouter);
 router.use('/users',userRouter);
 router.use('/jobs',jobRouter)
