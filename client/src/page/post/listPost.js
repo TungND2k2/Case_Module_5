@@ -23,7 +23,6 @@ export default function ListPost() {
         }
     }
 
-    console.log(checkedValues)
     return (
         <>
             <div className="page-heading about-heading header-text"
@@ -49,21 +48,24 @@ export default function ListPost() {
 
                                 <div>
                                     <label>
-                                        <input type="checkbox" style={{height:"20px",width:"20px"}} onChange={handleChange} value="Contract"/>  Contract
+                                        <input type="checkbox" style={{height: "20px", width: "20px"}}
+                                               onChange={handleChange} value="Contract"/> Contract
 
                                     </label>
                                 </div>
 
                                 <div>
                                     <label>
-                                        <input type="checkbox" style={{height:"20px",width:"20px"}} onChange={handleChange} value="Full time"/>  Full time
+                                        <input type="checkbox" style={{height: "20px", width: "20px"}}
+                                               onChange={handleChange} value="Full time"/> Full time
 
                                     </label>
                                 </div>
 
                                 <div>
                                     <label>
-                                        <input type="checkbox" onChange={handleChange} value="Part time" style={{height:"20px",width:"20px"}}/>  Part time
+                                        <input type="checkbox" onChange={handleChange} value="Part time"
+                                               style={{height: "20px", width: "20px"}}/> Part time
 
                                     </label>
                                 </div>
@@ -74,27 +76,31 @@ export default function ListPost() {
 
                                 <div>
                                     <label>
-                                        <input type="checkbox" style={{height:"20px",width:"20px"}} onChange={handleChange} value="Accountant"/>  Accountant
+                                        <input type="checkbox" style={{height: "20px", width: "20px"}}
+                                               onChange={handleChange} value="Accountant"/> Accountant
 
                                     </label>
                                 </div>
 
                                 <div>
                                     <label>
-                                        <input type="checkbox" style={{height:"20px",width:"20px"}} onChange={handleChange} value="Architect"/>  Architect
+                                        <input type="checkbox" style={{height: "20px", width: "20px"}}
+                                               onChange={handleChange} value="Architect"/> Architect
 
                                     </label>
                                 </div>
 
                                 <div>
                                     <label>
-                                        <input type="checkbox" style={{height:"20px",width:"20px"}} onChange={handleChange} value="IT"/>  IT
+                                        <input type="checkbox" style={{height: "20px", width: "20px"}}
+                                               onChange={handleChange} value="IT"/> IT
 
                                     </label>
                                 </div>
                                 <div>
                                     <label>
-                                        <input type="checkbox" style={{height:"20px",width:"20px"}} onChange={handleChange} value="Sales agent"/>  Sales agent
+                                        <input type="checkbox" style={{height: "20px", width: "20px"}}
+                                               onChange={handleChange} value="Sales agent"/> Sales agent
 
                                     </label>
                                 </div>
@@ -105,21 +111,24 @@ export default function ListPost() {
 
                                 <div>
                                     <label>
-                                        <input type="checkbox" style={{height:"20px",width:"20px"}} onChange={handleChange}/>
+                                        <input type="checkbox" style={{height: "20px", width: "20px"}}
+                                               onChange={handleChange}/>
 
                                     </label>
                                 </div>
 
                                 <div>
                                     <label>
-                                        <input type="checkbox" style={{height:"20px",width:"20px"}} onChange={handleChange}/>
+                                        <input type="checkbox" style={{height: "20px", width: "20px"}}
+                                               onChange={handleChange}/>
 
                                     </label>
                                 </div>
 
                                 <div>
                                     <label>
-                                        <input type="checkbox" style={{height:"20px",width:"20px"}} onChange={handleChange}/>
+                                        <input type="checkbox" style={{height: "20px", width: "20px"}}
+                                               onChange={handleChange}/>
 
                                     </label>
                                 </div>
@@ -130,21 +139,24 @@ export default function ListPost() {
 
                                 <div>
                                     <label>
-                                        <input type="checkbox" style={{height:"20px",width:"20px"}} onChange={handleChange}/>
+                                        <input type="checkbox" style={{height: "20px", width: "20px"}}
+                                               onChange={handleChange}/>
 
                                     </label>
                                 </div>
 
                                 <div>
                                     <label>
-                                        <input type="checkbox" style={{height:"20px",width:"20px"}} onChange={handleChange}/>
+                                        <input type="checkbox" style={{height: "20px", width: "20px"}}
+                                               onChange={handleChange}/>
 
                                     </label>
                                 </div>
 
                                 <div>
                                     <label>
-                                        <input type="checkbox" style={{height:"20px",width:"20px"}} onChange={handleChange}/>
+                                        <input type="checkbox" style={{height: "20px", width: "20px"}}
+                                               onChange={handleChange}/>
 
                                         <small>Salary</small>
                                     </label>
@@ -157,21 +169,24 @@ export default function ListPost() {
 
                                 <div>
                                     <label>
-                                        <input type="checkbox" style={{height:"20px",width:"20px"}} onChange={handleChange}/>
+                                        <input type="checkbox" style={{height: "20px", width: "20px"}}
+                                               onChange={handleChange}/>
 
                                     </label>
                                 </div>
 
                                 <div>
                                     <label>
-                                        <input type="checkbox" style={{height:"20px",width:"20px"}} onChange={handleChange}/>
+                                        <input type="checkbox" style={{height: "20px", width: "20px"}}
+                                               onChange={handleChange}/>
 
                                     </label>
                                 </div>
 
                                 <div>
                                     <label>
-                                        <input type="checkbox" style={{height:"20px",width:"20px"}} onChange={handleChange}/>
+                                        <input type="checkbox" style={{height: "20px", width: "20px"}}
+                                               onChange={handleChange}/>
 
                                     </label>
                                 </div>
@@ -179,31 +194,36 @@ export default function ListPost() {
                             </div>
                         </div>
 
-                        <div className="col-md-9">
+                        <div className="container col-md-9">
                             <div className="row">
                                 {post.map((item) => (
-                                    <div className="col-md-6">
+                                    <div className="col-md-6 py-5 mt-2">
                                         <div className="product-item">
-                                            <a href=""><img src="/assets/images/product-1-370x270.jpg"
+                                            <a><img src={item.image}
                                                             alt=""/></a>
                                             <div className="down-content">
-                                                <a href=""><h4>Lorem ipsum dolor sit amet</h4></a>
+                                                <a href=""><h4>{item.title}</h4></a>
 
-                                                <h6>{item.salary}</h6>
+                                                <h6 className="number" >{item.salary}$</h6>
 
-                                                <h4><small><i className="fa fa-briefcase"></i> Medical / Health
-                                                    Jobs <br/>
-                                                    <strong><i className="fa fa-building"></i> BMI Kings Park
-                                                        Hospital</strong></small></h4>
+                                                <h4><small><i className="fa fa-briefcase"> </i>&nbsp;&nbsp;&nbsp;&nbsp;{item.position}
+                                                     <br/>
+                                                    <strong><i className="fa fa-building"></i>&nbsp;&nbsp;&nbsp;&nbsp; {item.workLocation}</strong>
+                                                <br/>
+                                                    <i className="fa fa-briefcase"> </i>&nbsp;&nbsp;&nbsp;&nbsp;{item.position}</small>
+                                                </h4>
 
-                                                <small>
-                                                    <strong title="Posted on"><i
-                                                        className="fa fa-calendar"></i> 15-06-2020</strong> &nbsp;&nbsp;&nbsp;&nbsp;
-                                                    <strong title="Type"><i
-                                                        className="fa fa-file"></i> Contract</strong> &nbsp;&nbsp;&nbsp;&nbsp;
-                                                    <strong title="Location"><i
-                                                        className="fa fa-map-marker"></i> London</strong>
-                                                </small>
+                                                <samp className="container">
+                                                    <tspan className="row">
+                                                        <strong title="Posted on"><i
+                                                            className="fa fa-calendar"></i> {item.endTime}</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                                                        <strong title="Type"><i
+                                                            className="fa fa-file"></i> {item.status}</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                                                        <strong title="Location"><i
+                                                            className="fa fa-map-marker"></i> {item.workLocation}</strong>
+                                                    </tspan>
+
+                                                </samp>
                                             </div>
                                         </div>
                                     </div>
