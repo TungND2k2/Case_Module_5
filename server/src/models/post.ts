@@ -25,6 +25,8 @@ export class Post{
     @Column({nullable:true})
     status : string;
     @Column({nullable:true})
-    @Column()
+    title : string;
+    @Column({nullable:true})
     image : string;
+
 }
