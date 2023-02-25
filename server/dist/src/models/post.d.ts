@@ -12,4 +12,5 @@ export declare class Post {
     status: string;
     title: string;
     image: string;
+    title: string;
 }
