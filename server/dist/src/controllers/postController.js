@@ -74,16 +74,6 @@ class PostController {
         };
         this.postServices = postService_1.default;
         this.jobDetailServices = jobDetailService_1.default;
-        this.searchPost = async (req, res) => {
-            try {
-                let posts = await this.postService.search(req.body.name);
-                res.status(200).json(posts);
-            }
-            catch (e) {
-                res.status(500).json(e.message);
-            }
-        };
-        this.postService = postService_1.default;
     }
 }
 exports.default = new PostController();

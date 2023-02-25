@@ -11,5 +11,4 @@ export declare class Post {
     recruitmentsNumber: number;
     status: string;
     image: string;
-    title: string;
 }
