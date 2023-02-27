@@ -1,11 +1,16 @@
 import {Link, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {logout} from "../service/employerService";
+import {userLogout} from "../service/userServices";
 
 export default function Header(){
-    let show=useSelector(state => {
+    let show= useSelector(state => {
         return state.employ.show
     })
+    let userShow= useSelector(state => {
+        return state.user.userShow
+    })
+
     console.log(show)
     const dispatch=useDispatch();
     const navigate=useNavigate();
@@ -49,14 +54,14 @@ export default function Header(){
                                         <a className="nav-link" href="">Sign In </a>
                                     </li>
                                     <Link to="/login"> <li className="nav-item"><a className="nav-link" href="">Sign In Employer</a></li></Link>
-                                    <Link to="/users/login"> <li className="nav-item"><a className="nav-link" href="">Sign In User</a></li></Link>
+                                    <Link to="/users/login"> <li className="nav-item"><a className="nav-link">Sign In User</a></li></Link>
                                 </>}
-                                {(show==='false'||show===false) &&<>
+                                {(show==='false'||show===false || userShow==='false'|| userShow===false) &&<>
                                         <li className="nav-item"><a className="nav-link" href="">{localStorage.getItem('name')}</a></li>
                                 </>}
-                                {(show==='false'||show===false) &&<>
+                                {(show==='false'||show===false || userShow==='false'|| userShow===false) &&<>
                                         <li className="nav-item" onClick={()=>{
-                                            dispatch(logout())
+                                            dispatch(logout()|| userLogout())
                                             localStorage.clear()
                                         }}><a className="nav-link" href="">logout</a></li>
                                 </>}
