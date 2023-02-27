@@ -2,6 +2,7 @@ declare class UserService {
     private userRepository;
     constructor();
     getAll: () => Promise<any>;
+    findById: (id: any) => Promise<any>;
     checkUser: (user: any) => Promise<"User is not exit" | "Password is wrong" | {
         idUser: any;
         username: any;

@@ -29,11 +29,7 @@ export default function Search() {
         }
     }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD:client/src/page/post/listPost.js
-=======
->>>>>>> origin/dev
+
 
     const searchParams = new URLSearchParams();
     useEffect(() => {
@@ -77,15 +73,13 @@ export default function Search() {
             setQueryStringAPI(queryString)
             navigate('/jobs/search?' + queryString)
         }
+        console.log(queryString)
     }, [checkedValues])
     useEffect(() => {
         dispatch(search(queryStringAPI));
     }, [queryStringAPI]);
 
-<<<<<<< HEAD
-=======
->>>>>>> origin/tung:client/src/page/post/search.js
->>>>>>> origin/dev
+
     return (
         <>
             <div className="page-heading about-heading header-text"
@@ -120,36 +114,22 @@ export default function Search() {
                                 <div>
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
-<<<<<<< HEAD
 
                                                onChange={handleChange} value="Full time"/> Full time
 
-                                        onChange={handleChange} value="FullTime"/> Full time
-
-=======
-<<<<<<< HEAD:client/src/page/post/listPost.js
-                                               onChange={handleChange} value="Full time"/> Full time
-=======
                                                onChange={handleChange} value="FullTime"/> Full time
->>>>>>> origin/tung:client/src/page/post/search.js
->>>>>>> origin/dev
+
 
                                     </label>
                                 </div>
 
                                 <div>
                                     <label>
-<<<<<<< HEAD
 
                                         <input type="checkbox" onChange={handleChange} value="Part time"/>
+
                                         <input type="checkbox" onChange={handleChange} value="PartTime"
-=======
-<<<<<<< HEAD:client/src/page/post/listPost.js
-                                        <input type="checkbox" onChange={handleChange} value="Part time"
-=======
-                                        <input type="checkbox" onChange={handleChange} value="PartTime"
->>>>>>> origin/tung:client/src/page/post/search.js
->>>>>>> origin/dev
+
                                                style={{height: "20px", width: "20px"}}/> Part time
 
                                     </label>
@@ -162,11 +142,10 @@ export default function Search() {
                                 <div>
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
-<<<<<<< HEAD
 
                                                onChange={handleChange} value="Accountant"/> Accountant
 
-                                        onChange={handleChange} value="IT"/> IT
+                                               onChange={handleChange} value="IT"/> IT
 
 
                                     </label>
@@ -178,38 +157,8 @@ export default function Search() {
 
                                                onChange={handleChange} value="Architect"/> Architect
 
-                                        onChange={handleChange} value="Marketing"/> Marketing
-
-
-                                    </label>
-                                </div>
-
-                                <div>
-                                    <label>
-                                        <input type="checkbox" style={{height: "20px", width: "20px"}}
-
-                                               onChange={handleChange} value="IT"/> IT
-
-                                        onChange={handleChange} value="Sell"/> Sell
-
-=======
-<<<<<<< HEAD:client/src/page/post/listPost.js
-                                               onChange={handleChange} value="Accountant"/> Accountant
-=======
-                                               onChange={handleChange} value="IT"/> IT
->>>>>>> origin/tung:client/src/page/post/search.js
-
-                                    </label>
-                                </div>
-
-                                <div>
-                                    <label>
-                                        <input type="checkbox" style={{height: "20px", width: "20px"}}
-<<<<<<< HEAD:client/src/page/post/listPost.js
-                                               onChange={handleChange} value="Architect"/> Architect
-=======
                                                onChange={handleChange} value="Marketing"/> Marketing
->>>>>>> origin/tung:client/src/page/post/search.js
+
 
                                     </label>
                                 </div>
@@ -217,30 +166,22 @@ export default function Search() {
                                 <div>
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
-<<<<<<< HEAD:client/src/page/post/listPost.js
+
                                                onChange={handleChange} value="IT"/> IT
-=======
+
                                                onChange={handleChange} value="Sell"/> Sell
->>>>>>> origin/tung:client/src/page/post/search.js
->>>>>>> origin/dev
+
 
                                     </label>
                                 </div>
                                 <div>
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
-<<<<<<< HEAD
 
                                                onChange={handleChange} value="Sales agent"/> Sales agent
 
-                                        onChange={handleChange} value="Engineer"/> Engineer
-=======
-<<<<<<< HEAD:client/src/page/post/listPost.js
-                                               onChange={handleChange} value="Sales agent"/> Sales agent
-=======
                                                onChange={handleChange} value="Engineer"/> Engineer
->>>>>>> origin/tung:client/src/page/post/search.js
->>>>>>> origin/dev
+
 
                                     </label>
                                 </div>
@@ -252,19 +193,11 @@ export default function Search() {
                                 <div>
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
-<<<<<<< HEAD
 
                                                onChange={handleChange}/>
 
-                                        onChange={handleChange} value="Staff"/>Staff
-
-=======
-<<<<<<< HEAD:client/src/page/post/listPost.js
-                                               onChange={handleChange}/>
-=======
                                                onChange={handleChange} value="Staff"/>Staff
->>>>>>> origin/tung:client/src/page/post/search.js
->>>>>>> origin/dev
+
 
                                     </label>
                                 </div>
@@ -272,18 +205,11 @@ export default function Search() {
                                 <div>
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
-<<<<<<< HEAD
 
                                                onChange={handleChange}/>
 
-                                        onChange={handleChange} value="Leader"/> Leader
-=======
-<<<<<<< HEAD:client/src/page/post/listPost.js
-                                               onChange={handleChange}/>
-=======
                                                onChange={handleChange} value="Leader"/> Leader
->>>>>>> origin/tung:client/src/page/post/search.js
->>>>>>> origin/dev
+
 
                                     </label>
                                 </div>
@@ -291,18 +217,11 @@ export default function Search() {
                                 <div>
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
-<<<<<<< HEAD
 
                                                onChange={handleChange}/>
-                                        onChange={handleChange} value="Technicians"/> Technicians
 
-=======
-<<<<<<< HEAD:client/src/page/post/listPost.js
-                                               onChange={handleChange}/>
-=======
                                                onChange={handleChange} value="Technicians"/> Technicians
->>>>>>> origin/tung:client/src/page/post/search.js
->>>>>>> origin/dev
+
 
                                     </label>
                                 </div>
@@ -314,19 +233,11 @@ export default function Search() {
                                 <div>
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
-<<<<<<< HEAD
 
                                                onChange={handleChange}/>
 
-                                        onChange={handleChange} value="CầuGiấy"/> Cầu Giấy
-
-=======
-<<<<<<< HEAD:client/src/page/post/listPost.js
-                                               onChange={handleChange}/>
-=======
                                                onChange={handleChange} value="CầuGiấy"/> Cầu Giấy
->>>>>>> origin/tung:client/src/page/post/search.js
->>>>>>> origin/dev
+
 
                                     </label>
                                 </div>
@@ -334,20 +245,12 @@ export default function Search() {
                                 <div>
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
-<<<<<<< HEAD
 
                                                onChange={handleChange}/>
 
-                                        onChange={handleChange} value="HàĐông"/> Hà Đông
-
-=======
-<<<<<<< HEAD:client/src/page/post/listPost.js
-                                               onChange={handleChange}/>
-=======
                                                onChange={handleChange} value="HàĐông"/> Hà Đông
 
->>>>>>> origin/tung:client/src/page/post/search.js
->>>>>>> origin/dev
+
 
                                     </label>
                                 </div>
@@ -355,21 +258,12 @@ export default function Search() {
                                 <div>
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
-<<<<<<< HEAD
 
                                                onChange={handleChange}/>
 
                                         <small>Salary</small>
 
-                                        onChange={handleChange} value="HoàngMai"/> Hoàng Mai
-=======
-<<<<<<< HEAD:client/src/page/post/listPost.js
-                                               onChange={handleChange}/>
-
-                                        <small>Salary</small>
-=======
                                                onChange={handleChange} value="HoàngMai"/> Hoàng Mai
->>>>>>> origin/dev
                                     </label>
                                 </div>
                                 <div>
@@ -382,11 +276,7 @@ export default function Search() {
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
                                                onChange={handleChange} value="ThanhXuân"/> Thanh Xuân
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/tung:client/src/page/post/search.js
->>>>>>> origin/dev
                                     </label>
                                 </div>
 
@@ -398,19 +288,11 @@ export default function Search() {
                                 <div>
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
-<<<<<<< HEAD
 
                                                onChange={handleChange}/>
 
-                                        onChange={handleChange} value="1"/> 1 Year
-
-=======
-<<<<<<< HEAD:client/src/page/post/listPost.js
-                                               onChange={handleChange}/>
-=======
                                                onChange={handleChange} value="1"/> 1 Year
->>>>>>> origin/tung:client/src/page/post/search.js
->>>>>>> origin/dev
+
 
                                     </label>
                                 </div>
@@ -418,18 +300,11 @@ export default function Search() {
                                 <div>
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
-<<<<<<< HEAD
 
                                                onChange={handleChange}/>
-                                        onChange={handleChange} value="2"/> 2 Year
 
-=======
-<<<<<<< HEAD:client/src/page/post/listPost.js
-                                               onChange={handleChange}/>
-=======
                                                onChange={handleChange} value="2"/> 2 Year
->>>>>>> origin/tung:client/src/page/post/search.js
->>>>>>> origin/dev
+
 
                                     </label>
                                 </div>
@@ -437,19 +312,10 @@ export default function Search() {
                                 <div>
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
-<<<<<<< HEAD
 
                                                onChange={handleChange}/>
+                                    onChange={handleChange} value="3"/> 3 Year
 
-                                        onChange={handleChange} value="3"/> 3 Year
-
-=======
-<<<<<<< HEAD:client/src/page/post/listPost.js
-                                               onChange={handleChange}/>
-=======
-                                               onChange={handleChange} value="3"/> 3 Year
->>>>>>> origin/tung:client/src/page/post/search.js
->>>>>>> origin/dev
 
                                     </label>
                                 </div>
@@ -463,25 +329,11 @@ export default function Search() {
                                     <div className="col-md-6 py-5 mt-2">
                                         <div className="product-item">
                                             <a><img src={item.image}
-                                                    alt=""/></a>
+                                                            alt=""/></a>
                                             <div className="down-content">
                                                 <a href=""><h4>{item.title}</h4></a>
 
-<<<<<<< HEAD
 
-                                                <h6 className="number">{item.salary}$</h6>
-
-                                                <h4><small><i
-                                                    className="fa fa-briefcase"> </i>&nbsp;&nbsp;&nbsp;&nbsp;{item.position}
-                                                    <br/>
-                                                    <strong><i
-                                                        className="fa fa-building"></i>&nbsp;&nbsp;&nbsp;&nbsp; {item.workLocation}
-                                                    </strong>
-                                                    <br/>
-                                                    <i className="fa fa-briefcase"> </i>&nbsp;&nbsp;&nbsp;&nbsp;{item.position}
-                                                </small>
-=======
-<<<<<<< HEAD:client/src/page/post/listPost.js
                                                 <h6 className="number" >{item.salary}$</h6>
 
                                                 <h4><small><i className="fa fa-briefcase"> </i>&nbsp;&nbsp;&nbsp;&nbsp;{item.position}
@@ -489,55 +341,34 @@ export default function Search() {
                                                     <strong><i className="fa fa-building"></i>&nbsp;&nbsp;&nbsp;&nbsp; {item.workLocation}</strong>
                                                 <br/>
                                                     <i className="fa fa-briefcase"> </i>&nbsp;&nbsp;&nbsp;&nbsp;{item.position}</small>
->>>>>>> origin/dev
                                                 </h4>
 
                                                 <samp className="container">
                                                     <tspan className="row">
                                                         <strong title="Posted on"><i
-                                                            className="fa fa-calendar"></i> {item.endTime}
-                                                        </strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                                                            className="fa fa-calendar"></i> {item.endTime}</strong> &nbsp;&nbsp;&nbsp;&nbsp;
                                                         <strong title="Type"><i
-                                                            className="fa fa-file"></i> {item.status}
-                                                        </strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                                                            className="fa fa-file"></i> {item.status}</strong> &nbsp;&nbsp;&nbsp;&nbsp;
                                                         <strong title="Location"><i
-                                                            className="fa fa-map-marker"></i> {item.workLocation}
-                                                        </strong>
+                                                            className="fa fa-map-marker"></i> {item.workLocation}</strong>
                                                     </tspan>
 
                                                 </samp>
-<<<<<<< HEAD
 
-                                                <h4>Salary: ${item.salary}</h4>
-
-                                                <h4><small><i className="fa fa-briefcase"></i> {item.jobName} <br/>
-                                                    <strong><i className="fa fa-building"></i>{item.title}
-                                                    </strong></small></h4>
-=======
-=======
                                                 <h4>Salary: ${item.salary}</h4>
 
                                                 <h4><small><i className="fa fa-briefcase"></i> {item.jobName} <br/>
                                                     <strong><i className="fa fa-building"></i>{item.title}</strong></small></h4>
->>>>>>> origin/dev
 
                                                 <small>
                                                     <strong title="Posted on"><i
                                                         className="fa fa-calendar"></i> 15-06-2020</strong> &nbsp;&nbsp;&nbsp;&nbsp;
                                                     <strong title="Type"><i
-<<<<<<< HEAD
-                                                        className="fa fa-file"></i> {item.workTime}
-                                                    </strong> &nbsp;&nbsp;&nbsp;&nbsp;
-                                                    <strong title="Location"><i
-                                                        className="fa fa-map-marker"></i> {item.workLocation}</strong>
-                                                </small>
-=======
                                                         className="fa fa-file"></i> {item.workTime}</strong> &nbsp;&nbsp;&nbsp;&nbsp;
                                                     <strong title="Location"><i
                                                         className="fa fa-map-marker"></i> {item.workLocation}</strong>
                                                 </small>
->>>>>>> origin/tung:client/src/page/post/search.js
->>>>>>> origin/dev
+
                                             </div>
                                         </div>
                                     </div>

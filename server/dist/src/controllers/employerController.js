@@ -4,8 +4,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const employerService_1 = __importDefault(require("../services/employerService"));
+const employerService_2 = __importDefault(require("../services/employerService"));
 class AuthController {
     constructor() {
+        this.getAllEmployer = async (req, res) => {
+            try {
+                let employer = await employerService_2.default.getAll();
+                res.status(200).json(employer);
+            }
+            catch (e) {
+                res.status(500).json(e.message);
+            }
+        };
         this.register = async (req, res) => {
             let employer = await this.employerService.register(req.body);
             res.status(200).json(employer);

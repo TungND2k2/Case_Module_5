@@ -7,8 +7,8 @@ export const getPosts = createAsyncThunk (
         return response;
     }
 )
-export const addPost = createAsyncThunk (
-    'posts/addPost',
+export const addPosts = createAsyncThunk (
+    'post/addPost',
     async (data) => {
         const response = await axios.post('http://localhost:4000/posts',data);
         return data;

@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {userLogin, userLogout, userRegister} from "../../service/userServices";
+import {findById, userLogin, userLogout, userRegister} from "../../service/userServices";
 const initialState = {
     user: [],
     userShow :localStorage.getItem('userShow'),
@@ -11,6 +11,9 @@ const blogSlice = createSlice({
     extraReducers: builder => {
         builder.addCase(userRegister.fulfilled, (state, {payload}) => {
             state.user.push(payload);
+        });
+        builder.addCase(findById.fulfilled,(state, action)=>{
+            state.user = action.payload;
         });
         builder.addCase(userLogin.fulfilled, (state, {payload}) => {
             state.user = payload.data;
