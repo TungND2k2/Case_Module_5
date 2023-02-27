@@ -2,10 +2,9 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {getPosts} from "../../service/postService";
 
-export default function Home(){
-    const dispatch=useDispatch()
-    let post=useSelector(state => {
-        console.log(state.post.post)
+export default function Home() {
+    const dispatch = useDispatch()
+    let post = useSelector(state => {
         return state.post.post
     })
     useEffect(() => {
@@ -45,7 +44,7 @@ export default function Home(){
                                 <a href="">view more <i className="fa fa-angle-right"></i></a>
                             </div>
                         </div>
-                        {post.map((item)=>(
+                        {post.map((item) => (
                                 <div className="col-md-4">
                                     <div className="product-item">
                                         <a href=""><img src="/assets/images/product-1-370x270.jpg" alt=""/></a>
@@ -54,15 +53,18 @@ export default function Home(){
 
                                             <h6>${item.salary}</h6>
 
-                                            <h4><small><i className="fa fa-briefcase"></i> Medical / Health Jobs <br/> <strong><i
-                                                className="fa fa-building"></i> BMI Kings Park Hospital</strong></small></h4>
+                                            <h4><small><i className="fa fa-briefcase"></i> Medical / Health Jobs <br/>
+                                                <strong><i
+                                                    className="fa fa-building"></i> BMI Kings Park Hospital</strong></small>
+                                            </h4>
 
                                             <small>
                                                 <strong title="Posted on"><i
                                                     className="fa fa-calendar"></i> 15-06-2020</strong> &nbsp;&nbsp;&nbsp;&nbsp;
                                                 <strong title="Type"><i
                                                     className="fa fa-file"></i> Contract</strong> &nbsp;&nbsp;&nbsp;&nbsp;
-                                                <strong title="Location"><i className="fa fa-map-marker"></i> London</strong>
+                                                <strong title="Location"><i
+                                                    className="fa fa-map-marker"></i> London</strong>
                                             </small>
                                         </div>
                                     </div>
@@ -121,8 +123,9 @@ export default function Home(){
 
                         <div className="col-lg-4 col-md-6">
                             <div className="service-item">
-                                <a href="#" className="services-item-image"><img src={'/assets/images/blog-1-370x270.jpg'}
-                                                                                 className="img-fluid" alt=""/></a>
+                                <a href="#" className="services-item-image"><img
+                                    src={'/assets/images/blog-1-370x270.jpg'}
+                                    className="img-fluid" alt=""/></a>
 
                                 <div className="down-content">
                                     <h4><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit hic</a>

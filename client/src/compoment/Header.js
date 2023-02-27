@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {logout} from "../service/employerService";
 
 export default function Header(){
-    let show=useSelector(state => {
+    let show = useSelector(state => {
         return state.employ.show
     })
     console.log(show)

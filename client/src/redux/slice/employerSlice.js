@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {login, logout, register} from "../../service/employerService";
+import {edit, login, logout, register} from "../../service/employerService";
 const initialState = {
     employers: [],
     show:localStorage.getItem('show'),
@@ -25,6 +25,7 @@ const blogSlice = createSlice({
             state.show=true
             localStorage.setItem('show',state.show)
         })
+
     }
 })
 export default blogSlice.reducer;

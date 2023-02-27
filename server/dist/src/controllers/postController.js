@@ -36,6 +36,7 @@ class PostController {
         this.update = async (req, res) => {
             try {
                 let id = req.params.id;
+                console.log(req.body);
                 let post = {
                     title: req.body.title,
                     idEmployer: req.body.idEmployer,

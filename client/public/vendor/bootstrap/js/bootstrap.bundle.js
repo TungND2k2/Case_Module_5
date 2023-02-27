@@ -1475,7 +1475,7 @@
   var supportsMicroTasks = isBrowser && window.Promise;
 
   /**
-  * Create a debounced version of a method, that's asynchronously deferred
+  * Edit a debounced version of a method, that's asynchronously deferred
   * but called in the minimum time possible.
   *
   * @method
@@ -3777,7 +3777,7 @@
   // Methods
   var Popper = function () {
     /**
-     * Create a new Popper.js instance
+     * Edit a new Popper.js instance
      * @class Popper
      * @param {HTMLElement|referenceObject} reference - The reference element used to position the popper
      * @param {HTMLElement} popper - The HTML element used as popper.

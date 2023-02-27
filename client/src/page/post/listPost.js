@@ -1,6 +1,7 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import {getPosts} from "../../service/postService";
+import {Link} from "react-router-dom";
 
 export default function ListPost() {
     const dispatch = useDispatch()
@@ -204,6 +205,10 @@ export default function ListPost() {
                                                     <strong title="Location"><i
                                                         className="fa fa-map-marker"></i> London</strong>
                                                 </small>
+                                                <div className="col-6">
+                                                    <button className="btn-primary mt-2" type="submit"><Link to={'/posts/'+ item.idPost} >Edit</Link></button>
+                                                    <button className="btn btn-danger mt-2">Delete</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
