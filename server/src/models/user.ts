@@ -8,14 +8,14 @@ export class User{
     username : string;
     @Column()
     userPassword : string;
-    @Column()
+    @Column({nullable : true})
     address : string;
-    @Column()
+    @Column({nullable : true})
     age :number;
-    @Column()
+    @Column({nullable : true})
     gender: string;
-    @Column()
+    @Column({nullable : true})
     email : string;
-    @Column()
+    @Column({nullable : true})
     avatar : string;
 }

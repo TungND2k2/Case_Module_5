@@ -14,7 +14,11 @@ class userController {
         res.status(201).json(user)
     }
     login = async (req: Request, res: Response) => {
-        let response = await this.userService.checkUser(req.body);
+        let user = {
+            username : req.body.username,
+            userPassword : req.body.userPassword
+        }
+        let response = await this.userService.checkUser(user);
         res.status(200).json(response)
     }
     changePassword = async (req: Request, res: Response) => {
