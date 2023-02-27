@@ -15,7 +15,7 @@ export const userLogin = createAsyncThunk (
     }
 )
 export const userLogout = createAsyncThunk (
-    'users/logout',
+    'users/userLogout',
     async () => {
         return false
     }

@@ -3,7 +3,7 @@ declare class AuthService {
     constructor();
     getAll: () => Promise<any>;
     register: (employer: any) => Promise<any>;
-    checkUser: (user: any) => Promise<"Wrong User" | "Wrong Password" | {
+    checkUser: (employer: any) => Promise<"Wrong User" | "Wrong Password" | {
         token: string;
         id_employer: any;
         employerName: any;

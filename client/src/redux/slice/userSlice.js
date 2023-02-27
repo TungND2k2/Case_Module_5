@@ -2,7 +2,7 @@ import {createSlice} from "@reduxjs/toolkit";
 import {findById, userLogin, userLogout, userRegister} from "../../service/userServices";
 const initialState = {
     user: [],
-    show:localStorage.getItem('show'),
+    userShow:localStorage.getItem('userShow'),
 }
 const blogSlice = createSlice({
     name: 'users',
@@ -10,7 +10,7 @@ const blogSlice = createSlice({
     reducers: {},
     extraReducers: builder => {
         builder.addCase(userRegister.fulfilled, (state, {payload}) => {
-            state.user.push(payload);
+            state.users.push(payload);
         });
         builder.addCase(findById.fulfilled,(state, action)=>{
             state.user = action.payload;
@@ -21,12 +21,12 @@ const blogSlice = createSlice({
             localStorage.setItem("access_token", payload.data.token)
             localStorage.setItem("status",payload.data)
             localStorage.setItem("name",payload.data.username)
-            state.show=false
-            localStorage.setItem('show',state.show)
+            state.userShow=false
+            localStorage.setItem('userShow',state.userShow)
         });
         builder.addCase(userLogout.fulfilled,(state,{payload})=>{
-            state.show=true
-            localStorage.setItem('show',state.show)
+            state.userShow = true
+            localStorage.setItem('userShow',state.userShow)
         })
     }
 })

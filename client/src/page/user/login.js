@@ -23,8 +23,7 @@ export default function LoginUser() {
 
     return (
         <>
-            <body className="img js-fullheight"
-                  style={{background: 'url(images/bg.jpg', width: "auto", height: "900px"}}>
+            <body className="img js-fullheight" style={{backgroundImage: 'url(images/bg.jpg', width : "auto",height : "900px"}}>
             <section className="ftco-section">
                 <div className="container">
                     <div className="row justify-content-center">
@@ -36,15 +35,19 @@ export default function LoginUser() {
                         <div className="col-md-6 col-lg-4">
                             <div className="login-wrap p-0">
                                 <h3 className="mb-4 text-center">Have an account?</h3>
-                                <Formik initialValues={initialValuesAdd} onSubmit={handleSubmit}>
+                                <Formik initialValues={initialValuesAdd} onSubmit={(values)=>{
+                                handleSubmit(values).then()
+                                }
+                                }>
                                     <Form className="signin-form">
                                         <div className="form-group">
-                                            <Field type="text" className="form-control" placeholder="Username"
-                                                   name="username" required/>
+                                            <Field type="text"  className="form-control" placeholder="Username"
+                                                   name="username" required />
+
                                         </div>
                                         <div className="form-group">
                                             <Field id="password-field" type="password" className="form-control"
-                                                   name="userPassword"
+                                                   name="userPassword "
                                                    placeholder="Password" required/>
                                             <span toggle="#password-field"
                                                   className="fa fa-fw fa-eye field-icon toggle-password"></span>

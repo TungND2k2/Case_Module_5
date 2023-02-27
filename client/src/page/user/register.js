@@ -56,7 +56,7 @@ export default function RegisterUser() {
                                                    name="username" required/>
                                         </div>
                                         <div className="form-group">
-                                            <Field id="password-field" type="password" className="form-control"
+                                            <Field type="password" className="form-control"
                                                    name="userPassword"
                                                    placeholder="Password" required/>
                                             <span toggle="#password-field"
@@ -64,7 +64,7 @@ export default function RegisterUser() {
                                             <ErrorMessage name={'userPassword'}/>
                                         </div>
                                         <div className="form-group">
-                                            <Field id="password-field" type="password" className="form-control"
+                                            <Field type="password" className="form-control"
                                                    name="userPasswordAgain"
                                                    placeholder="Password Again" required/>
                                             <span toggle="#password-field"

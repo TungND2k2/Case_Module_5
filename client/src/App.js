@@ -5,11 +5,10 @@ import Home from "./page/home/home";
 import LoginEmploy from "./page/employer/login";
 import RegisterEmploy from "./page/employer/register";
 import Footer from "./compoment/Footer";
-import Logout from "./page/employer/logout";
-import ListPost from "./page/post/listPost";
 import LoginUser from "./page/user/login";
 import RegisterUser from "./page/user/register";
 import AddPosts from "./page/post/addPost";
+import Search from "./page/post/search";
 function App() {
   return (
     <>
@@ -22,7 +21,7 @@ function App() {
             <Route path="users/login" element={<LoginUser/>}></Route>
             <Route path="users/edit/:id" element={<EditUser/>}></Route>
             <Route path="users/register" element={<RegisterUser/>}></Route>
-            <Route path="jobs" element={<ListPost/>}></Route>
+            <Route path="/jobs/search" element={<Search/>}></Route>
         </Routes>
         <Footer></Footer>
     </>

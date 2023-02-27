@@ -7,6 +7,7 @@ export default function Home(){
     let post=useSelector(state => {
         return state.post.post
     })
+    console.log(post)
     useEffect(() => {
         dispatch(getPosts());
     }, []);
