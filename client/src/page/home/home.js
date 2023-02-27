@@ -5,7 +5,6 @@ import {getPosts} from "../../service/postService";
 export default function Home(){
     const dispatch=useDispatch()
     let post=useSelector(state => {
-        console.log(state.post.post)
         return state.post.post
     })
     useEffect(() => {
@@ -45,7 +44,7 @@ export default function Home(){
                                 <a href="">view more <i className="fa fa-angle-right"></i></a>
                             </div>
                         </div>
-                        {post.map((item)=>(
+                        {post.map((item )=>(
                                 <div className="col-md-4">
                                     <div className="product-item">
                                         <a href=""><img src="/assets/images/product-1-370x270.jpg" alt=""/></a>

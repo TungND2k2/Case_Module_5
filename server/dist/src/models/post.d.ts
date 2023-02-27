@@ -1,6 +1,7 @@
 export declare class Post {
     idPost: number;
     idEmployer: number;
+    title: string;
     salary: number;
     workLocation: string;
     position: string;
@@ -11,5 +12,4 @@ export declare class Post {
     recruitmentsNumber: number;
     status: string;
     image: string;
-    title: string;
 }

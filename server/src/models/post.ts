@@ -7,6 +7,8 @@ export class Post{
     @Column({nullable:true})
     idEmployer : number;
     @Column({nullable:true})
+    title : string;
+    @Column({nullable:true})
     salary : number;
     @Column({nullable:true})
     workLocation : string;
@@ -26,6 +28,5 @@ export class Post{
     status : string;
     @Column({nullable:true})
     image : string;
-    @Column({nullable:true})
-    title : string;
+
 }

@@ -16,16 +16,13 @@ class AuthService {
         return this.employerRepository.save(employer)
     }
 
-    checkUser = async (user) => {
-        try {
-
-            let userCheck = await this.employerRepository.findOneBy({employerName: user.employerName})
+    checkUser = async (employer) => {
+            let userCheck = await this.employerRepository.findOneBy({employerName: employer.employerName})
 
             if (!userCheck) {
                 return "Wrong User"
             } else {
-                let passwordCompare = await bcrypt.compare(user.employerPassword, userCheck.employerPassword)
-
+                let passwordCompare = await bcrypt.compare(employer.employerPassword, userCheck.employerPassword)
                 if (!passwordCompare) {
                     return 'Wrong Password'
                 }else {
@@ -46,11 +43,7 @@ class AuthService {
                     return check;
                 }
             }
-        }catch (e) {
-            console.log(e.message)
         }
-
-    }
 }
 
 export default new AuthService()

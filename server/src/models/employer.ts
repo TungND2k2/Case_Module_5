@@ -6,7 +6,7 @@ export class Employer{
     idEmployer : number;
     @Column()
     employerName : string;
-    @Column()
+    @Column({nullable:true})
     employerPassword : string;
     @Column({nullable:true})
     address : string;
