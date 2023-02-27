@@ -8,6 +8,7 @@ export default function Home(){
         console.log(state.post.post)
         return state.post.post
     })
+    console.log(post)
     useEffect(() => {
         dispatch(getPosts());
     }, []);

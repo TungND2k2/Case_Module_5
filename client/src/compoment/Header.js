@@ -4,6 +4,7 @@ import {logout} from "../service/employerService";
 import {userLogout} from "../service/userServices";
 
 export default function Header(){
+<<<<<<< HEAD
     let show= useSelector(state => {
         return state.employ.show
     })
@@ -12,6 +13,14 @@ export default function Header(){
     })
 
     console.log(show)
+=======
+    let showEmployer=useSelector(state => {
+        return state.employ.show
+    })
+    let showUser=useSelector(state => {
+        return state.user.show
+    })
+>>>>>>> origin/tung
     const dispatch=useDispatch();
     const navigate=useNavigate();
     return (
@@ -33,7 +42,7 @@ export default function Header(){
                                     </a></Link>
 
                                 </li>
-                                <Link to="/jobs"><li className="nav-item"><a className="nav-link" href="">Jobs</a></li></Link>
+                                <Link to="/jobs/search"><li className="nav-item"><a className="nav-link" href="">Jobs</a></li></Link>
 
                                 <li className="nav-item"><a className="nav-link" href="">About us</a></li>
 
@@ -49,22 +58,32 @@ export default function Header(){
                                         <a className="dropdown-item" href="">Terms</a>
                                     </div>
                                 </li>
-                                {(show==='true'|| show===null||show===true) && <>
-                                    <li className="nav-item">
-                                        <a className="nav-link" href="">Sign In </a>
-                                    </li>
+                                {(showEmployer==='true'|| showEmployer===null||showEmployer===true) && <>
                                     <Link to="/login"> <li className="nav-item"><a className="nav-link" href="">Sign In Employer</a></li></Link>
                                     <Link to="/users/login"> <li className="nav-item"><a className="nav-link">Sign In User</a></li></Link>
                                 </>}
+<<<<<<< HEAD
                                 {(show==='false'||show===false || userShow==='false'|| userShow===false) &&<>
                                         <li className="nav-item"><a className="nav-link" href="">{localStorage.getItem('name')}</a></li>
                                 </>}
                                 {(show==='false'||show===false || userShow==='false'|| userShow===false) &&<>
+=======
+                                {(showEmployer==='false'||showEmployer===false) &&<>
+                                        <li className="nav-item"><a className="nav-link" href="">{localStorage.getItem('name')}</a></li>
+                                </>}
+                                {(showEmployer==='false'||showEmployer===false) &&<>
+>>>>>>> origin/tung
                                         <li className="nav-item" onClick={()=>{
                                             dispatch(logout()|| userLogout())
                                             localStorage.clear()
                                         }}><a className="nav-link" href="">logout</a></li>
                                 </>}
+                                {/*{(showUser==='false'||showUser===false) &&<>*/}
+                                {/*        <li className="nav-item" onClick={()=>{*/}
+                                {/*            dispatch(userLogout())*/}
+                                {/*            localStorage.clear()*/}
+                                {/*        }}><a className="nav-link" href="">logout</a></li>*/}
+                                {/*</>}*/}
                             </ul>
                         </div>
                     </div>

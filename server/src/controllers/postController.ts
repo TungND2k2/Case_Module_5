@@ -7,7 +7,6 @@ class PostController {
     private postServices
     private jobDetailServices
 
-
     constructor() {
         this.postServices = postServices;
         this.jobDetailServices = jobDetailService;
