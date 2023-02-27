@@ -79,7 +79,7 @@ export default function Search() {
         dispatch(search(queryStringAPI));
     }, [queryStringAPI]);
 
->>>>>>> origin/tung:client/src/page/post/search.js
+
     return (
         <>
             <div className="page-heading about-heading header-text"
@@ -114,22 +114,22 @@ export default function Search() {
                                 <div>
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
-<<<<<<< HEAD:client/src/page/post/listPost.js
+
                                                onChange={handleChange} value="Full time"/> Full time
-=======
+
                                                onChange={handleChange} value="FullTime"/> Full time
->>>>>>> origin/tung:client/src/page/post/search.js
+
 
                                     </label>
                                 </div>
 
                                 <div>
                                     <label>
-<<<<<<< HEAD:client/src/page/post/listPost.js
-                                        <input type="checkbox" onChange={handleChange} value="Part time"
-=======
+
+                                        <input type="checkbox" onChange={handleChange} value="Part time"/>
+
                                         <input type="checkbox" onChange={handleChange} value="PartTime"
->>>>>>> origin/tung:client/src/page/post/search.js
+
                                                style={{height: "20px", width: "20px"}}/> Part time
 
                                     </label>
@@ -142,11 +142,11 @@ export default function Search() {
                                 <div>
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
-<<<<<<< HEAD:client/src/page/post/listPost.js
+
                                                onChange={handleChange} value="Accountant"/> Accountant
-=======
+
                                                onChange={handleChange} value="IT"/> IT
->>>>>>> origin/tung:client/src/page/post/search.js
+
 
                                     </label>
                                 </div>
@@ -154,11 +154,11 @@ export default function Search() {
                                 <div>
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
-<<<<<<< HEAD:client/src/page/post/listPost.js
+
                                                onChange={handleChange} value="Architect"/> Architect
-=======
+
                                                onChange={handleChange} value="Marketing"/> Marketing
->>>>>>> origin/tung:client/src/page/post/search.js
+
 
                                     </label>
                                 </div>
@@ -166,22 +166,22 @@ export default function Search() {
                                 <div>
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
-<<<<<<< HEAD:client/src/page/post/listPost.js
+
                                                onChange={handleChange} value="IT"/> IT
-=======
+
                                                onChange={handleChange} value="Sell"/> Sell
->>>>>>> origin/tung:client/src/page/post/search.js
+
 
                                     </label>
                                 </div>
                                 <div>
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
-<<<<<<< HEAD:client/src/page/post/listPost.js
+
                                                onChange={handleChange} value="Sales agent"/> Sales agent
-=======
+
                                                onChange={handleChange} value="Engineer"/> Engineer
->>>>>>> origin/tung:client/src/page/post/search.js
+
 
                                     </label>
                                 </div>
@@ -193,11 +193,11 @@ export default function Search() {
                                 <div>
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
-<<<<<<< HEAD:client/src/page/post/listPost.js
+
                                                onChange={handleChange}/>
-=======
+
                                                onChange={handleChange} value="Staff"/>Staff
->>>>>>> origin/tung:client/src/page/post/search.js
+
 
                                     </label>
                                 </div>
@@ -205,11 +205,11 @@ export default function Search() {
                                 <div>
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
-<<<<<<< HEAD:client/src/page/post/listPost.js
+
                                                onChange={handleChange}/>
-=======
+
                                                onChange={handleChange} value="Leader"/> Leader
->>>>>>> origin/tung:client/src/page/post/search.js
+
 
                                     </label>
                                 </div>
@@ -217,11 +217,11 @@ export default function Search() {
                                 <div>
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
-<<<<<<< HEAD:client/src/page/post/listPost.js
+
                                                onChange={handleChange}/>
-=======
+
                                                onChange={handleChange} value="Technicians"/> Technicians
->>>>>>> origin/tung:client/src/page/post/search.js
+
 
                                     </label>
                                 </div>
@@ -233,11 +233,11 @@ export default function Search() {
                                 <div>
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
-<<<<<<< HEAD:client/src/page/post/listPost.js
+
                                                onChange={handleChange}/>
-=======
+
                                                onChange={handleChange} value="CầuGiấy"/> Cầu Giấy
->>>>>>> origin/tung:client/src/page/post/search.js
+
 
                                     </label>
                                 </div>
@@ -245,12 +245,12 @@ export default function Search() {
                                 <div>
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
-<<<<<<< HEAD:client/src/page/post/listPost.js
+
                                                onChange={handleChange}/>
-=======
+
                                                onChange={handleChange} value="HàĐông"/> Hà Đông
 
->>>>>>> origin/tung:client/src/page/post/search.js
+
 
                                     </label>
                                 </div>
@@ -258,11 +258,11 @@ export default function Search() {
                                 <div>
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
-<<<<<<< HEAD:client/src/page/post/listPost.js
+
                                                onChange={handleChange}/>
 
                                         <small>Salary</small>
-=======
+
                                                onChange={handleChange} value="HoàngMai"/> Hoàng Mai
                                     </label>
                                 </div>
@@ -276,7 +276,7 @@ export default function Search() {
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
                                                onChange={handleChange} value="ThanhXuân"/> Thanh Xuân
->>>>>>> origin/tung:client/src/page/post/search.js
+
                                     </label>
                                 </div>
 
@@ -288,11 +288,11 @@ export default function Search() {
                                 <div>
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
-<<<<<<< HEAD:client/src/page/post/listPost.js
+
                                                onChange={handleChange}/>
-=======
+
                                                onChange={handleChange} value="1"/> 1 Year
->>>>>>> origin/tung:client/src/page/post/search.js
+
 
                                     </label>
                                 </div>
@@ -300,11 +300,11 @@ export default function Search() {
                                 <div>
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
-<<<<<<< HEAD:client/src/page/post/listPost.js
+
                                                onChange={handleChange}/>
-=======
+
                                                onChange={handleChange} value="2"/> 2 Year
->>>>>>> origin/tung:client/src/page/post/search.js
+
 
                                     </label>
                                 </div>
@@ -312,11 +312,10 @@ export default function Search() {
                                 <div>
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
-<<<<<<< HEAD:client/src/page/post/listPost.js
+
                                                onChange={handleChange}/>
-=======
-                                               onChange={handleChange} value="3"/> 3 Year
->>>>>>> origin/tung:client/src/page/post/search.js
+                                    onChange={handleChange} value="3"/> 3 Year
+
 
                                     </label>
                                 </div>
@@ -334,7 +333,7 @@ export default function Search() {
                                             <div className="down-content">
                                                 <a href=""><h4>{item.title}</h4></a>
 
-<<<<<<< HEAD:client/src/page/post/listPost.js
+
                                                 <h6 className="number" >{item.salary}$</h6>
 
                                                 <h4><small><i className="fa fa-briefcase"> </i>&nbsp;&nbsp;&nbsp;&nbsp;{item.position}
@@ -355,7 +354,7 @@ export default function Search() {
                                                     </tspan>
 
                                                 </samp>
-=======
+
                                                 <h4>Salary: ${item.salary}</h4>
 
                                                 <h4><small><i className="fa fa-briefcase"></i> {item.jobName} <br/>
@@ -369,7 +368,7 @@ export default function Search() {
                                                     <strong title="Location"><i
                                                         className="fa fa-map-marker"></i> {item.workLocation}</strong>
                                                 </small>
->>>>>>> origin/tung:client/src/page/post/search.js
+
                                             </div>
                                         </div>
                                     </div>

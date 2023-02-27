@@ -19,7 +19,7 @@ function App() {
             <Route path="login" element={<LoginEmploy/>}></Route>
             <Route path="register" element={<RegisterEmploy/>}></Route>
             <Route path="users/login" element={<LoginUser/>}></Route>
-            <Route path="users/edit/:id" element={<EditUser/>}></Route>
+            {/*<Route path="users/edit/:id" element={<EditUser/>}></Route>*/}
             <Route path="users/register" element={<RegisterUser/>}></Route>
             <Route path="/jobs/search" element={<Search/>}></Route>
         </Routes>
