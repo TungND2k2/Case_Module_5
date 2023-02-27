@@ -84,6 +84,31 @@ export default function LoginEmploy() {
 
 
             </body>
+
+            {/*<section>*/}
+            {/*    <div className="form-box">*/}
+            {/*        <div className="form-value">*/}
+            {/*            <form action="">*/}
+            {/*                <h2>Employer Login</h2>*/}
+            {/*                <div className="inputbox">*/}
+            {/*                    <ion-icon name="person-circle-outline"></ion-icon>*/}
+            {/*                    <input type="text" required/>*/}
+            {/*                    <label htmlFor="">User Name</label>*/}
+            {/*                </div>*/}
+            {/*                <div className="inputbox">*/}
+            {/*                    <ion-icon name="lock-closed-outline"></ion-icon>*/}
+            {/*                    <input type="password" required/>*/}
+            {/*                    <label htmlFor="">Password</label>*/}
+            {/*                </div>*/}
+            {/*                <button>Log in</button>*/}
+            {/*                <div className="register">*/}
+            {/*                    <p>Don't have a account  <Link to="/users/register" style={{color: '#fff'}}>Register Now*/}
+            {/*                        !!</Link></p>*/}
+            {/*                </div>*/}
+            {/*            </form>*/}
+            {/*        </div>*/}
+            {/*    </div>*/}
+            {/*</section>*/}
         </>
     )
 }

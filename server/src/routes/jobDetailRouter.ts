@@ -7,4 +7,4 @@ import jobDetailController from "../controllers/jobDetailController";
 export const jobDetailRouter = Router();
 jobDetailRouter.get('/',jobDetailController.getAllJobDetail)
 jobDetailRouter.post('/',jobDetailController.createJobDetail)
-jobDetailRouter.delete('/:idJobDetail',jobDetailController.deleteJobDetail)
+jobDetailRouter.delete('/:id',jobDetailController.deleteJobDetail)

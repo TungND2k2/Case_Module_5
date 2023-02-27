@@ -18,7 +18,7 @@ export class Post{
     experience: string;
     @Column({nullable:true})
     workTime : string;
-    @Column({type : "datetime",nullable:true})
+    @Column({type : "date",nullable:true})
     endTime : string;
     @Column({nullable:true})
     description : string;
@@ -28,4 +28,5 @@ export class Post{
     status : string;
     @Column({nullable:true})
     image : string;
+
 }

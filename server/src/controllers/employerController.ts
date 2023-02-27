@@ -1,10 +1,20 @@
 import {Request, Response} from "express";
 import EmployerService from "../services/employerService"
+import employerService from "../services/employerService";
 class AuthController {
     private employerService
 
     constructor() {
         this.employerService = EmployerService;
+    }
+    getAllEmployer = async (req: Request, res: Response)=>{
+        try{
+            let employer = await employerService.getAll()
+            res.status(200).json(employer)
+        }catch (e) {
+            res.status(500).json(e.message)
+        }
+
     }
 
     register = async (req, res) => {

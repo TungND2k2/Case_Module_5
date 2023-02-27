@@ -44,13 +44,20 @@ class PostService {
         return this.postRepository.update({idPost: id}, newPost);
 
     }
-    delete = async (id) => {
+    remove = async (id) => {
         let post = await this.postRepository.findOneBy({idPost: id});
         if (!post) {
             return null;
         } else {
             return this.postRepository.delete({idPost: id});
         }
+    }
+    findById = async (id)=> {
+        let post = await this.postRepository.findOneBy({id:id});
+        if(!post){
+            return null;
+        }
+        return post;
     }
     search = async (req: Request, res: Response) => {
         console.log(req.query)
@@ -66,7 +73,8 @@ class PostService {
                           recruitmentsNumber,
                           p.status,
                           e.employerName,
-                          image
+                          image,
+                          j.jobName
                    from post p join employer e on p.idEmployer = e.idEmployer
                                join job_detail jd on p.idPost = jd.postId
                                join job j on jd.jobId = j.jobId
@@ -79,6 +87,9 @@ class PostService {
         }
         if (req.query.workLocation !== undefined) {
             sql += `and workLocation like '%${req.query.workLocation}'`
+        }
+        if (req.query.workTime !== undefined) {
+            sql += `and workTime like '%${req.query.workTime}'`
         }
         if (req.query.position !== undefined) {
             sql += `and position like '%${req.query.position}'`

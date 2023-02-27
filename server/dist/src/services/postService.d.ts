@@ -5,7 +5,8 @@ declare class PostService {
     getAll: () => Promise<any>;
     save: (post: any) => Promise<any>;
     update: (id: any, newPost: any) => Promise<any>;
-    delete: (id: any) => Promise<any>;
+    remove: (id: any) => Promise<any>;
+    findById: (id: any) => Promise<any>;
     search: (req: Request, res: Response) => Promise<any>;
 }
 declare const _default: PostService;

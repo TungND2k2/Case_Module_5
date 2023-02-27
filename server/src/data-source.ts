@@ -13,6 +13,6 @@ export const AppDataSource = new DataSource({
     username: "root",
     password: "123456",
     database: "case-md5",
-    synchronize: true,
+    synchronize: false,
     entities: [Post,JobDetail,User,Employer,Job]
 })

@@ -16,6 +16,7 @@ class JobController {
         }
 
     }
+
     createJob = async (req: Request, res: Response) => {
         try {
             let jobs = await jobService.save(req.body);
