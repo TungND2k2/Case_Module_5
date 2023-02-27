@@ -36,7 +36,7 @@ class PostService {
             newPost.idPost = id;
             return this.postRepository.update({ idPost: id }, newPost);
         };
-        this.delete = async (id) => {
+        this.remove = async (id) => {
             let post = await this.postRepository.findOneBy({ idPost: id });
             if (!post) {
                 return null;
@@ -44,6 +44,13 @@ class PostService {
             else {
                 return this.postRepository.delete({ idPost: id });
             }
+        };
+        this.findById = async (id) => {
+            let post = await this.postRepository.findOneBy({ id: id });
+            if (!post) {
+                return null;
+            }
+            return post;
         };
         this.search = async (req, res) => {
             console.log(req.query);

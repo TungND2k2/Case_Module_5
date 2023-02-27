@@ -10,7 +10,6 @@ export declare class Post {
     description: string;
     recruitmentsNumber: number;
     status: string;
-    title: string;
     image: string;
     title: string;
 }

@@ -21,6 +21,15 @@ class userController {
         let response = await this.userService.checkUser(user);
         res.status(200).json(response)
     }
+    findById = async (req: Request, res: Response) => {
+        try{
+            let id = req.params.id
+            let user = await this.userService.findById(id);
+            res.status(200).json(user)
+        } catch (e) {
+            res.status(500).json(e.message)
+        }
+    }
     changePassword = async (req: Request, res: Response) => {
         try {
             let user = await this.userService.checkChangePassword(req.params.id, req.body.oldPassword, req.body.newPassword)

@@ -6,7 +6,10 @@ export default function Header(){
     let show=useSelector(state => {
         return state.employ.show
     })
-    console.log(show)
+    let user = useSelector(state => {
+        console.log(state.user.user,111)
+        return state.user.user
+    })
     const dispatch=useDispatch();
     const navigate=useNavigate();
     return (
@@ -26,6 +29,11 @@ export default function Header(){
                                     <Link to="/home"> <a className="nav-link" href="">Home
                                         <span className="sr-only"></span>
                                     </a></Link>
+
+                                </li>
+                                <li className="nav-item active">
+
+
 
                                 </li>
                                 <Link to="/jobs"><li className="nav-item"><a className="nav-link" href="">Jobs</a></li></Link>
@@ -52,9 +60,12 @@ export default function Header(){
                                     <Link to="/users/login"> <li className="nav-item"><a className="nav-link" href="">Sign In User</a></li></Link>
                                 </>}
                                 {(show==='false'||show===false) &&<>
-                                        <li className="nav-item"><a className="nav-link" href="">{localStorage.getItem('name')}</a></li>
+                                        <Link to={`users/edit/${user.idUser}`}><li className="nav-item"><a className="nav-link" href="">{localStorage.getItem('name')}</a></li></Link>
                                 </>}
                                 {(show==='false'||show===false) &&<>
+                                    <Link to="add-post"> <a className="nav-link" href="">Add Post
+                                        <span className="sr-only"></span>
+                                    </a></Link>
                                         <li className="nav-item" onClick={()=>{
                                             dispatch(logout())
                                             localStorage.clear()

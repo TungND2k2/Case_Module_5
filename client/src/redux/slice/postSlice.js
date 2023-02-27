@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {addPost, getPosts} from "../../service/postService";
+import {addPosts, deletePosts, getPosts} from "../../service/postService";
 const initialState = {
     post: [],
 }
@@ -11,8 +11,11 @@ const postSlice = createSlice({
         builder.addCase(getPosts.fulfilled, (state, {payload}) => {
             state.post = payload.data;
         });
-        builder.addCase(addPost.fulfilled, (state, {payload}) => {
-            state.post.push(payload);
+        builder.addCase(addPosts.fulfilled, (state, action) => {
+            state.post.push(action.payload);
+        });
+        builder.addCase(deletePosts.fulfilled,(state,action)=>{
+            state.post.splice(action.payload);
         });
     }
 })

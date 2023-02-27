@@ -1,9 +1,11 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-import {getPosts} from "../../service/postService";
-
+import {deletePosts, getPosts} from "../../service/postService";
+import swal from 'sweetalert';
+import {useNavigate} from "react-router-dom";
 export default function ListPost() {
     const dispatch = useDispatch()
+    const navigate = useNavigate();
     let post = useSelector(state => {
         return state.post.post
     })
@@ -22,6 +24,13 @@ export default function ListPost() {
             );
         }
     }
+    const removePost = (values) => {
+        dispatch(deletePosts(values)).then(()=>{
+            console.log(values)
+            navigate('/home')
+        })
+    }
+
 
     return (
         <>
@@ -225,6 +234,27 @@ export default function ListPost() {
 
                                                 </samp>
                                             </div>
+                                            <button onClick={()=>{
+                                                swal({
+                                                    title: "Are you sure?",
+                                                    text: "Once deleted, you will not be able to recover this imaginary file!",
+                                                    icon: "warning",
+                                                    buttons: true,
+                                                    dangerMode: true,
+                                                })
+                                                    .then((willDelete) => {
+                                                        if (willDelete) {
+                                                            removePost(item.id)
+
+                                                            swal("Poof! Your imaginary file has been deleted!", {
+                                                                icon: "success",
+                                                            });
+                                                        } else {
+                                                            swal("Your imaginary file is safe!");
+                                                        }
+                                                    });
+                                            }
+                                            }>Delete</button>
                                         </div>
                                     </div>
 

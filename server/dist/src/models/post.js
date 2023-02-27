@@ -60,10 +60,6 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)({ nullable: true }),
     __metadata("design:type", String)
-], Post.prototype, "title", void 0);
-__decorate([
-    (0, typeorm_1.Column)({ nullable: true }),
-    __metadata("design:type", String)
 ], Post.prototype, "image", void 0);
 __decorate([
     (0, typeorm_1.Column)({ nullable: true }),
