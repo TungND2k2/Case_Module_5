@@ -114,19 +114,14 @@ export default function Search() {
                                 <div>
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
-
                                                onChange={handleChange} value="Full time"/> Full time
-
-                                               onChange={handleChange} value="FullTime"/> Full time
-
-
                                     </label>
                                 </div>
 
                                 <div>
                                     <label>
 
-                                        <input type="checkbox" onChange={handleChange} value="Part time"/>
+
 
                                         <input type="checkbox" onChange={handleChange} value="PartTime"
 
@@ -145,7 +140,7 @@ export default function Search() {
 
                                                onChange={handleChange} value="Accountant"/> Accountant
 
-                                               onChange={handleChange} value="IT"/> IT
+
 
 
                                     </label>
@@ -157,7 +152,7 @@ export default function Search() {
 
                                                onChange={handleChange} value="Architect"/> Architect
 
-                                               onChange={handleChange} value="Marketing"/> Marketing
+
 
 
                                     </label>
@@ -169,7 +164,7 @@ export default function Search() {
 
                                                onChange={handleChange} value="IT"/> IT
 
-                                               onChange={handleChange} value="Sell"/> Sell
+
 
 
                                     </label>
@@ -180,7 +175,7 @@ export default function Search() {
 
                                                onChange={handleChange} value="Sales agent"/> Sales agent
 
-                                               onChange={handleChange} value="Engineer"/> Engineer
+
 
 
                                     </label>
@@ -194,8 +189,6 @@ export default function Search() {
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
 
-                                               onChange={handleChange}/>
-
                                                onChange={handleChange} value="Staff"/>Staff
 
 
@@ -206,8 +199,6 @@ export default function Search() {
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
 
-                                               onChange={handleChange}/>
-
                                                onChange={handleChange} value="Leader"/> Leader
 
 
@@ -217,8 +208,6 @@ export default function Search() {
                                 <div>
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
-
-                                               onChange={handleChange}/>
 
                                                onChange={handleChange} value="Technicians"/> Technicians
 
@@ -234,8 +223,6 @@ export default function Search() {
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
 
-                                               onChange={handleChange}/>
-
                                                onChange={handleChange} value="CầuGiấy"/> Cầu Giấy
 
 
@@ -245,8 +232,6 @@ export default function Search() {
                                 <div>
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
-
-                                               onChange={handleChange}/>
 
                                                onChange={handleChange} value="HàĐông"/> Hà Đông
 
@@ -258,10 +243,6 @@ export default function Search() {
                                 <div>
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
-
-                                               onChange={handleChange}/>
-
-                                        <small>Salary</small>
 
                                                onChange={handleChange} value="HoàngMai"/> Hoàng Mai
                                     </label>
@@ -288,9 +269,6 @@ export default function Search() {
                                 <div>
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
-
-                                               onChange={handleChange}/>
-
                                                onChange={handleChange} value="1"/> 1 Year
 
 
@@ -300,9 +278,6 @@ export default function Search() {
                                 <div>
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
-
-                                               onChange={handleChange}/>
-
                                                onChange={handleChange} value="2"/> 2 Year
 
 
@@ -312,8 +287,6 @@ export default function Search() {
                                 <div>
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
-
-                                               onChange={handleChange}/>
                                     onChange={handleChange} value="3"/> 3 Year
 
 
@@ -354,7 +327,6 @@ export default function Search() {
                                                     </tspan>
 
                                                 </samp>
-
                                                 <h4>Salary: ${item.salary}</h4>
 
                                                 <h4><small><i className="fa fa-briefcase"></i> {item.jobName} <br/>
@@ -372,9 +344,7 @@ export default function Search() {
                                             </div>
                                         </div>
                                     </div>
-
                                 ))}
-
                                 <div className="col-md-12">
                                     <ul className="pages">
                                         <li><a href="#">1</a></li>
