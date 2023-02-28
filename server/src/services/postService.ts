@@ -55,7 +55,7 @@ class PostService {
         return this.postRepository.update({idPost: id}, newPost);
 
     }
-    delete = async (id) => {
+    remove = async (id) => {
         let post = await this.postRepository.findOneBy({idPost: id});
         if (!post) {
             return null;
@@ -64,6 +64,7 @@ class PostService {
         }
     }
     search = async (req: Request, res: Response,limit, offset) => {
+        console.log(req.query)
         let sql = `select idPost,
                           title,
                           salary,

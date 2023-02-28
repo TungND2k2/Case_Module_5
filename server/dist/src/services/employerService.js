@@ -10,6 +10,14 @@ const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const auth_1 = require("../middleware/auth");
 class AuthService {
     constructor() {
+        this.getAll = async () => {
+            let sql = `select * from employer`;
+            let employers = await this.employerRepository.query(sql);
+            if (!employers) {
+                return 'No job found';
+            }
+            return employers;
+        };
         this.register = async (employer) => {
             employer.employerPassword = await bcrypt_1.default.hash(employer.employerPassword, 10);
             return this.employerRepository.save(employer);

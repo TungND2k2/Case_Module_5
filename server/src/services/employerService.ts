@@ -9,6 +9,14 @@ class AuthService {
     constructor() {
         this.employerRepository = AppDataSource.getRepository(Employer);
     }
+    getAll = async ()=>{
+        let sql = `select * from employer`;
+        let employers = await this.employerRepository.query(sql);
+        if (!employers) {
+            return 'No job found'
+        }
+        return employers;
+    }
 
     register = async (employer) => {
         employer.employerPassword = await bcrypt.hash(employer.employerPassword, 10)

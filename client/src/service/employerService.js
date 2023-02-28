@@ -21,3 +21,11 @@ export const logout = createAsyncThunk (
         return false
     }
 )
+
+export const edit = createAsyncThunk (
+    'employers/edit',
+    async (data) => {
+        const response = await axios.post('http://localhost:4000/posts/:id',data)
+        return response;
+    }
+)

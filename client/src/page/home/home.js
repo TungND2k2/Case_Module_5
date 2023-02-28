@@ -2,9 +2,9 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {getPosts} from "../../service/postService";
 
-export default function Home(){
-    const dispatch=useDispatch()
-    let post=useSelector(state => {
+export default function Home() {
+    const dispatch = useDispatch()
+    let post = useSelector(state => {
         return state.post.post
     })
     useEffect(() => {
@@ -44,7 +44,7 @@ export default function Home(){
                                 <a href="">view more <i className="fa fa-angle-right"></i></a>
                             </div>
                         </div>
-                        {post.map((item)=>(
+                        {post.map((item) => (
                                 <div className="col-md-4">
                                     <div className="product-item">
                                         <a href=""><img src="/assets/images/product-1-370x270.jpg" alt=""/></a>
@@ -52,16 +52,19 @@ export default function Home(){
                                             <a href=""><h4>Lorem ipsum dolor sit amet</h4></a>
 
                                             <h4>${item.salary}</h4>
-
-                                            <h4><small><i className="fa fa-briefcase"></i> {item.jobName}/{item.position}<br/> <strong><i
-                                                className="fa fa-building"></i> {item.title}</strong></small></h4>
-
+                                            <h4><small><i
+                                                className="fa fa-briefcase"></i> {item.jobName}/{item.position}<br/>
+                                                <strong><i
+                                                    className="fa fa-building"></i> {item.title}</strong></small>
+                                            </h4>
                                             <small>
                                                 <strong title="Posted on"><i
                                                     className="fa fa-calendar"></i> 15-06-2020</strong> &nbsp;&nbsp;&nbsp;&nbsp;
                                                 <strong title="Type"><i
-                                                    className="fa fa-file"></i> {item.workTime}</strong> &nbsp;&nbsp;&nbsp;&nbsp;
-                                                <strong title="Location"><i className="fa fa-map-marker"></i> {item.workLocation}</strong>
+                                                    className="fa fa-file"></i> {item.workTime}
+                                                </strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                                                <strong title="Location"><i
+                                                    className="fa fa-map-marker"></i> {item.workLocation}</strong>
                                             </small>
                                         </div>
                                     </div>
@@ -83,10 +86,13 @@ export default function Home(){
                         </div>
                         <div className="col-md-6">
                             <div className="left-content">
-                                <p>Lorem ipsum dolor sit amet, <a href="#">consectetur</a> adipisicing elit. Explicabo,
+                                <p>Lorem ipsum dolor sit amet, <a href="#">consectetur</a> adipisicing elit.
+                                    Explicabo,
                                     esse consequatur alias repellat in excepturi inventore ad <a
-                                        href="#">asperiores</a> tempora ipsa. Accusantium tenetur voluptate labore
-                                    aperiam molestiae rerum excepturi minus in pariatur praesentium, corporis, aliquid
+                                        href="#">asperiores</a> tempora ipsa. Accusantium tenetur voluptate
+                                    labore
+                                    aperiam molestiae rerum excepturi minus in pariatur praesentium, corporis,
+                                    aliquid
                                     dicta.</p>
                                 <ul className="featured-list">
                                     <li><a href="#">Lorem ipsum dolor sit amet</a></li>
@@ -120,11 +126,13 @@ export default function Home(){
 
                         <div className="col-lg-4 col-md-6">
                             <div className="service-item">
-                                <a href="#" className="services-item-image"><img src={'/assets/images/blog-1-370x270.jpg'}
-                                                                                 className="img-fluid" alt=""/></a>
+                                <a href="#" className="services-item-image"><img
+                                    src={'/assets/images/blog-1-370x270.jpg'}
+                                    className="img-fluid" alt=""/></a>
 
                                 <div className="down-content">
-                                    <h4><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit hic</a>
+                                    <h4><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit
+                                        hic</a>
                                     </h4>
 
                                     <p style={{margin: '0'}}> John Doe &nbsp;&nbsp;|&nbsp;&nbsp; 12/06/2020
@@ -134,11 +142,13 @@ export default function Home(){
                         </div>
                         <div className="col-lg-4 col-md-6">
                             <div className="service-item">
-                                <a href="#" className="services-item-image"><img src="/assets/images/blog-2-370x270.jpg"
-                                                                                 className="img-fluid" alt=""/></a>
+                                <a href="#" className="services-item-image"><img
+                                    src="/assets/images/blog-2-370x270.jpg"
+                                    className="img-fluid" alt=""/></a>
 
                                 <div className="down-content">
-                                    <h4><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></h4>
+                                    <h4><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit</a>
+                                    </h4>
 
                                     <p style={{margin: '0'}}> John Doe &nbsp;&nbsp;|&nbsp;&nbsp; 12/06/2020
                                         10:30   &nbsp;&nbsp;|&nbsp;&nbsp; 114</p>
@@ -147,8 +157,9 @@ export default function Home(){
                         </div>
                         <div className="col-lg-4 col-md-6">
                             <div className="service-item">
-                                <a href="#" className="services-item-image"><img src="/assets/images/blog-3-370x270.jpg"
-                                                                                 className="img-fluid" alt=""/></a>
+                                <a href="#" className="services-item-image"><img
+                                    src="/assets/images/blog-3-370x270.jpg"
+                                    className="img-fluid" alt=""/></a>
 
                                 <div className="down-content">
                                     <h4><a href="#">Aperiam modi voluptatum fuga officiis cumque</a></h4>
@@ -180,7 +191,8 @@ export default function Home(){
                                     </div>
                                     <div className="down-content">
                                         <h4>John Doe</h4>
-                                        <p className="n-m"><em>"Lorem ipsum dolor sit amet, consectetur an adipisicing
+                                        <p className="n-m"><em>"Lorem ipsum dolor sit amet, consectetur an
+                                            adipisicing
                                             elit. Itaque, corporis nulla at quia quaerat."</em></p>
                                     </div>
                                 </div>
@@ -191,7 +203,8 @@ export default function Home(){
                                     </div>
                                     <div className="down-content">
                                         <h4>Jane Smith</h4>
-                                        <p className="n-m"><em>"Lorem ipsum dolor sit amet, consectetur an adipisicing
+                                        <p className="n-m"><em>"Lorem ipsum dolor sit amet, consectetur an
+                                            adipisicing
                                             elit. Itaque, corporis nulla at quia quaerat."</em></p>
                                     </div>
                                 </div>
@@ -202,7 +215,8 @@ export default function Home(){
                                     </div>
                                     <div className="down-content">
                                         <h4>Antony Davis</h4>
-                                        <p className="n-m"><em>"Lorem ipsum dolor sit amet, consectetur an adipisicing
+                                        <p className="n-m"><em>"Lorem ipsum dolor sit amet, consectetur an
+                                            adipisicing
                                             elit. Itaque, corporis nulla at quia quaerat."</em></p>
                                     </div>
                                 </div>
@@ -213,7 +227,8 @@ export default function Home(){
                                     </div>
                                     <div className="down-content">
                                         <h4>John Doe</h4>
-                                        <p className="n-m"><em>"Lorem ipsum dolor sit amet, consectetur an adipisicing
+                                        <p className="n-m"><em>"Lorem ipsum dolor sit amet, consectetur an
+                                            adipisicing
                                             elit. Itaque, corporis nulla at quia quaerat."</em></p>
                                     </div>
                                 </div>
@@ -224,7 +239,8 @@ export default function Home(){
                                     </div>
                                     <div className="down-content">
                                         <h4>Jane Smith</h4>
-                                        <p className="n-m"><em>"Lorem ipsum dolor sit amet, consectetur an adipisicing
+                                        <p className="n-m"><em>"Lorem ipsum dolor sit amet, consectetur an
+                                            adipisicing
                                             elit. Itaque, corporis nulla at quia quaerat."</em></p>
                                     </div>
                                 </div>
@@ -235,7 +251,8 @@ export default function Home(){
                                     </div>
                                     <div className="down-content">
                                         <h4>Antony Davis</h4>
-                                        <p className="n-m"><em>"Lorem ipsum dolor sit amet, consectetur an adipisicing
+                                        <p className="n-m"><em>"Lorem ipsum dolor sit amet, consectetur an
+                                            adipisicing
                                             elit. Itaque, corporis nulla at quia quaerat."</em></p>
                                     </div>
                                 </div>
@@ -254,7 +271,8 @@ export default function Home(){
                                 <div className="row">
                                     <div className="col-md-8">
                                         <h4>Lorem ipsum dolor sit amet, consectetur adipisicing.</h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque corporis
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque
+                                            corporis
                                             amet elite author nulla.</p>
                                     </div>
                                     <div className="col-lg-4 col-md-6 text-right">

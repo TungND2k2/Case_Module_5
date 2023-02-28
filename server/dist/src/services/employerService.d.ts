@@ -1,6 +1,7 @@
 declare class AuthService {
     private employerRepository;
     constructor();
+    getAll: () => Promise<any>;
     register: (employer: any) => Promise<any>;
     checkUser: (employer: any) => Promise<"Wrong User" | "Wrong Password" | {
         token: string;

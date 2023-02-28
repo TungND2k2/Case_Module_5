@@ -13,6 +13,13 @@ class UserService {
     getAll = async () => {
         return await this.userRepository.find() ;
     }
+    findById = async (id)=> {
+        let user = await this.userRepository.findOneBy({id:id});
+        if(!user){
+            return null;
+        }
+        return user;
+    }
 
 
     checkUser = async (user) => {

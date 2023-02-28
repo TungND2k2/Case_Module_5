@@ -4,14 +4,15 @@ import {logout} from "../service/employerService";
 import {userLogout} from "../service/userServices";
 
 export default function Header(){
+
     let showEmployer=useSelector(state => {
-        return state.employ.show
+        return state.employ.employerShow
     })
     let showUser=useSelector(state => {
-        return state.user.show
+        return state.user.userShow
     })
+
     const dispatch=useDispatch();
-    const navigate=useNavigate();
     return (
         <>
             <header className="">
@@ -35,37 +36,31 @@ export default function Header(){
 
                                 <li className="nav-item"><a className="nav-link" href="">About us</a></li>
 
-                                <li className="nav-item"><a className="nav-link" href="">Blog</a></li>
-
-                                <li className="nav-item dropdown">
-                                    <a className="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
-                                       role="button" aria-haspopup="true" aria-expanded="false">More</a>
-
-                                    <div className="dropdown-menu">
-                                        <a className="dropdown-item" href="">Team</a>
-                                        <a className="dropdown-item" href="">Testimonials</a>
-                                        <a className="dropdown-item" href="">Terms</a>
-                                    </div>
-                                </li>
-                                {(showEmployer==='true'|| showEmployer===null||showEmployer===true) && <>
+                                {((showEmployer==='true'|| showEmployer===null||showEmployer===true) && (showUser==='true'|| showUser===null||showUser===true)) && <>
                                     <Link to="/login"> <li className="nav-item"><a className="nav-link" href="">Sign In Employer</a></li></Link>
-                                    <Link to="/users/login"> <li className="nav-item"><a className="nav-link" href="">Sign In User</a></li></Link>
+                                    <Link to="/users/login"> <li className="nav-item"><a className="nav-link">Sign In User</a></li></Link>
+                                </>}
+
+                                {(showEmployer==='false'||showEmployer===false) &&<>
+                                    <Link to="/add-post"> <li className="nav-item"><a className="nav-link">Create a post</a></li></Link>
+                                    <li className="nav-item"><a className="nav-link" href="">{localStorage.getItem('name')}</a></li>
+                                </>}
+                                {(showUser==='false'||showUser===false) &&<>
+                                    <li className="nav-item"><a className="nav-link" href="">{localStorage.getItem('nameUser')}</a></li>
                                 </>}
                                 {(showEmployer==='false'||showEmployer===false) &&<>
-                                        <li className="nav-item"><a className="nav-link" href="">{localStorage.getItem('name')}</a></li>
-                                </>}
-                                {(showEmployer==='false'||showEmployer===false) &&<>
+
                                         <li className="nav-item" onClick={()=>{
                                             dispatch(logout())
                                             localStorage.clear()
                                         }}><a className="nav-link" href="">logout</a></li>
                                 </>}
-                                {/*{(showUser==='false'||showUser===false) &&<>*/}
-                                {/*        <li className="nav-item" onClick={()=>{*/}
-                                {/*            dispatch(userLogout())*/}
-                                {/*            localStorage.clear()*/}
-                                {/*        }}><a className="nav-link" href="">logout</a></li>*/}
-                                {/*</>}*/}
+                                {(showUser==='false'||showUser===false) &&<>
+                                        <li className="nav-item" onClick={()=>{
+                                            dispatch(userLogout())
+                                            localStorage.clear()
+                                        }}><a className="nav-link" href="">logout</a></li>
+                                </>}
                             </ul>
                         </div>
                     </div>

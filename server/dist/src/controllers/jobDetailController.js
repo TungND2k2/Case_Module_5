@@ -26,7 +26,7 @@ class JobDetailController {
         };
         this.deleteJobDetail = async (req, res) => {
             try {
-                let idJobDetail = req.params.idJobDetail;
+                let idJobDetail = req.params.id;
                 let jobDetails = await this.jobDetailService.removeJobDetail(idJobDetail);
                 res.status(200).json(jobDetails);
             }

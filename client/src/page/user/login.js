@@ -13,7 +13,7 @@ export default function LoginUser() {
     };
     const handleSubmit = async (values) => {
         await dispatch(userLogin(values));
-        if (localStorage.getItem('status') === 'Wrong User' && 'Wrong Password') {
+        if (localStorage.getItem('status') === 'Wrong User' && 'Password is wrong') {
             alert('User or password incorrect')
             navigate(('/users/login'))
         } else {
@@ -50,7 +50,7 @@ export default function LoginUser() {
                                         </div>
                                         <div className="form-group">
                                             <button type="submit"
-                                                    className="form-control btn btn-primary submit px-3">Sign In
+                                                    className="form-control btn btn-primary submit px-3">Login
                                             </button>
                                         </div>
                                         <div className="form-group d-md-flex">
@@ -61,8 +61,8 @@ export default function LoginUser() {
                                                 </label>
                                             </div>
                                             <div className="w-50 text-md-right">
-                                                <Link to="/users/register" style={{color: '#fff'}}>Register Now
-                                                    !!</Link>
+                                                <Link to="/register"> <a href="#" style={{color: '#fff'}}>Register Now
+                                                    !!</a></Link>
                                             </div>
                                         </div>
                                     </Form>
@@ -79,6 +79,8 @@ export default function LoginUser() {
                     </div>
                 </div>
             </section>
+
+
             </body>
         </>
     )
