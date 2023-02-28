@@ -23,6 +23,10 @@ __decorate([
 ], Post.prototype, "idEmployer", void 0);
 __decorate([
     (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", String)
+], Post.prototype, "title", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
     __metadata("design:type", Number)
 ], Post.prototype, "salary", void 0);
 __decorate([
@@ -42,7 +46,7 @@ __decorate([
     __metadata("design:type", String)
 ], Post.prototype, "workTime", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: "datetime", nullable: true }),
+    (0, typeorm_1.Column)({ type: "date", nullable: true }),
     __metadata("design:type", String)
 ], Post.prototype, "endTime", void 0);
 __decorate([

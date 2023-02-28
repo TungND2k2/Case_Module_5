@@ -11,8 +11,22 @@ class userController {
             res.status(201).json(user);
         };
         this.login = async (req, res) => {
-            let response = await this.userService.checkUser(req.body);
+            let user = {
+                username: req.body.username,
+                userPassword: req.body.userPassword
+            };
+            let response = await this.userService.checkUser(user);
             res.status(200).json(response);
+        };
+        this.findById = async (req, res) => {
+            try {
+                let id = req.params.id;
+                let user = await this.userService.findById(id);
+                res.status(200).json(user);
+            }
+            catch (e) {
+                res.status(500).json(e.message);
+            }
         };
         this.changePassword = async (req, res) => {
             try {

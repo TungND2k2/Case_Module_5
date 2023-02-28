@@ -1,8 +1,8 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {login, logout, register} from "../../service/employerService";
+import {edit, login, logout, register} from "../../service/employerService";
 const initialState = {
     employers: [],
-    show:localStorage.getItem('show'),
+    employShow :localStorage.getItem('employShow'),
 }
 const blogSlice = createSlice({
     name: 'employers',
@@ -18,13 +18,14 @@ const blogSlice = createSlice({
             localStorage.setItem("access_token", payload.data.token)
             localStorage.setItem("status",payload.data)
             localStorage.setItem("name",payload.data.employerName)
-            state.show=false
-            localStorage.setItem('show',state.show)
+            state.employerShow=false
+            localStorage.setItem('employerShow',state.employerShow)
         });
         builder.addCase(logout.fulfilled,(state,{payload})=>{
-            state.show=true
-            localStorage.setItem('show',state.show)
+            state.employerShow=true
+            localStorage.setItem('employShow',state.employerShow)
         })
+
     }
 })
 export default blogSlice.reducer;

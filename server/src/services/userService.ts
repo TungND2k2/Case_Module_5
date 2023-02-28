@@ -13,24 +13,31 @@ class UserService {
     getAll = async () => {
         return await this.userRepository.find() ;
     }
+    findById = async (id)=> {
+        let user = await this.userRepository.findOneBy({id:id});
+        if(!user){
+            return null;
+        }
+        return user;
+    }
 
 
     checkUser = async (user) => {
-        let userCheck = await this.userRepository.findOneBy({email: user.email})
+        let userCheck = await this.userRepository.findOneBy({username: user.username})
         if (!userCheck) {
-            return 'Email is not exit';
+            return 'User is not exit';
         }else {
             let passwordCompare = await bcrypt.compare(user.userPassword, userCheck.userPassword);
             if (!passwordCompare){
                 return 'Password is wrong'
             }else {
                 let payload = {
-                    idUser: userCheck.id,
-                    email :userCheck.email,
+                    idUser: userCheck.idUser,
+                    username :userCheck.username,
                 }
                 return {
-                    idUser: userCheck.id,
-                    email: userCheck.email,
+                    idUser: userCheck.idUser,
+                    username: userCheck.username,
                     token: jwt.sign(payload, SECRET, {
                         expiresIn: 3000000
                     })

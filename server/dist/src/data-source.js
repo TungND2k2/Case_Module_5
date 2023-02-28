@@ -15,7 +15,7 @@ exports.AppDataSource = new typeorm_1.DataSource({
     username: "root",
     password: "123456",
     database: "case-md5",
-    synchronize: true,
+    synchronize: false,
     entities: [post_1.Post, jobDetail_1.JobDetail, user_1.User, employer_1.Employer, job_1.Job]
 });
 //# sourceMappingURL=data-source.js.map

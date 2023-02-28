@@ -17,16 +17,28 @@ class PostController {
             }
         };
         this.create = async (req, res) => {
-            console.log(req.body.job);
             try {
-                let newPost = await postService_1.default.save(req.body);
-                for (let i = 0; i < req.body.job.length; i++) {
-                    let newJobDetail = {
-                        postId: req.body.idPost,
-                        jobId: req.body.job[i]
-                    };
-                    let saveJobDetail = await jobDetailService_1.default.save(newJobDetail);
-                }
+                let a = req.body;
+                let posts = {
+                    salary: a.salary,
+                    workLocation: a.workLocation,
+                    position: a.position,
+                    experience: a.experience,
+                    workTime: a.workTime,
+                    endTime: a.endTime,
+                    description: a.description,
+                    recruitmentsNumber: a.recruitmentsNumber,
+                    status: a.status,
+                    image: a.image,
+                    title: a.title,
+                    idEmployer: a.idEmployer
+                };
+                let newPost = await postService_1.default.save(a);
+                let jd = {
+                    postId: newPost.idPost,
+                    jobId: a.idJob
+                };
+                let saveJobDetail = await jobDetailService_1.default.save(jd);
                 res.status(200).json(newPost);
             }
             catch (e) {
@@ -36,6 +48,7 @@ class PostController {
         this.update = async (req, res) => {
             try {
                 let id = req.params.id;
+                console.log(req.body);
                 let post = {
                     title: req.body.title,
                     idEmployer: req.body.idEmployer,

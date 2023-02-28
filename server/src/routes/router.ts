@@ -1,7 +1,5 @@
 import { Router } from 'express';
-import employer from "./employer";
-
-import {userRouter} from "./userRouter";
+import {userRouter} from "./user.router";
 import {PostRouter} from "./post";
 import {jobRouter} from "./jobRouter";
 import {jobDetailRouter} from "./jobDetailRouter";

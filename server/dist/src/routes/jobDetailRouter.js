@@ -9,5 +9,5 @@ const jobDetailController_1 = __importDefault(require("../controllers/jobDetailC
 exports.jobDetailRouter = (0, express_1.Router)();
 exports.jobDetailRouter.get('/', jobDetailController_1.default.getAllJobDetail);
 exports.jobDetailRouter.post('/', jobDetailController_1.default.createJobDetail);
-exports.jobDetailRouter.delete('/:idJobDetail', jobDetailController_1.default.deleteJobDetail);
+exports.jobDetailRouter.delete('/:id', jobDetailController_1.default.deleteJobDetail);
 //# sourceMappingURL=jobDetailRouter.js.map

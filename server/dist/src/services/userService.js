@@ -13,10 +13,17 @@ class UserService {
         this.getAll = async () => {
             return await this.userRepository.find();
         };
+        this.findById = async (id) => {
+            let user = await this.userRepository.findOneBy({ id: id });
+            if (!user) {
+                return null;
+            }
+            return user;
+        };
         this.checkUser = async (user) => {
-            let userCheck = await this.userRepository.findOneBy({ email: user.email });
+            let userCheck = await this.userRepository.findOneBy({ username: user.username });
             if (!userCheck) {
-                return 'Email is not exit';
+                return 'User is not exit';
             }
             else {
                 let passwordCompare = await bcrypt_1.default.compare(user.userPassword, userCheck.userPassword);
@@ -25,12 +32,12 @@ class UserService {
                 }
                 else {
                     let payload = {
-                        idUser: userCheck.id,
-                        email: userCheck.email,
+                        idUser: userCheck.idUser,
+                        username: userCheck.username,
                     };
                     return {
-                        idUser: userCheck.id,
-                        email: userCheck.email,
+                        idUser: userCheck.idUser,
+                        username: userCheck.username,
                         token: jsonwebtoken_1.default.sign(payload, auth_1.SECRET, {
                             expiresIn: 3000000
                         })
