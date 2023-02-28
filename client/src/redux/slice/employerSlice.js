@@ -2,7 +2,7 @@ import {createSlice} from "@reduxjs/toolkit";
 import {edit, login, logout, register} from "../../service/employerService";
 const initialState = {
     employers: [],
-    employShow :localStorage.getItem('employShow'),
+    employerShow :localStorage.getItem('employerShow'),
 }
 const blogSlice = createSlice({
     name: 'employers',
@@ -23,7 +23,7 @@ const blogSlice = createSlice({
         });
         builder.addCase(logout.fulfilled,(state,{payload})=>{
             state.employerShow=true
-            localStorage.setItem('employShow',state.employerShow)
+            localStorage.setItem('employerShow',state.employerShow)
         })
 
     }

@@ -115,8 +115,8 @@ export default function Search() {
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
 
-                                               onChange={handleChange} value="Full time"/> Full time
 
+                                               onChange={handleChange} value="FullTime"/> Full time
 
 
                                     </label>
@@ -124,7 +124,6 @@ export default function Search() {
 
                                 <div>
                                     <label>
-
 
 
                                         <input type="checkbox" onChange={handleChange} value="PartTime"
@@ -142,32 +141,31 @@ export default function Search() {
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
 
-                                               onChange={handleChange} value="Accountant"/> Accountant
-
-
-
-
-                                    </label>
-                                </div>
-
-                                <div>
-                                    <label>
-                                        <input type="checkbox" style={{height: "20px", width: "20px"}}
-
-                                               onChange={handleChange} value="Architect"/> Architect
-
-
-
-                                    </label>
-                                </div>
-
-                                <div>
-                                    <label>
-                                        <input type="checkbox" style={{height: "20px", width: "20px"}}
 
                                                onChange={handleChange} value="IT"/> IT
 
 
+                                    </label>
+                                </div>
+
+                                <div>
+                                    <label>
+                                        <input type="checkbox" style={{height: "20px", width: "20px"}}
+
+
+                                               onChange={handleChange} value="Marketing"/> Marketing
+
+
+                                    </label>
+                                </div>
+
+                                <div>
+                                    <label>
+                                        <input type="checkbox" style={{height: "20px", width: "20px"}}
+
+
+                                               onChange={handleChange} value="Sell"/> Sell
+
 
                                     </label>
                                 </div>
@@ -175,8 +173,8 @@ export default function Search() {
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
 
-                                               onChange={handleChange} value="Sales agent"/> Sales agent
 
+                                               onChange={handleChange} value="Engineer"/> Engineer
 
 
                                     </label>
@@ -189,7 +187,6 @@ export default function Search() {
                                 <div>
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
-
 
 
                                                onChange={handleChange} value="Staff"/>Staff
@@ -238,8 +235,6 @@ export default function Search() {
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
 
-                                               onChange={handleChange}/>
-
                                                onChange={handleChange} value="HàĐông"/> Hà Đông
 
 
@@ -249,13 +244,9 @@ export default function Search() {
 
                                 <div>
                                     <label>
-
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
+
                                                onChange={handleChange} value="HoàngMai"/> Hoàng Mai
-
-
-
-
                                     </label>
                                 </div>
                                 <div>
@@ -361,7 +352,9 @@ export default function Search() {
                                             </div>
                                         </div>
                                     </div>
+
                                 ))}
+
                                 <div className="col-md-12">
                                     <ul className="pages">
                                         <li><a href="#">1</a></li>
