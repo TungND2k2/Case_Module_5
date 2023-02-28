@@ -21,7 +21,7 @@ const blogSlice = createSlice({
             localStorage.setItem("access_token", payload.data.token)
             localStorage.setItem("status",payload.data)
             localStorage.setItem("nameUser",payload.data.username)
-            state.userShow=false
+            state.userShow=  false
             localStorage.setItem('userShow',state.userShow)
         });
         builder.addCase(userLogout.fulfilled,(state,{payload})=>{

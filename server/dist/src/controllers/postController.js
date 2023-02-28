@@ -48,7 +48,6 @@ class PostController {
         this.update = async (req, res) => {
             try {
                 let id = req.params.id;
-                console.log(req.body);
                 let post = {
                     title: req.body.title,
                     idEmployer: req.body.idEmployer,
@@ -57,15 +56,17 @@ class PostController {
                     position: req.body.position,
                     experience: req.body.experience,
                     workTime: req.body.workTime,
-                    endTime: req.body.description,
+                    endTime: req.body.endTime,
                     recruitmentsNumber: req.body.recruitmentsNumber,
                     status: req.body.status,
-                    image: req.body.image
+                    image: req.body.image,
+                    description: req.body.description
                 };
                 let editPost = await this.postServices.update(id, post);
                 res.status(200).json({ ok: editPost, message: 'Success!' });
             }
             catch (e) {
+                console.log(e);
                 res.status(500).json(e.message);
             }
         };

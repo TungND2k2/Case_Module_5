@@ -10,6 +10,7 @@ const Store = configureStore({
         post:postSlice,
         job: jobSlice,
         user :userSlice
+
     },
 
     middleware: getDefaultMiddleware =>

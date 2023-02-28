@@ -30,14 +30,12 @@ class PostService {
                                join job_detail jd on p.idPost = jd.postId
                                join job j on jd.jobId = j.jobId
                    order by idPost DESC limit 6`
-        let post = await this.postRepository.query(sql);
-        return post;
+        return await this.postRepository.query(sql);
     }
     countPosts=async ( ) => {
         try {
             let sql=`select count(idPost) from post`
-            let posts=await this.postRepository.query(sql)
-            return posts
+            return await this.postRepository.query(sql)
         }catch (e) {
             console.log(e)
         }
@@ -47,11 +45,10 @@ class PostService {
     }
     update = async (id, newPost) => {
         let post = await this.postRepository.findOneBy({idPost: id});
+        console.log(newPost , 'lllll')
         if (!post) {
             return null;
         }
-
-        newPost.idPost = id;
         return this.postRepository.update({idPost: id}, newPost);
 
     }
@@ -66,7 +63,6 @@ class PostService {
     search = async (req: Request, res: Response,limit, offset) => {
         console.log(req.query)
         let sql = `select idPost,
-                          title,
                           salary,
                           workLocation,
                           position,
@@ -78,6 +74,7 @@ class PostService {
                           p.status,
                           e.employerName,
                           image,
+                          title,
                           j.jobName
                    from post p join employer e on p.idEmployer = e.idEmployer
                                join job_detail jd on p.idPost = jd.postId
@@ -104,9 +101,8 @@ class PostService {
         if (req.query.jobName !== undefined) {
             sql += `and jobName like '%${req.query.jobName}'`
         }
-        sql += `group by idPost order by idPost DESC limit ${limit} offset ${offset}`
-        let post = await this.postRepository.query(sql);
-        return post;
+        sql += ` order by idPost DESC limit ${limit} offset ${offset}`
+        return await this.postRepository.query(sql);
     }
 }
 
