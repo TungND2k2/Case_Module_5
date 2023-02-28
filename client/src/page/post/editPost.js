@@ -36,8 +36,8 @@ const Edit = () => {
         dispatch(searchPost(id))
     }, []);
     const posts = useSelector(state => {
-        console.log(state)
-        return state.post.postOne;
+
+        return state.post.post[0];
     })
     const handleEdit = (values) => {
         let data = [{...values}, id];
@@ -50,8 +50,8 @@ const Edit = () => {
     return (
         <>
 
-            <body className="img js-fullheight">
-            <div className="container mt-5 py-5">
+            <body className="img js-fullheight" background-images="images/bg.jpg">
+            <div className="container mt-2 py-5">
                 <div className="container mt-2 form-group">
                     <div className="row mt-2 ">
                         {(posts !== undefined && posts) ? <>
@@ -72,8 +72,7 @@ const Edit = () => {
                             }} onSubmit={(values) => (handleEdit(values))}
                                     enableReinitialize={true}
                             >
-                                <Form className="mt-5 container py-5">
-                                    <div className="row">
+                                <Form>
                                     <div className="mb-3 col-lg-6 col-md-6 col-12">
                                         <label className="form-label">salary</label>
                                         <Field type="text" name="salary"
@@ -143,9 +142,7 @@ const Edit = () => {
                                                   className="form-control" cols='30' rows='4'></textarea>
                                     </div>
                                     <button type="submit" className="btn btn-primary">Submit</button>
-                                    </div>
                                 </Form>
-
                             </Formik>
 
                         </> : <>
