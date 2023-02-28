@@ -1,5 +1,6 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import axios from "axios";
+
 export const getPosts = createAsyncThunk (
     'posts/getPosts',
     async () => {
@@ -17,7 +18,6 @@ export const addPost = createAsyncThunk (
 export const search = createAsyncThunk (
     'posts/search',
     async (search) => {
-        const response = await axios.get('http://localhost:4000/posts/search?'+search);
-        return response;
+        return await axios.get('http://localhost:4000/posts/search?' + search);
     }
 )

@@ -5,10 +5,8 @@ import {getPosts} from "../../service/postService";
 export default function Home(){
     const dispatch=useDispatch()
     let post=useSelector(state => {
-        console.log(state.post.post)
         return state.post.post
     })
-    console.log(post)
     useEffect(() => {
         dispatch(getPosts());
     }, []);
@@ -53,17 +51,17 @@ export default function Home(){
                                         <div className="down-content">
                                             <a href=""><h4>Lorem ipsum dolor sit amet</h4></a>
 
-                                            <h6>${item.salary}</h6>
+                                            <h4>${item.salary}</h4>
 
-                                            <h4><small><i className="fa fa-briefcase"></i> Medical / Health Jobs <br/> <strong><i
-                                                className="fa fa-building"></i> BMI Kings Park Hospital</strong></small></h4>
+                                            <h4><small><i className="fa fa-briefcase"></i> {item.jobName}/{item.position}<br/> <strong><i
+                                                className="fa fa-building"></i> {item.title}</strong></small></h4>
 
                                             <small>
                                                 <strong title="Posted on"><i
                                                     className="fa fa-calendar"></i> 15-06-2020</strong> &nbsp;&nbsp;&nbsp;&nbsp;
                                                 <strong title="Type"><i
-                                                    className="fa fa-file"></i> Contract</strong> &nbsp;&nbsp;&nbsp;&nbsp;
-                                                <strong title="Location"><i className="fa fa-map-marker"></i> London</strong>
+                                                    className="fa fa-file"></i> {item.workTime}</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                                                <strong title="Location"><i className="fa fa-map-marker"></i> {item.workLocation}</strong>
                                             </small>
                                         </div>
                                     </div>

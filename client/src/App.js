@@ -8,6 +8,7 @@ import Footer from "./compoment/Footer";
 import LoginUser from "./page/user/login";
 import RegisterUser from "./page/user/register";
 import Search from "./page/post/search";
+import AddBlog from "./page/post/Add";
 function App() {
   return (
     <>
@@ -16,6 +17,7 @@ function App() {
             <Route path="home" element={<Home/>}></Route>
             <Route path="login" element={<LoginEmploy/>}></Route>
             <Route path="register" element={<RegisterEmploy/>}></Route>
+            <Route path="add" element={<AddBlog/>}></Route>
             <Route path="users/login" element={<LoginUser/>}></Route>
             <Route path="users/register" element={<RegisterUser/>}></Route>
             <Route path="/jobs/search" element={<Search/>}></Route>

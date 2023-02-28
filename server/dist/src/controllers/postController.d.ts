@@ -7,7 +7,7 @@ declare class PostController {
     create: (req: Request, res: Response) => Promise<void>;
     update: (req: Request, res: Response) => Promise<void>;
     delete: (req: Request, res: Response) => Promise<void>;
-    search: (req: Request, res: Response) => Promise<void>;
+    search: (req: Request, res: Response) => Promise<Response<any, Record<string, any>>>;
 }
 declare const _default: PostController;
 export default _default;

@@ -1,6 +1,7 @@
 import {Request, Response} from "express";
 import postServices from "../services/postService";
 import jobDetailService from "../services/jobDetailService";
+import {Post} from "../models/post";
 
 
 class PostController {
@@ -39,6 +40,7 @@ class PostController {
             res.status(500).json(e.message)
         }
     }
+
     update = async (req: Request, res: Response) => {
         try {
             let id = req.params.id;
@@ -68,13 +70,28 @@ class PostController {
         res.status(200).json('Success!')
     }
     search = async (req: Request, res: Response) => {
-        console.log(req.query)
         try {
-            let post = await postServices.search(req,res)
-            res.status(200).json(post)
-        } catch (e) {
-            res.status(500).json(e.message)
+            let limit = 6;
+            let offset = 0;
+            let page = 1;
+            if (req.query.page) {
+                page = +req.query.page;
+                offset = (+page - 1) * limit;
+            }
+            let totalPosts =  await this.postServices.countPosts();
+            const countNumber = parseInt(totalPosts[0]['count(idPost)']);
+            const  posts = await postServices.search(req,res,limit, offset);
+            let totalPage = Math.ceil(countNumber / limit);
+            return res.status(200).json({
+                posts: posts,
+                currentPage: page,
+                totalPage: totalPage
+
+            });
+        }catch (err) {
+            console.log(err)
         }
+
     }
 }
 export default new PostController();

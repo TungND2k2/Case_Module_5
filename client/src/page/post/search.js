@@ -6,8 +6,16 @@ import {useNavigate, useSearchParams} from "react-router-dom";
 export default function Search() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    let post = useSelector(state => {
-        return state.post.search
+    let posts = useSelector((state) => {
+        console.log(state.post.search)
+        return state.post.search.posts
+    })
+    const [page, setPage] = useSearchParams()
+    const page1 = page.get('page') || 1;
+    const totalPages = useSelector(state => {
+        if (state.post.search.totalPage !== undefined) {
+            return state.post.search.totalPage;
+        }
     })
 
     const [checkedValues, setCheckedValues] = useState([]);
@@ -63,16 +71,19 @@ export default function Search() {
                 case '3':
                     name = 'experience';
                     break;
+                default :
+                    name = '';
+                    break;
             }
             searchParams.append(name, checkedValues[i]);
             searchParams.delete(checkedValuesDelete[i]);
         }
         const queryString = searchParams.toString();
+        console.log(queryString)
         if (queryString) {
             setQueryStringAPI(queryString)
             navigate('/jobs/search?' + queryString)
         }
-        console.log(queryString)
     }, [checkedValues])
     useEffect(() => {
         dispatch(search(queryStringAPI));
@@ -262,7 +273,7 @@ export default function Search() {
 
                         <div className="col-md-9">
                             <div className="row">
-                                {post.map((item) => (
+                                {posts !== undefined && posts.map((item) => (
                                     <div className="col-md-6">
                                         <div className="product-item">
                                             <a href=""><img src="/assets/images/product-1-370x270.jpg"
@@ -270,16 +281,20 @@ export default function Search() {
                                             <div className="down-content">
                                                 <a href=""><h4>Lorem ipsum dolor sit amet</h4></a>
 
-                                                <h4>Salary: ${item.salary}</h4>
+                                                <h4>${item.salary}</h4>
 
-                                                <h4><small><i className="fa fa-briefcase"></i> {item.jobName} <br/>
-                                                    <strong><i className="fa fa-building"></i>{item.title}</strong></small></h4>
+                                                <h4><small><i
+                                                    className="fa fa-briefcase"></i> {item.jobName}/{item.position}
+                                                    <br/>
+                                                    <strong><i className="fa fa-building"></i>{item.title}
+                                                    </strong></small></h4>
 
                                                 <small>
                                                     <strong title="Posted on"><i
                                                         className="fa fa-calendar"></i> 15-06-2020</strong> &nbsp;&nbsp;&nbsp;&nbsp;
                                                     <strong title="Type"><i
-                                                        className="fa fa-file"></i> {item.workTime}</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                                                        className="fa fa-file"></i> {item.workTime}
+                                                    </strong> &nbsp;&nbsp;&nbsp;&nbsp;
                                                     <strong title="Location"><i
                                                         className="fa fa-map-marker"></i> {item.workLocation}</strong>
                                                 </small>

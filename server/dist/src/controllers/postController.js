@@ -63,13 +63,26 @@ class PostController {
             res.status(200).json('Success!');
         };
         this.search = async (req, res) => {
-            console.log(req.query);
             try {
-                let post = await postService_1.default.search(req, res);
-                res.status(200).json(post);
+                let limit = 6;
+                let offset = 0;
+                let page = 1;
+                if (req.query.page) {
+                    page = +req.query.page;
+                    offset = (+page - 1) * limit;
+                }
+                let totalPosts = await this.postServices.countPosts();
+                const countNumber = parseInt(totalPosts[0]['count(idPost)']);
+                const posts = await postService_1.default.search(req, res, limit, offset);
+                let totalPage = Math.ceil(countNumber / limit);
+                return res.status(200).json({
+                    posts: posts,
+                    currentPage: page,
+                    totalPage: totalPage
+                });
             }
-            catch (e) {
-                res.status(500).json(e.message);
+            catch (err) {
+                console.log(err);
             }
         };
         this.postServices = postService_1.default;
