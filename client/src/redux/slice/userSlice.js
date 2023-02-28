@@ -27,6 +27,7 @@ const blogSlice = createSlice({
         builder.addCase(userLogout.fulfilled,(state,{payload})=>{
             state.userShow = true
             localStorage.setItem('userShow',state.userShow)
+            localStorage.clear()
         })
     }
 })
