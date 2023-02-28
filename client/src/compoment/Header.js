@@ -5,20 +5,13 @@ import {userLogout} from "../service/userServices";
 
 export default function Header(){
 
-    let show= useSelector(state => {
-        return state.employ.show
-    })
-    let userShow= useSelector(state => {
-        return state.user.userShow
-    })
-
-    console.log(show)
-
     let showEmployer=useSelector(state => {
-        return state.employ.show
+        console.log(state)
+        return state.employ.employerShow
+
     })
     let showUser=useSelector(state => {
-        return state.user.show
+        return state.user.userShow
     })
 
     const dispatch=useDispatch();
@@ -63,11 +56,11 @@ export default function Header(){
                                     <Link to="/users/login"> <li className="nav-item"><a className="nav-link">Sign In User</a></li></Link>
                                 </>}
 
-                                {(show==='false'||show===false || userShow==='false'|| userShow===false) &&<>
-                                        <li className="nav-item"><a className="nav-link" href="">{localStorage.getItem('name')}</a></li>
-                                </>}
                                 {(showEmployer==='false'||showEmployer===false) &&<>
                                         <li className="nav-item"><a className="nav-link" href="">{localStorage.getItem('name')}</a></li>
+                                </>}
+                                {(showUser==='false'||showUser===false) &&<>
+                                    <li className="nav-item"><a className="nav-link" href="">{localStorage.getItem('nameUser')}</a></li>
                                 </>}
                                 {(showEmployer==='false'||showEmployer===false) &&<>
 
