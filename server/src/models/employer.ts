@@ -8,7 +8,7 @@ export class Employer{
     employerName : string;
     @Column()
     employerPassword : string;
-    @Column()
+    @Column({nullable:true})
     address : string;
     @Column({nullable:true})
     description :string;
