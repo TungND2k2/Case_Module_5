@@ -30,24 +30,12 @@ class PostService {
                                join job_detail jd on p.idPost = jd.postId
                                join job j on jd.jobId = j.jobId
                    order by idPost DESC limit 6`
-        let post1 = await this.postRepository.query(sql);
-        const result = post1.reduce((acc1, {idPost,title,salary,workLocation,position,experience,workTime,endTime,description,recruitmentsNumber,status,employerName,image, jobName}) => {
-            acc1[idPost] ??= {idPost: idPost,title:title,salary:salary,workLocation:workLocation,position:position,experience:experience,workTime:workTime,endTime:endTime,description:description,recruitmentsNumber:recruitmentsNumber,status:status,employerName:employerName,image:image, jobName: []};
-            if(Array.isArray(jobName)) // if it's array type then concat
-                acc1[idPost].jobName = acc1[idPost].jobName.concat(jobName);
-            else
-                acc1[idPost].jobName.push(jobName);
-
-
-            return acc1;
-        }, {});
-        return Object.values(result);
+        return await this.postRepository.query(sql);
     }
     countPosts=async ( ) => {
         try {
             let sql=`select count(idPost) from post`
-            let posts=await this.postRepository.query(sql)
-            return posts
+            return await this.postRepository.query(sql)
         }catch (e) {
             console.log(e)
         }
@@ -57,11 +45,10 @@ class PostService {
     }
     update = async (id, newPost) => {
         let post = await this.postRepository.findOneBy({idPost: id});
+        console.log(newPost , 'lllll')
         if (!post) {
             return null;
         }
-
-        newPost.idPost = id;
         return this.postRepository.update({idPost: id}, newPost);
 
     }
@@ -74,9 +61,8 @@ class PostService {
         }
     }
     search = async (req: Request, res: Response,limit, offset) => {
-
+        console.log(req.query)
         let sql = `select idPost,
-                          title,
                           salary,
                           workLocation,
                           position,
@@ -88,6 +74,7 @@ class PostService {
                           p.status,
                           e.employerName,
                           image,
+                          title,
                           j.jobName
                    from post p join employer e on p.idEmployer = e.idEmployer
                                join job_detail jd on p.idPost = jd.postId
@@ -113,24 +100,10 @@ class PostService {
         }
         if (req.query.jobName !== undefined) {
             sql += `and jobName like '%${req.query.jobName}'`
-
         }
-
-        sql += `order by idPost DESC limit ${limit} offset ${offset}`
-        let post = await this.postRepository.query(sql);
-        const result = post.reduce((acc, {idPost,title,salary,workLocation,position,experience,workTime,endTime,description,recruitmentsNumber,status,employerName,image, jobName}) => {
-            acc[idPost] ??= {idPost: idPost,title:title,salary:salary,workLocation:workLocation,position:position,experience:experience,workTime:workTime,endTime:endTime,description:description,recruitmentsNumber:recruitmentsNumber,status:status,employerName:employerName,image:image, jobName: []};
-            if(Array.isArray(jobName)) // if it's array type then concat
-                acc[idPost].jobName = acc[idPost].jobName.concat(jobName);
-            else
-                acc[idPost].jobName.push(jobName);
-
-
-            return acc;
-        }, {});
-        return Object.values(result);
+        sql += ` order by idPost DESC limit ${limit} offset ${offset}`
+        return await this.postRepository.query(sql);
     }
 }
-
 
 export default new PostService();

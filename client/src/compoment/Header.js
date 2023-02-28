@@ -42,7 +42,7 @@ export default function Header() {
 
                                 <li className="nav-item"><a className="nav-link" href="">About us</a></li>
 
-                                <li className="nav-item"><a className="nav-link" href="">Blog</a></li>
+                                <li className="nav-item"><Link to={"/posts"} className="nav-link" >List</Link></li>
 
                                 <li className="nav-item dropdown">
                                     <a className="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
@@ -65,8 +65,7 @@ export default function Header() {
                                 </>}
 
                                 {(showEmployer === 'false' || showEmployer === false) && <>
-                                    <li className="nav-item"><a className="nav-link"
-                                                                href="">{localStorage.getItem('employerName')}</a></li>
+                                    <li className="nav-item"><a className="nav-link">{localStorage.getItem('employerName')}</a></li>
                                 </>}
                                 {(showUser === 'false' || showUser === false) && <>
                                     <li className="nav-item"><a className="nav-link"
