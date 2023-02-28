@@ -57,7 +57,7 @@ export default function Header(){
                                 </>}
 
                                 {(showEmployer==='false'||showEmployer===false) &&<>
-                                        <li className="nav-item"><a className="nav-link" href="">{localStorage.getItem('name')}</a></li>
+                                        <li className="nav-item"><a className="nav-link" href="">{localStorage.getItem('employerName')}</a></li>
                                 </>}
                                 {(showUser==='false'||showUser===false) &&<>
                                     <li className="nav-item"><a className="nav-link" href="">{localStorage.getItem('nameUser')}</a></li>

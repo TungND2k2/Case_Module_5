@@ -76,7 +76,6 @@ class PostController {
             res.status(200).json('Success!');
         };
         this.search = async (req, res) => {
-            console.log(req.query);
             try {
                 let post = await postService_1.default.search(req, res);
                 res.status(200).json(post);
