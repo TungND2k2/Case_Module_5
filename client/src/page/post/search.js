@@ -6,8 +6,15 @@ import {useNavigate, useSearchParams} from "react-router-dom";
 export default function Search() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    let post = useSelector(state => {
-        return state.post.search
+    let posts = useSelector((state) => {
+        return state.post.search.posts
+    })
+    const [page, setPage] = useSearchParams()
+    const page1 = page.get('page') || 1;
+    const totalPages = useSelector(state => {
+        if (state.post.search.totalPage !== undefined) {
+            return state.post.search.totalPage;
+        }
     })
 
     const [checkedValues, setCheckedValues] = useState([]);
@@ -28,6 +35,7 @@ export default function Search() {
 
         }
     }
+
 
 
     const searchParams = new URLSearchParams();
@@ -63,6 +71,9 @@ export default function Search() {
                 case '3':
                     name = 'experience';
                     break;
+                default :
+                    name = '';
+                    break;
             }
             searchParams.append(name, checkedValues[i]);
             searchParams.delete(checkedValuesDelete[i]);
@@ -72,7 +83,6 @@ export default function Search() {
             setQueryStringAPI(queryString)
             navigate('/jobs/search?' + queryString)
         }
-        console.log(queryString)
     }, [checkedValues])
     useEffect(() => {
         dispatch(search(queryStringAPI));
@@ -237,6 +247,7 @@ export default function Search() {
                                                onChange={handleChange} value="HàĐông"/> Hà Đông
 
 
+
                                     </label>
                                 </div>
 
@@ -269,22 +280,14 @@ export default function Search() {
                                 <div>
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
-
-
                                                onChange={handleChange} value="1"/> 1 Year
-
-
                                     </label>
                                 </div>
 
                                 <div>
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
-
-
                                                onChange={handleChange} value="2"/> 2 Year
-
-
                                     </label>
                                 </div>
 
@@ -292,7 +295,7 @@ export default function Search() {
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
 
-                                               onChange={handleChange} value="3"/> 3 Year
+                                    onChange={handleChange} value="3"/> 3 Year
 
 
                                     </label>
@@ -303,48 +306,20 @@ export default function Search() {
 
                         <div className="container col-md-9">
                             <div className="row">
-                                {post.map((item) => (
+                                {posts !== undefined && posts.map((item) => (
                                     <div className="col-md-6 py-5 mt-2">
                                         <div className="product-item">
-                                            <a><img src={item.image}
-                                                    alt=""/></a>
+                                            <a><img src="/assets/images/product-1-370x270.jpg"
+                                                            alt=""/></a>
                                             <div className="down-content">
                                                 <a href=""><h4>{item.title}</h4></a>
-
-
-                                                <h6 className="number">{item.salary}$</h6>
+                                                <h4>${item.salary}</h4>
 
                                                 <h4><small><i
-                                                    className="fa fa-briefcase"> </i>&nbsp;&nbsp;&nbsp;&nbsp;{item.position}
+                                                    className="fa fa-briefcase"></i> {item.jobName}/{item.position}
                                                     <br/>
-                                                    <strong><i
-                                                        className="fa fa-building"></i>&nbsp;&nbsp;&nbsp;&nbsp; {item.workLocation}
-                                                    </strong>
-                                                    <br/>
-                                                    <i className="fa fa-briefcase"> </i>&nbsp;&nbsp;&nbsp;&nbsp;{item.position}
-                                                </small>
-                                                </h4>
-
-                                                <samp className="container">
-                                                    <tspan className="row">
-                                                        <strong title="Posted on"><i
-                                                            className="fa fa-calendar"></i> {item.endTime}
-                                                        </strong> &nbsp;&nbsp;&nbsp;&nbsp;
-                                                        <strong title="Type"><i
-                                                            className="fa fa-file"></i> {item.status}
-                                                        </strong> &nbsp;&nbsp;&nbsp;&nbsp;
-                                                        <strong title="Location"><i
-                                                            className="fa fa-map-marker"></i> {item.workLocation}
-                                                        </strong>
-                                                    </tspan>
-
-                                                </samp>
-
-
-                                                <h4><small><i className="fa fa-briefcase"></i> {item.jobName} <br/>
                                                     <strong><i className="fa fa-building"></i>{item.title}
                                                     </strong></small></h4>
-
                                                 <small>
                                                     <strong title="Posted on"><i
                                                         className="fa fa-calendar"></i> 15-06-2020</strong> &nbsp;&nbsp;&nbsp;&nbsp;
@@ -354,8 +329,8 @@ export default function Search() {
                                                     <strong title="Location"><i
                                                         className="fa fa-map-marker"></i> {item.workLocation}</strong>
                                                 </small>
-
                                             </div>
+
                                         </div>
                                     </div>
 
