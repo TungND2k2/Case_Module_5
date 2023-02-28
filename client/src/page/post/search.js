@@ -169,18 +169,6 @@ export default function Search() {
 
                                     </label>
                                 </div>
-                                <div>
-                                    <label>
-                                        <input type="checkbox" style={{height: "20px", width: "20px"}}
-
-                                               onChange={handleChange} value="Sales agent"/> Sales agent
-
-
-
-
-                                    </label>
-                                </div>
-
                                 <br/>
 
                                 <h5 style={{marginBottom: '15px'}}>Position</h5>

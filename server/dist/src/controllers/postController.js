@@ -19,6 +19,7 @@ class PostController {
         this.create = async (req, res) => {
             try {
                 let a = req.body;
+                console.log(req.body);
                 let posts = {
                     salary: a.salary,
                     workLocation: a.workLocation,
@@ -38,6 +39,7 @@ class PostController {
                     postId: newPost.idPost,
                     jobId: a.idJob
                 };
+                console.log(jd);
                 let saveJobDetail = await jobDetailService_1.default.save(jd);
                 res.status(200).json(newPost);
             }

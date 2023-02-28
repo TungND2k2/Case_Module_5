@@ -12,8 +12,6 @@ export default function Header(){
         return state.user.userShow
     })
 
-    console.log(show)
-
     let showEmployer=useSelector(state => {
         return state.employ.show
     })
@@ -67,7 +65,10 @@ export default function Header(){
                                         <li className="nav-item"><a className="nav-link" href="">{localStorage.getItem('name')}</a></li>
                                 </>}
                                 {(showEmployer==='false'||showEmployer===false) &&<>
-                                        <li className="nav-item"><a className="nav-link" href="">{localStorage.getItem('name')}</a></li>
+                                        <Link to={`users/edit/`}><li className="nav-item"><a className="nav-link" href="">{localStorage.getItem('name')}</a></li></Link>
+                                    <Link to="/add-post"> <a className="nav-link" href="">Add Post
+                                        <span className="sr-only"></span>
+                                    </a></Link>
                                 </>}
                                 {(showEmployer==='false'||showEmployer===false) &&<>
 

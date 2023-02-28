@@ -20,6 +20,17 @@ export const userLogout = createAsyncThunk (
         return false
     }
 )
+
+export const userEdit = createAsyncThunk (
+    'users/userEdit',
+    async (data) => {
+        await axios.put(`http://localhost:4000/users/blogs/${data.id}`,data);
+        const response = await axios.get('http://localhost:4000/users');
+        return response.data
+    }
+)
+
+
 export const findById = createAsyncThunk(
     'users/findById',
     async (data)=>{

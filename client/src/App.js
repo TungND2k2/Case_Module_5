@@ -9,6 +9,8 @@ import LoginUser from "./page/user/login";
 import RegisterUser from "./page/user/register";
 import AddPosts from "./page/post/addPost";
 import Search from "./page/post/search";
+import React from "react";
+import EditUser from "./page/user/editUser";
 function App() {
   return (
     <>
@@ -19,7 +21,7 @@ function App() {
             <Route path="login" element={<LoginEmploy/>}></Route>
             <Route path="register" element={<RegisterEmploy/>}></Route>
             <Route path="users/login" element={<LoginUser/>}></Route>
-            {/*<Route path="users/edit/:id" element={<EditUser/>}></Route>*/}
+            <Route path="users/edit/:id" element={<EditUser/>}></Route>
             <Route path="users/register" element={<RegisterUser/>}></Route>
             <Route path="/jobs/search" element={<Search/>}></Route>
         </Routes>

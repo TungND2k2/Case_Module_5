@@ -25,7 +25,9 @@ class PostController {
     create = async (req: Request, res: Response) => {
 
         try {
+
             let a = req.body
+            console.log(req.body)
             let posts = {
                 salary : a.salary,
                 workLocation : a.workLocation,
@@ -44,7 +46,9 @@ class PostController {
             let jd = {
                 postId: newPost.idPost,
                 jobId : a.idJob
+
             }
+            console.log(jd)
 
             let saveJobDetail = await jobDetailService.save(jd)
 

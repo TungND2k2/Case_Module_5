@@ -10,7 +10,7 @@ const blogSlice = createSlice({
     reducers: {},
     extraReducers: builder => {
         builder.addCase(userRegister.fulfilled, (state, {payload}) => {
-            state.users.push(payload);
+            state.user.push(payload);
         });
         builder.addCase(findById.fulfilled,(state, action)=>{
             state.user = action.payload;
