@@ -24,12 +24,23 @@ class PostService {
                           recruitmentsNumber,
                           p.status,
                           e.employerName,
-                          image
-                   from post p
-                            join employer e on p.idEmployer = e.idEmployer
-                   order by idPost DESC`
+                          image,
+                          j.jobName
+                   from post p join employer e on p.idEmployer = e.idEmployer
+                               join job_detail jd on p.idPost = jd.postId
+                               join job j on jd.jobId = j.jobId
+                   order by idPost DESC limit 6`
         let post = await this.postRepository.query(sql);
         return post;
+    }
+    countPosts=async ( ) => {
+        try {
+            let sql=`select count(idPost) from post`
+            let posts=await this.postRepository.query(sql)
+            return posts
+        }catch (e) {
+            console.log(e)
+        }
     }
     save = async (post) => {
         return this.postRepository.save(post);
@@ -39,7 +50,7 @@ class PostService {
         if (!post) {
             return null;
         }
-        console.log(newPost)
+
         newPost.idPost = id;
         return this.postRepository.update({idPost: id}, newPost);
 
@@ -52,14 +63,7 @@ class PostService {
             return this.postRepository.delete({idPost: id});
         }
     }
-    findById = async (id)=> {
-        let post = await this.postRepository.findOneBy({id:id});
-        if(!post){
-            return null;
-        }
-        return post;
-    }
-    search = async (req: Request, res: Response) => {
+    search = async (req: Request, res: Response,limit, offset) => {
         console.log(req.query)
 
         let sql = `select idPost,
@@ -78,8 +82,8 @@ class PostService {
                           j.jobName
                    from post p join employer e on p.idEmployer = e.idEmployer
                                join job_detail jd on p.idPost = jd.postId
-                               join job j on jd.jobId = j.jobId
-                   where (1 = 1)`
+                               join job j on jd.jobId = j.jobId 
+                   where (1 = 1) `
         if (req.query.title !== undefined) {
             sql += `and title like '%${req.query.title}'`
         }
@@ -102,7 +106,7 @@ class PostService {
             sql += `and jobName like '%${req.query.jobName}'`
 
         }
-        sql += `group by idPost order by idPost DESC`
+        sql += `group by idPost order by idPost DESC limit ${limit} offset ${offset}`
         let post = await this.postRepository.query(sql);
         return post;
     }

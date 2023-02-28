@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {edit, login, logout, register} from "../../service/employerService";
+import { login, logout, register} from "../../service/employerService";
 const initialState = {
     employers: [],
     employerShow :localStorage.getItem('employerShow'),
@@ -17,7 +17,7 @@ const blogSlice = createSlice({
             localStorage.setItem("id_employer", payload.data.id_employer)
             localStorage.setItem("access_token", payload.data.token)
             localStorage.setItem("status",payload.data)
-            localStorage.setItem("name",payload.data.employerName)
+            localStorage.setItem("employerName",payload.data.employerName)
             state.employerShow=false
             localStorage.setItem('employerShow',state.employerShow)
         });
