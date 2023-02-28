@@ -2,7 +2,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {getPosts} from "../../service/postService";
 import {Link} from "react-router-dom";
-import Edit from "../post/editPost";
+// import Edit from "../post/editPost";
 
 export default function Home() {
     const dispatch = useDispatch()
@@ -69,8 +69,10 @@ export default function Home() {
                                                     className="fa fa-map-marker"></i> {item.workLocation}</strong>
                                             </small>
                                             <div className="container">
-                                                <Link to={`/posts/${item.idPost}`}><button className="btn btn-primary mt-2">Edit</button></Link>
-                                                <button className="btn btn-danger mt-2" >Delete</button>
+                                                <Link to={`/posts/${item.idPost}`}>
+                                                    <button className="btn btn-primary mt-2">Edit</button>
+                                                </Link>
+                                                <button className="btn btn-danger mt-2">Delete</button>
                                             </div>
                                         </div>
                                     </div>
