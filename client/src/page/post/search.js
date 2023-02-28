@@ -79,7 +79,6 @@ export default function Search() {
             searchParams.delete(checkedValuesDelete[i]);
         }
         const queryString = searchParams.toString();
-        console.log(queryString)
         if (queryString) {
             setQueryStringAPI(queryString)
             navigate('/jobs/search?' + queryString)

@@ -3,16 +3,11 @@ import {useDispatch, useSelector} from "react-redux";
 import {logout} from "../service/employerService";
 import {userLogout} from "../service/userServices";
 
-export default function Header(){
-
-    let showEmployer=useSelector(state => {
-        return state.employ.employerShow
-    })
-    let showUser=useSelector(state => {
-        return state.user.userShow
-    })
-
-    const dispatch=useDispatch();
+export default function Header() {
+    let showUser = localStorage.getItem("userShow")
+    let showEmployer = localStorage.getItem("employerShow")
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     return (
         <>
             <header className="">
@@ -32,34 +27,44 @@ export default function Header(){
                                     </a></Link>
 
                                 </li>
-                                <Link to="/jobs/search"><li className="nav-item"><a className="nav-link" href="">Jobs</a></li></Link>
+                                <Link to="/jobs/search">
+                                    <li className="nav-item"><a className="nav-link" href="">Jobs</a></li>
+                                </Link>
 
-                                <li className="nav-item"><a className="nav-link" href="">About us</a></li>
+                                <Link to="/add-post">
+                                    <li className="nav-item"><a className="nav-link" href="">Create Post</a></li>
+                                </Link>
 
-                                {((showEmployer==='true'|| showEmployer===null||showEmployer===true) && (showUser==='true'|| showUser===null||showUser===true)) && <>
-                                    <Link to="/login"> <li className="nav-item"><a className="nav-link" href="">Sign In Employer</a></li></Link>
-                                    <Link to="/users/login"> <li className="nav-item"><a className="nav-link">Sign In User</a></li></Link>
+                                {((showEmployer === null && (showUser === true || showUser === null)) || (showEmployer === true && (showUser === true || showUser === null))) && <>
+                                    <Link to="/login">
+                                        <li className="nav-item"><a className="nav-link" href="">Sign In Employer</a>
+                                        </li>
+                                    </Link>
+                                    <Link to="/users/login">
+                                        <li className="nav-item"><a className="nav-link">Sign In User</a></li>
+                                    </Link>
                                 </>}
 
-                                {(showEmployer==='false'||showEmployer===false) &&<>
-                                    <Link to="/add-post"> <li className="nav-item"><a className="nav-link">Create a post</a></li></Link>
-                                    <li className="nav-item"><a className="nav-link" href="">{localStorage.getItem('name')}</a></li>
+                                {(showEmployer === 'false' || showEmployer === false) && <>
+                                    <li className="nav-item"><a className="nav-link"
+                                                                href="">{localStorage.getItem('employerName')}</a></li>
                                 </>}
-                                {(showUser==='false'||showUser===false) &&<>
-                                    <li className="nav-item"><a className="nav-link" href="">{localStorage.getItem('nameUser')}</a></li>
+                                {(showUser === 'false' || showUser === false) && <>
+                                    <li className="nav-item"><a className="nav-link"
+                                                                href="">{localStorage.getItem('nameUser')}</a></li>
                                 </>}
-                                {(showEmployer==='false'||showEmployer===false) &&<>
+                                {(showEmployer === 'false' || showEmployer === false) && <>
 
                                         <li className="nav-item" onClick={()=>{
                                             dispatch(logout()||userLogout())
                                             localStorage.clear()
                                         }}><a className="nav-link" href="">logout</a></li>
                                 </>}
-                                {(showUser==='false'||showUser===false) &&<>
-                                        <li className="nav-item" onClick={()=>{
-                                            dispatch(userLogout())
-                                            localStorage.clear()
-                                        }}><a className="nav-link" href="">logout</a></li>
+                                {(showUser === 'false' || showUser === false) && <>
+                                    <li className="nav-item" onClick={() => {
+                                        dispatch(userLogout())
+                                        localStorage.clear()
+                                    }}><a className="nav-link" href="">logout</a></li>
                                 </>}
                             </ul>
                         </div>
