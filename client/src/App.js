@@ -7,7 +7,7 @@ import RegisterEmploy from "./page/employer/register";
 import Footer from "./compoment/Footer";
 import LoginUser from "./page/user/login";
 import RegisterUser from "./page/user/register";
-import Edit from "./page/post/EditPost";
+import Edit from "./page/post/editPost";
 import AddPosts from "./page/post/addPost";
 import Search from "./page/post/search";
 function App() {
