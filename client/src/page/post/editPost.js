@@ -36,8 +36,8 @@ const Edit = () => {
         dispatch(searchPost(id))
     }, []);
     const posts = useSelector(state => {
-
-        return state.post.post[0];
+        console.log(state)
+        return state.post.postOne;
     })
     const handleEdit = (values) => {
         let data = [{...values}, id];
@@ -50,8 +50,8 @@ const Edit = () => {
     return (
         <>
 
-            <body className="img js-fullheight" background-images="images/bg.jpg">
-            <div className="container mt-2 py-5">
+            <body className="img js-fullheight">
+            <div className="container mt-5 py-5">
                 <div className="container mt-2 form-group">
                     <div className="row mt-2 ">
                         {(posts !== undefined && posts) ? <>

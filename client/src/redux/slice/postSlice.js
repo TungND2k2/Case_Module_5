@@ -3,6 +3,7 @@ import {addPosts, getPosts, search, editPost, searchPost} from "../../service/po
 const initialState = {
     post: [],
     search: [],
+    postOne:{}
 }
 const postSlice = createSlice({
     name: 'posts',
@@ -19,10 +20,7 @@ const postSlice = createSlice({
             state.search = payload.data;
         });
         builder.addCase(editPost.fulfilled, (state, {payload}) => {
-            console.log(state)
-            console.log(payload[0])
-            state.post = payload[0];
-
+            state.postOne = payload[0];
         });
         builder.addCase(searchPost.fulfilled, (state, action) => {
             state.post = action.payload;
