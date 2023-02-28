@@ -28,5 +28,4 @@ export class Post{
     status : string;
     @Column({nullable:true})
     image : string;
-
 }

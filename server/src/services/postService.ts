@@ -61,6 +61,7 @@ class PostService {
     }
     search = async (req: Request, res: Response) => {
         console.log(req.query)
+
         let sql = `select idPost,
                           title,
                           salary,
@@ -99,6 +100,7 @@ class PostService {
         }
         if (req.query.jobName !== undefined) {
             sql += `and jobName like '%${req.query.jobName}'`
+
         }
         sql += `group by idPost order by idPost DESC`
         let post = await this.postRepository.query(sql);
