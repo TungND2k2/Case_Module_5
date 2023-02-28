@@ -2,7 +2,6 @@ import {createSlice} from "@reduxjs/toolkit";
 import {findById, userLogin, userLogout, userRegister} from "../../service/userServices";
 const initialState = {
     user: [],
-    userShow :localStorage.getItem('userShow'),
 }
 const blogSlice = createSlice({
     name: 'users',

@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {edit, login, logout, register} from "../../service/employerService";
+import { login, logout, register} from "../../service/employerService";
 const initialState = {
     employers: [],
     employerShow :localStorage.getItem('employerShow'),

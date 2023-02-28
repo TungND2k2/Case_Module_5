@@ -51,7 +51,7 @@ export default function Header(){
                                 {(showEmployer==='false'||showEmployer===false) &&<>
 
                                         <li className="nav-item" onClick={()=>{
-                                            dispatch(logout())
+                                            dispatch(logout()||userLogout())
                                             localStorage.clear()
                                         }}><a className="nav-link" href="">logout</a></li>
                                 </>}
