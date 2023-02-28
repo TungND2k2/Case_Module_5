@@ -446,7 +446,7 @@
 	} ];
 
 	/**
-	 * Create the stage DOM element
+	 * Edit the stage DOM element
 	 */
 	Owl.prototype.initializeStage = function() {
 		this.$stage = this.$element.find('.' + this.settings.stageClass);
@@ -470,7 +470,7 @@
 	};
 
 	/**
-	 * Create item DOM elements
+	 * Edit item DOM elements
 	 */
 	Owl.prototype.initializeItems = function() {
 		var $items = this.$element.find('.owl-item');

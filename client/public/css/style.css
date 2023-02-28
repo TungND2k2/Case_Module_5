@@ -8238,7 +8238,7 @@ body {
   font-size: 16px;
   line-height: 1.8;
   font-weight: normal;
-  color: gray;
+  color: black;
   position: relative;
   z-index: 0;
   padding: 0; }
@@ -8386,13 +8386,13 @@ textarea.form-control {
   height: 0;
   width: 0; }
 
-/* Create a custom checkbox */
+/* Edit a custom checkbox */
 .checkmark {
   position: absolute;
   top: 0;
   left: 0; }
 
-/* Create the checkmark/indicator (hidden when not checked) */
+/* Edit the checkmark/indicator (hidden when not checked) */
 .checkmark:after {
   content: "\f0c8";
   font-family: "FontAwesome";

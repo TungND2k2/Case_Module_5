@@ -2,7 +2,7 @@ import {createSlice} from "@reduxjs/toolkit";
 import {findById, userLogin, userLogout, userRegister} from "../../service/userServices";
 const initialState = {
     user: [],
-    userShow:localStorage.getItem('userShow'),
+    userShow :localStorage.getItem('userShow'),
 }
 const blogSlice = createSlice({
     name: 'users',
@@ -20,13 +20,14 @@ const blogSlice = createSlice({
             localStorage.setItem("isUser", payload.data.idUser)
             localStorage.setItem("access_token", payload.data.token)
             localStorage.setItem("status",payload.data)
-            localStorage.setItem("name",payload.data.username)
+            localStorage.setItem("nameUser",payload.data.username)
             state.userShow=false
             localStorage.setItem('userShow',state.userShow)
         });
         builder.addCase(userLogout.fulfilled,(state,{payload})=>{
             state.userShow = true
             localStorage.setItem('userShow',state.userShow)
+            localStorage.clear()
         })
     }
 })

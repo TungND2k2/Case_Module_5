@@ -50,6 +50,7 @@ class PostController {
         this.update = async (req, res) => {
             try {
                 let id = req.params.id;
+                console.log(req.body);
                 let post = {
                     title: req.body.title,
                     idEmployer: req.body.idEmployer,
@@ -77,7 +78,6 @@ class PostController {
             res.status(200).json('Success!');
         };
         this.search = async (req, res) => {
-            console.log(req.query);
             try {
                 let post = await postService_1.default.search(req, res);
                 res.status(200).json(post);

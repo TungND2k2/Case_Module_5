@@ -72,8 +72,7 @@ const Edit = () => {
                             }} onSubmit={(values) => (handleEdit(values))}
                                     enableReinitialize={true}
                             >
-                                <Form className="mt-5 container py-5">
-                                    <div className="row">
+                                <Form>
                                     <div className="mb-3 col-lg-6 col-md-6 col-12">
                                         <label className="form-label">salary</label>
                                         <Field type="text" name="salary"
@@ -143,9 +142,7 @@ const Edit = () => {
                                                   className="form-control" cols='30' rows='4'></textarea>
                                     </div>
                                     <button type="submit" className="btn btn-primary">Submit</button>
-                                    </div>
                                 </Form>
-
                             </Formik>
 
                         </> : <>

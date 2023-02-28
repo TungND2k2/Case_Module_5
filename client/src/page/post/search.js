@@ -30,7 +30,6 @@ export default function Search() {
     }
 
 
-
     const searchParams = new URLSearchParams();
     useEffect(() => {
         for (let i = 0; i < checkedValues.length; i++) {
@@ -114,13 +113,16 @@ export default function Search() {
                                 <div>
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
-                                               onChange={handleChange} value="Full time"/> Full time
+
+
+                                               onChange={handleChange} value="FullTime"/> Full time
+
+
                                     </label>
                                 </div>
 
                                 <div>
                                     <label>
-
 
 
                                         <input type="checkbox" onChange={handleChange} value="PartTime"
@@ -138,37 +140,45 @@ export default function Search() {
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
 
-                                               onChange={handleChange} value="Accountant"/> Accountant
-
-
-
-
-                                    </label>
-                                </div>
-
-                                <div>
-                                    <label>
-                                        <input type="checkbox" style={{height: "20px", width: "20px"}}
-
-                                               onChange={handleChange} value="Architect"/> Architect
-
-
-
-
-                                    </label>
-                                </div>
-
-                                <div>
-                                    <label>
-                                        <input type="checkbox" style={{height: "20px", width: "20px"}}
 
                                                onChange={handleChange} value="IT"/> IT
 
 
+                                    </label>
+                                </div>
+
+                                <div>
+                                    <label>
+                                        <input type="checkbox" style={{height: "20px", width: "20px"}}
+
+
+                                               onChange={handleChange} value="Marketing"/> Marketing
 
 
                                     </label>
                                 </div>
+
+                                <div>
+                                    <label>
+                                        <input type="checkbox" style={{height: "20px", width: "20px"}}
+
+
+                                               onChange={handleChange} value="Sell"/> Sell
+
+
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        <input type="checkbox" style={{height: "20px", width: "20px"}}
+
+
+                                               onChange={handleChange} value="Engineer"/> Engineer
+
+
+                                    </label>
+                                </div>
+
                                 <br/>
 
                                 <h5 style={{marginBottom: '15px'}}>Position</h5>
@@ -176,6 +186,7 @@ export default function Search() {
                                 <div>
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
+
 
                                                onChange={handleChange} value="Staff"/>Staff
 
@@ -197,6 +208,7 @@ export default function Search() {
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
 
+
                                                onChange={handleChange} value="Technicians"/> Technicians
 
 
@@ -211,6 +223,7 @@ export default function Search() {
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
 
+
                                                onChange={handleChange} value="CầuGiấy"/> Cầu Giấy
 
 
@@ -222,7 +235,6 @@ export default function Search() {
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
 
                                                onChange={handleChange} value="HàĐông"/> Hà Đông
-
 
 
                                     </label>
@@ -257,6 +269,8 @@ export default function Search() {
                                 <div>
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
+
+
                                                onChange={handleChange} value="1"/> 1 Year
 
 
@@ -266,6 +280,8 @@ export default function Search() {
                                 <div>
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
+
+
                                                onChange={handleChange} value="2"/> 2 Year
 
 
@@ -275,7 +291,8 @@ export default function Search() {
                                 <div>
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
-                                    onChange={handleChange} value="3"/> 3 Year
+
+                                               onChange={handleChange} value="3"/> 3 Year
 
 
                                     </label>
@@ -290,41 +307,50 @@ export default function Search() {
                                     <div className="col-md-6 py-5 mt-2">
                                         <div className="product-item">
                                             <a><img src={item.image}
-                                                            alt=""/></a>
+                                                    alt=""/></a>
                                             <div className="down-content">
                                                 <a href=""><h4>{item.title}</h4></a>
 
 
-                                                <h6 className="number" >{item.salary}$</h6>
+                                                <h6 className="number">{item.salary}$</h6>
 
-                                                <h4><small><i className="fa fa-briefcase"> </i>&nbsp;&nbsp;&nbsp;&nbsp;{item.position}
-                                                     <br/>
-                                                    <strong><i className="fa fa-building"></i>&nbsp;&nbsp;&nbsp;&nbsp; {item.workLocation}</strong>
-                                                <br/>
-                                                    <i className="fa fa-briefcase"> </i>&nbsp;&nbsp;&nbsp;&nbsp;{item.position}</small>
+                                                <h4><small><i
+                                                    className="fa fa-briefcase"> </i>&nbsp;&nbsp;&nbsp;&nbsp;{item.position}
+                                                    <br/>
+                                                    <strong><i
+                                                        className="fa fa-building"></i>&nbsp;&nbsp;&nbsp;&nbsp; {item.workLocation}
+                                                    </strong>
+                                                    <br/>
+                                                    <i className="fa fa-briefcase"> </i>&nbsp;&nbsp;&nbsp;&nbsp;{item.position}
+                                                </small>
                                                 </h4>
 
                                                 <samp className="container">
                                                     <tspan className="row">
                                                         <strong title="Posted on"><i
-                                                            className="fa fa-calendar"></i> {item.endTime}</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                                                            className="fa fa-calendar"></i> {item.endTime}
+                                                        </strong> &nbsp;&nbsp;&nbsp;&nbsp;
                                                         <strong title="Type"><i
-                                                            className="fa fa-file"></i> {item.status}</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                                                            className="fa fa-file"></i> {item.status}
+                                                        </strong> &nbsp;&nbsp;&nbsp;&nbsp;
                                                         <strong title="Location"><i
-                                                            className="fa fa-map-marker"></i> {item.workLocation}</strong>
+                                                            className="fa fa-map-marker"></i> {item.workLocation}
+                                                        </strong>
                                                     </tspan>
 
                                                 </samp>
-                                                <h4>Salary: ${item.salary}</h4>
+
 
                                                 <h4><small><i className="fa fa-briefcase"></i> {item.jobName} <br/>
-                                                    <strong><i className="fa fa-building"></i>{item.title}</strong></small></h4>
+                                                    <strong><i className="fa fa-building"></i>{item.title}
+                                                    </strong></small></h4>
 
                                                 <small>
                                                     <strong title="Posted on"><i
                                                         className="fa fa-calendar"></i> 15-06-2020</strong> &nbsp;&nbsp;&nbsp;&nbsp;
                                                     <strong title="Type"><i
-                                                        className="fa fa-file"></i> {item.workTime}</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                                                        className="fa fa-file"></i> {item.workTime}
+                                                    </strong> &nbsp;&nbsp;&nbsp;&nbsp;
                                                     <strong title="Location"><i
                                                         className="fa fa-map-marker"></i> {item.workLocation}</strong>
                                                 </small>
@@ -332,7 +358,9 @@ export default function Search() {
                                             </div>
                                         </div>
                                     </div>
+
                                 ))}
+
                                 <div className="col-md-12">
                                     <ul className="pages">
                                         <li><a href="#">1</a></li>

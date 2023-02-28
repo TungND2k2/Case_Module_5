@@ -13,7 +13,7 @@ export default function LoginUser() {
     };
     const handleSubmit = async (values) => {
         await dispatch(userLogin(values));
-        if (localStorage.getItem('status') === 'Wrong User' && 'Wrong Password') {
+        if (localStorage.getItem('status') === 'Wrong User' && 'Password is wrong') {
             alert('User or password incorrect')
             navigate(('/users/login'))
         } else {
@@ -35,26 +35,22 @@ export default function LoginUser() {
                         <div className="col-md-6 col-lg-4">
                             <div className="login-wrap p-0">
                                 <h3 className="mb-4 text-center">Have an account?</h3>
-                                <Formik initialValues={initialValuesAdd} onSubmit={(values)=>{
-                                handleSubmit(values).then()
-                                }
-                                }>
+                                <Formik initialValues={initialValuesAdd} onSubmit={handleSubmit}>
                                     <Form className="signin-form">
                                         <div className="form-group">
-                                            <Field type="text"  className="form-control" placeholder="Username"
-                                                   name="username" required />
-
+                                            <Field type="text" className="form-control" placeholder="Username"
+                                                   name="username" required/>
                                         </div>
                                         <div className="form-group">
                                             <Field id="password-field" type="password" className="form-control"
-                                                   name="userPassword "
+                                                   name="userPassword"
                                                    placeholder="Password" required/>
                                             <span toggle="#password-field"
                                                   className="fa fa-fw fa-eye field-icon toggle-password"></span>
                                         </div>
                                         <div className="form-group">
                                             <button type="submit"
-                                                    className="form-control btn btn-primary submit px-3">Sign In
+                                                    className="form-control btn btn-primary submit px-3">Login
                                             </button>
                                         </div>
                                         <div className="form-group d-md-flex">
@@ -65,8 +61,8 @@ export default function LoginUser() {
                                                 </label>
                                             </div>
                                             <div className="w-50 text-md-right">
-                                                <Link to="/users/register" style={{color: '#fff'}}>Register Now
-                                                    !!</Link>
+                                                <Link to="/register"> <a href="#" style={{color: '#fff'}}>Register Now
+                                                    !!</a></Link>
                                             </div>
                                         </div>
                                     </Form>
@@ -83,6 +79,8 @@ export default function LoginUser() {
                     </div>
                 </div>
             </section>
+
+
             </body>
         </>
     )
