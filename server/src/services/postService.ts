@@ -70,7 +70,11 @@ class PostService {
                 acc1[idPost].jobName.push(jobName);
             return acc1;
         }, {});
-        return Object.values(result);
+        let posts=[]
+        for (let i=Object.values(result).length-1; i>=Object.values(result).length-3; i--){
+            posts.push(Object.values(result)[i])
+        }
+        return posts;
     }
     countPosts = async () => {
         try {
@@ -146,19 +150,42 @@ class PostService {
             sql += `and experience like '%${req.query.experience}'`
         }
         let listJob = []
-        if (Array.isArray(req.query.jobName)){
-            listJob = req.query.jobName
-        }else {
-            listJob.push(req.query.jobName)
-        }
-        if (req.query.jobName !== undefined ) {
-            sql += `and jobName like (1=1)`
-            for (let i = 0; i < listJob.length; i++) {
-                sql+= `or jobName like '%${listJob[i]}'`
+        // if (Array.isArray(req.query.jobName)){
+        //     listJob = req.query.jobName
+        // }
+        // else if(req.query.jobName === undefined){
+        //     listJob = []
+        // }
+        // else {
+        //     listJob.push(req.query.jobName)
+        // }
+        if (req.query.jobName !== undefined){
+            if (Array.isArray(req.query.jobName)){
+                listJob = req.query.jobName
+                sql += `and (jobName like (1=1)`
+                for (let i = 0; i < listJob.length; i++) {
+                    sql+= `or jobName like '%${listJob[i]}'`
+                }
+                sql += `)`
+            }else {
+                listJob.push(req.query.jobName)
+                sql += `and (jobName like (1=1)`
+                for (let i = 0; i < listJob.length; i++) {
+                    sql+= `or jobName like '%${listJob[i]}'`
+                }
+                sql += `)`
             }
         }
+        // if (req.query.jobName !== undefined ) {
+        //     sql += `and (jobName like (1=1)`
+        //     for (let i = 0; i < listJob.length; i++) {
+        //         sql+= `or jobName like '%${listJob[i]}'`
+        //     }
+        //     sql += `)`
+        // }
 
         sql += `order by idPost DESC`
+        console.log(sql)
         let post = await this.postRepository.query(sql);
         const result = post.reduce((acc, {
             idPost,
@@ -201,10 +228,11 @@ class PostService {
         let listPost = []
         for (let i = 0; i < Object.values(result).length; i++) {
             // @ts-ignore
-            if (Object.values(result)[i].jobName.length === listJob.length){
+            if (Object.values(result)[i].jobName.length === listJob.length || listJob.length===0){
                 listPost.push(Object.values(result)[i])
             }
         }
+        console.log(listPost)
         let sql1 = `select idPost,
                           title,
                           salary,
@@ -274,7 +302,6 @@ class PostService {
                 }
             }
         }
-
         return searchPost;
     }
 }
