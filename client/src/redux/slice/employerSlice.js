@@ -14,7 +14,6 @@ const blogSlice = createSlice({
         });
         builder.addCase(login.fulfilled, (state, {payload}) => {
             state.employers = payload.data;
-            console.log(state.employers)
             localStorage.setItem("status",payload.data)
             if(state.employers!='Wrong User'&&state.employers != 'Wrong Password'){
                 localStorage.setItem("id_employer", payload.data.id_employer)

@@ -14,7 +14,7 @@ export default function LoginEmploy() {
     const handleSubmit = async (values) => {
         await dispatch(login(values));
         console.log(1,localStorage.getItem('status'))
-        if (localStorage.getItem('status') === 'Wrong User' || localStorage.getItem('status') === 'Wrong Password' || localStorage.getItem('status') === null || localStorage.getItem('status') === undefined) {
+        if (localStorage.getItem('status') === 'Wrong User' || localStorage.getItem('status') === 'Password is wrong' || localStorage.getItem('status') === null || localStorage.getItem('status') === undefined) {
             alert('User or password incorrect')
             navigate(('/login'))
 

@@ -31,9 +31,7 @@ export default function Header() {
                                     <li className="nav-item"><a className="nav-link" href="">Jobs</a></li>
                                 </Link>
 
-                                <Link to="/add-post">
-                                    <li className="nav-item"><a className="nav-link" href="">Create Post</a></li>
-                                </Link>
+
 
                                 {((showEmployer === null && (showUser === true || showUser === null)) || (showEmployer === true && (showUser === true || showUser === null))) && <>
                                     <Link to="/login">
@@ -46,6 +44,9 @@ export default function Header() {
                                 </>}
 
                                 {(showEmployer === 'false' || showEmployer === false) && <>
+                                    <Link to="/add-post">
+                                        <li className="nav-item"><a className="nav-link" href="">Create Post</a></li>
+                                    </Link>
                                     <li className="nav-item"><a className="nav-link"
                                                                 href="">{localStorage.getItem('employerName')}</a></li>
                                 </>}

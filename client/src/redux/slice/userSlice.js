@@ -16,12 +16,18 @@ const blogSlice = createSlice({
         });
         builder.addCase(userLogin.fulfilled, (state, {payload}) => {
             state.user = payload.data;
-            localStorage.setItem("isUser", payload.data.idUser)
-            localStorage.setItem("access_token", payload.data.token)
+            console.log(state.user)
             localStorage.setItem("status",payload.data)
-            localStorage.setItem("nameUser",payload.data.username)
-            state.userShow=false
-            localStorage.setItem('userShow',state.userShow)
+            if(state.user!='User is not exit'&&state.user!='Password is wrong')
+            {
+                localStorage.setItem("isUser", payload.data.idUser)
+                localStorage.setItem("access_token", payload.data.token)
+                localStorage.setItem("status",payload.data)
+                localStorage.setItem("nameUser",payload.data.username)
+                state.userShow=false
+                localStorage.setItem('userShow',state.userShow)
+            }
+
         });
         builder.addCase(userLogout.fulfilled,(state,{payload})=>{
             state.userShow = true

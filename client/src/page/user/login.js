@@ -12,8 +12,9 @@ export default function LoginUser() {
         userPassword: "",
     };
     const handleSubmit = async (values) => {
+        console.log(localStorage.getItem('status'))
         await dispatch(userLogin(values));
-        if (localStorage.getItem('status') === 'Wrong User' && 'Password is wrong') {
+        if (localStorage.getItem('status') == 'User is not exit' &&localStorage.getItem('status')== 'Password is wrong'||localStorage.getItem('status')==null||localStorage.getItem('status')==undefined) {
             alert('User or password incorrect')
             navigate(('/users/login'))
         } else {
