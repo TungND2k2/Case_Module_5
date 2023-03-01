@@ -38,12 +38,13 @@ const Edit = () => {
     const handleEdit = (values) => {
         let data = [{...values}, id];
         dispatch(editPost(data)).then(() => {
-            dispatch(getPosts()).then(()=>{
+            dispatch(getPosts()).then(() => {
                 navigate('/home');
             })
         })
 
     }
+    let idEmployer = localStorage.getItem('id_employer')
     useEffect(() => {
         dispatch(searchPost(id))
     }, []);
@@ -66,11 +67,10 @@ const Edit = () => {
                                 status: posts.status,
                                 image: posts.image,
                                 title: posts.title,
-                                idEmployer: posts.idEmployer,
-                                idJob: posts.idJob
+                                idEmployer: idEmployer,
+                                jobId: posts.jobId
                             }}
-                                    onSubmit = {(values) => {
-                                        console.log(values)
+                                    onSubmit={(values) => {
                                         handleEdit(values)
                                     }}
                                     enableReinitialize={true}>
@@ -79,7 +79,7 @@ const Edit = () => {
                                         <div className="mb-3 col-lg-6 col-md-6 col-12">
                                             <label className="form-label">salary</label>
                                             <Field type="text" name="salary"
-                                                   className="form-control"/>
+                                                   className="form-control text-dark border-dark"/>
                                         </div>
                                         <div className="mb-3 mb-3 col-lg-6 col-md-6 col-12">
                                             <label className="form-label">workLocation</label>
@@ -136,13 +136,13 @@ const Edit = () => {
                                         </div>
                                         <div className="mb-3 mb-3 col-lg-12 col-md-12 col-12">
                                             <label className="form-label">idJob</label>
-                                            <Field name='idJob'
+                                            <Field name='jobId'
                                                    className="form-control"/>
                                         </div>
                                         <div className="mb-3 mb-3 col-lg-12 col-md-12 col-12">
                                             <label className="form-label">Description</label>
                                             <Field name='description'
-                                                      className="form-control" cols='30' rows='4'></Field>
+                                                   className="form-control" cols='30' rows='4'></Field>
                                         </div>
                                         <button type="submit" className="btn btn-primary">Submit</button>
                                     </div>
