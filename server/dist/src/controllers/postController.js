@@ -50,6 +50,7 @@ class PostController {
                     description: req.body.description
                 };
                 let editPost = await this.postServices.update(id, post);
+                console.log(post);
                 res.status(200).json({ ok: editPost, message: 'Success!' });
             }
             catch (e) {

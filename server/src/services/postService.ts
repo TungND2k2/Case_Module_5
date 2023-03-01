@@ -59,6 +59,7 @@ class PostService {
         if (!post) {
             return null;
         }
+        console.log(post)
         return this.postRepository.update({idPost: id}, newPost);
 
     }

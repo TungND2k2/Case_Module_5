@@ -3,32 +3,16 @@ import {useLocation, useNavigate, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {editPost, getPosts, searchPost} from "../../service/postService";
 import {Field, Form, Formik} from "formik";
+import {getDownloadURL, ref, uploadBytesResumable} from "firebase/storage";
+import {storage} from "../../service/fireBase";
 
 const Edit = () => {
-    // const [input, setInput] = useState({
-    //     salary: '',
-    //     workLocation: '',
-    //     position: '',
-    //     experience: '',
-    //     workTime: '',
-    //     endTime: '',
-    //     description: '',
-    //     recruitmentsNumber: '',
-    //     status: '',
-    //     image: '',
-    //     title: '',
-    //     idEmployer: '',
-    //     idJob: ''
-    // });
-    // const setData = (e) => {
-    //     const {name, value} = e.target;
-    //     setInput((prevail) => {
-    //         return {
-    //             ...prevail,
-    //             [name]: value
-    //         }
-    //     })
-    // }
+    const [images, setImages] = useState([]);
+
+    const [urls, setUrls] = useState([]);
+
+    const [progress, setProgress] = useState(0);
+
     const navigate = useNavigate();
     let {id} = useParams()
     const dispatch = useDispatch();
@@ -42,15 +26,53 @@ const Edit = () => {
                 navigate('/home');
             })
         })
+    }
+    const handleUpload = () => {
+        const promises = [];
+        if (images.length > 0) {
+            images.map((image) => {
+                const storageRef = ref(storage, `images/${image.name}`);
+                const uploadTask = uploadBytesResumable(storageRef, image);
+                promises.push(uploadTask);
+                uploadTask.on(
+                    "state_changed",
+                    (snapshot) => {
+                        const progress = Math.round(
+                            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                        );
+                        setProgress(progress);
+                    },
+                    (error) => {
+                        console.log(error);
+                    },
+                    async () => {
+                        await getDownloadURL(uploadTask.snapshot.ref).then((downloadURLs) => {
+                            setUrls(prevState => [...prevState, downloadURLs])
+                            console.log("File available at", downloadURLs);
+                        });
+                    }
+                );
+            });
+        }
+        Promise.all(promises)
+            .then(() => alert("All images uploaded"))
+            .catch((err) => console.log(err));
 
     }
+    const handleChange = (e) => {
+        for (let i = 0; i < e.target.files.length; i++) {
+            const newImage = e.target.files[i];
+            newImage["id"] = Math.random();
+            setImages((prevState) => [...prevState, newImage]);
+        }
+    };
     let idEmployer = localStorage.getItem('id_employer')
     useEffect(() => {
         dispatch(searchPost(id))
     }, []);
     return (
         <>
-            <body className="img js-fullheight">
+            <body className="img js-fullheight" >
             <div className="container mt-2 py-5">
                 <div className="container mt-2 form-group">
                     <div className="row mt-2 ">
@@ -71,10 +93,11 @@ const Edit = () => {
                                 jobId: posts.jobId
                             }}
                                     onSubmit={(values) => {
+                                        values.image = urls[urls.length-1]
                                         handleEdit(values)
                                     }}
                                     enableReinitialize={true}>
-                                <Form className="mt-5 container py-5">
+                                <Form className="mt-5 container py-5 ">
                                     <div className="row">
                                         <div className="mb-3 col-lg-6 col-md-6 col-12">
                                             <label className="form-label">salary</label>
@@ -121,8 +144,18 @@ const Edit = () => {
                                         </div>
                                         <div className="mb-3 mb-3 col-lg-12 col-md-12 col-12">
                                             <label className="form-label">image</label>
-                                            <Field name='image'
-                                                   className="form-control"/>
+                                            <br/>
+                                            {urls.map(item => (
+                                                <>
+                                                    <img src={item} alt="" style={{width: 50}}/></>
+                                            ))}
+                                            <br/>
+                                            <input type='file' name="image" onChange={handleChange}>
+                                            </input>
+                                            <button className="btn btn-outline-success" style={{marginRight: 10}} type='button'
+                                                    onClick={handleUpload}>Up
+                                            </button>
+
                                         </div>
                                         <div className="mb-3 mb-3 col-lg-12 col-md-12 col-12">
                                             <label className="form-label">title</label>
