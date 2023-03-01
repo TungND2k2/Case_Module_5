@@ -57,6 +57,11 @@ export default function Header() {
                                 {(showEmployer === 'false' || showEmployer === false) && <>
                                     <Link to="/add-post"> <a className="nav-link" href="">Add Post
                                         <span className="sr-only"></span>
+
+                                    </a></Link>
+                                    <Link to="/posts"> <a className="nav-link" href="">list Post
+                                        <span className="sr-only"></span>
+
                                     </a></Link>
                                     <li className="nav-item"><a className="nav-link" href="">{localStorage.getItem('employerName')}</a></li>
                                 </>}

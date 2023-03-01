@@ -74,12 +74,12 @@ const Edit = () => {
     useEffect(() => {
         dispatch(searchPost(id))
     }, []);
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(getJobs())
-    },[])
+    }, [])
     return (
         <>
-            <body className="img js-fullheight" >
+            <body className="img js-fullheight">
             <div className="container mt-2 py-5">
                 <div className="container mt-2 form-group">
                     <div className="row mt-2 ">
@@ -97,10 +97,10 @@ const Edit = () => {
                                 image: posts.image,
                                 title: posts.title,
                                 idEmployer: idEmployer,
-                                jobId: []
+                                job: []
                             }}
                                     onSubmit={(values) => {
-                                        values.image = urls[urls.length-1]
+                                        values.image = urls[urls.length - 1]
                                         handleEdit(values)
                                     }}
                                     enableReinitialize={true}>
@@ -108,7 +108,7 @@ const Edit = () => {
                                     <div className="row">
                                         <div className="mb-3 col-lg-6 col-md-6 col-12">
                                             <label className="form-label">salary</label>
-                                            <Field type="text" name="salary"
+                                            <Field type="number" name="salary"
                                                    className="form-control border-dark"/>
                                         </div>
                                         <div className="mb-3 mb-3 col-lg-6 col-md-6 col-12">
@@ -159,7 +159,8 @@ const Edit = () => {
                                             <br/>
                                             <input type='file' name="image" onChange={handleChange}>
                                             </input>
-                                            <button className="btn btn-outline-success" style={{marginRight: 10}} type='button'
+                                            <button className="btn btn-outline-success" style={{marginRight: 10}}
+                                                    type='button'
                                                     onClick={handleUpload}>Up
                                             </button>
 
@@ -170,23 +171,23 @@ const Edit = () => {
                                                    className="form-control border-dark"/>
                                         </div>
                                         <div className="mb-3 mb-3 col-lg-12 col-md-12 col-12">
-                                            <label className="form-label">idEmployer</label>
-                                            <Field name='idEmployer'
-                                                   className="form-control border-dark"/>
-                                        </div>
-                                        <div className="mb-3 mb-3 col-lg-12 col-md-12 col-12">
                                             <label className="form-label">Description</label>
                                             <Field name='description'
                                                    className="form-control border-dark" cols='30' rows='4'></Field>
                                         </div>
+                                        <div className="mb-3 mb-3 col-lg-12 col-md-12 col-12">
+                                            <Field name='idEmployer' style={{visibility:" hidden"}}
+                                                   className="form-control border-dark"/>
+                                        </div>
                                         <div id="checkbox-group"></div>
-                                        <div role="group" aria-labelledby="checkbox-group" style={{display:'flex', justifyContent:"space-evenly", flex:'1'}}>
+                                        <div role="group" aria-labelledby="checkbox-group"
+                                             style={{display: 'flex', justifyContent: "space-evenly", flex: '1'}}>
                                             {
                                                 jobs.map((item) => (
-                                                    <label style={{marginLeft:'30px', marginRight:'95px'}}>
+                                                    <label style={{marginLeft: '30px', marginRight: '95px'}}>
 
-                                                        <Field type="checkbox" name="jobId" value= {''+(item.jobId)} />
-                                                        <h5 style={{padding:'-30px'}}>{item.jobName} &nbsp;&nbsp;&nbsp;&nbsp;</h5>
+                                                        <Field type="checkbox" name="job"  value={'' + (item.jobId)}/>
+                                                        <h5 style={{padding: '-30px'}}>{item.jobName} &nbsp;&nbsp;&nbsp;&nbsp;</h5>
 
                                                     </label>
                                                 ))

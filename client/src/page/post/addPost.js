@@ -107,54 +107,60 @@ export default function AddPosts() {
                                 <Form className="mt-5 container py-5">
                                     <div className="row">
                                         <div className="mb-3 col-lg-6 col-md-6 col-12">
-                                            <label htmlFor="exampleInputEmail1">Salary</label>
-                                            <Field type="number" className={'form-control'} name={'salary'}/>
+                                            <label className="form-label">Salary</label>
+                                            <Field type="number" className="form-control border-dark" name={'salary'}/>
                                         </div>
                                         <div className="mb-3 mb-3 col-lg-6 col-md-6 col-12">
-                                            <label htmlFor="exampleInputPassword1">workLocation</label>
-                                            <Field type="text" className={'form-control'} name={'workLocation'}/>
+                                             <label className="form-label">workLocation</label>
+                                            <Field type="text" className="form-control border-dark" name={'workLocation'}/>
 
                                         </div>
                                         <div className="mb-3 mb-3 col-lg-6 col-md-6 col-12">
-                                            <label htmlFor="exampleInputPassword1">Position</label>
-                                            <Field type="text" className={'form-control'} name={'position'}/>
+                                             <label className="form-label">Position</label>
+                                            <Field type="text" className="form-control border-dark" name={'position'}/>
 
                                         </div>
                                         <div className="mb-3 mb-3 col-lg-6 col-md-6 col-12">
-                                            <label htmlFor="exampleInputPassword1">Experience</label>
-                                            <Field type="text" className={'form-control'} name={'experience'}/>
+                                             <label className="form-label">Experience</label>
+                                            <Field type="text" className="form-control border-dark" name={'experience'}/>
                                         </div>
                                         <div className="mb-3 mb-3 col-lg-6 col-md-6 col-12">
-                                            <label htmlFor="exampleInputPassword1">WorkTime</label>
-                                            <Field type="text" className={'form-control'} name={'workTime'}/>
+                                             <label className="form-label">WorkTime</label>
+                                            <Field type="text" className="form-control border-dark" name={'workTime'}/>
                                         </div>
                                         <div className="mb-3 mb-3 col-lg-6 col-md-6 col-12">
-                                            <label htmlFor="exampleInputPassword1">End time</label>
-                                            <Field type="date" className={'form-control'} name={'endTime'}/>
+                                             <label className="form-label">End time</label>
+                                            <Field type="date" className="form-control border-dark" name={'endTime'}/>
                                         </div>
 
                                         <div className="mb-3 mb-3 col-lg-6 col-md-6 col-12">
-                                            <label htmlFor="exampleInputPassword1">Recruitments Number</label>
-                                            <Field type="number" className={'form-control'}
+                                             <label className="form-label">Recruitments Number</label>
+                                            <Field type="number" className="form-control border-dark"
                                                    name={'recruitmentsNumber'}/>
                                         </div>
                                         <div className="mb-3 mb-3 col-lg-6 col-md-6 col-12">
-                                            <label htmlFor="exampleInputPassword1">Status</label>
-                                            <Field type="text" className={'form-control'} name={'status'}/>
+                                             <label className="form-label">Status</label>
+                                            <Field type="text" className="form-control border-dark" name={'status'}/>
                                         </div>
                                         <div className="mb-3 mb-3 col-lg-6 col-md-6 col-12">
-                                            <label htmlFor="exampleInputPassword1">Title</label>
-                                            <Field type="text" className={'form-control'} name={'title'}/>
+                                             <label className="form-label">Title</label>
+                                            <Field type="text" className="form-control border-dark" name={'title'}/>
                                         </div>
-                                        <div className="ml-3 form-group">
-                                            <label htmlFor="exampleInputPassword">Image</label>
+
+                                        <div className="mb-3 mb-3 col-lg-12 col-md-12 col-12">
+                                            <label className="form-label">Description</label>
+                                            <textarea name='description'
+                                                      className="form-control border-dark" cols='30' rows='4'></textarea>
+                                        </div>
+                                        <div className="mb-3 mb-3 col-lg-12 col-md-12 col-12">
+                                            <label className="form-label">image</label>
                                             <br/>
                                             {urls.map(item => (
                                                 <>
                                                     <img src={item} alt="" style={{width: 50}}/></>
                                             ))}
                                             <br/>
-                                            <input type='file' onChange={handleChange}>
+                                            <input type='file' name="image" onChange={handleChange}>
                                             </input>
                                             <button className="btn btn-outline-success" style={{marginRight: 10}}
                                                     type='button'
@@ -162,22 +168,21 @@ export default function AddPosts() {
                                             </button>
 
                                         </div>
-                                        <div className="mb-3 mb-3 col-lg-12 col-md-12 col-12">
-                                            <label className="form-label">Description</label>
-                                            <textarea name='description'
-                                                      className="form-control" cols='30' rows='4'></textarea>
-                                        </div>
                                         <div id="checkbox-group">Choose Job : &nbsp;&nbsp;&nbsp;&nbsp; </div>
-                                        <div role="group" aria-labelledby="checkbox-group">
+                                        <div role="group" aria-labelledby="checkbox-group"
+                                             style={{display: 'flex', justifyContent: "space-evenly", flex: '1'}}>
                                             {
-                                                jobs && jobs.map((item) => (
-                                                    <label>
-                                                        <Field type="checkbox" name="job" value={'' + item.jobId}/>
-                                                        {item.jobName} &nbsp;&nbsp;&nbsp;&nbsp;
+                                                jobs.map((item) => (
+                                                    <label style={{marginLeft: '30px', marginRight: '95px'}}>
+
+                                                        <Field type="checkbox" name="job"  value={'' + (item.jobId)}/>
+                                                        <h5 style={{padding: '-30px'}}>{item.jobName} &nbsp;&nbsp;&nbsp;&nbsp;</h5>
+
                                                     </label>
                                                 ))
                                             }
                                         </div>
+
                                         <button type="submit" className="btn btn-primary">Add</button>
                                     </div>
                                 </Form>)}
