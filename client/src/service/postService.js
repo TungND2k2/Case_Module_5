@@ -30,7 +30,7 @@ export const searchPost = createAsyncThunk (
     'post/searchPost',
     async (a) => {
         const response = await axios.get(`http://localhost:4000/posts/search?idPost=${a}`);
-        return response.data;
+        return response.data.posts[0];
     }
 )
 

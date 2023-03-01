@@ -82,7 +82,7 @@ class PostController {
                 }
                 let totalPosts = await this.postServices.countPosts();
                 const countNumber = parseInt(totalPosts[0]['count(idPost)']);
-                const posts = await postService_1.default.search(req, res, limit, offset);
+                const posts = await postService_1.default.search(req, res);
                 let totalPage = Math.ceil(countNumber / limit);
                 return res.status(200).json({
                     posts: posts,

@@ -19,17 +19,15 @@ const postSlice = createSlice({
             state.search = payload.data;
         });
         builder.addCase(editPost.fulfilled, (state, {payload}) => {
-            console.log(state)
-            console.log(payload[0])
             state.post = payload[0];
 
         });
         builder.addCase(searchPost.fulfilled, (state, action) => {
             state.post = action.payload;
         });
-        builder.addCase(deletePost.fulfilled, (state, action) => {
-            state.post = action.payload;
-        });
+        // builder.addCase(deletePost.fulfilled, (state, action) => {
+        //     state.post = action.payload;
+        // });
     }
 })
 export default postSlice.reducer;

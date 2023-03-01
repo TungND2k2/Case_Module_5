@@ -14,12 +14,14 @@ const blogSlice = createSlice({
         });
         builder.addCase(login.fulfilled, (state, {payload}) => {
             state.employers = payload.data;
-            localStorage.setItem("id_employer", payload.data.id_employer)
-            localStorage.setItem("access_token", payload.data.token)
             localStorage.setItem("status",payload.data)
-            localStorage.setItem("employerName",payload.data.employerName)
-            state.employerShow=false
-            localStorage.setItem('employerShow',state.employerShow)
+            if(state.employers!='Wrong User'&&state.employers != 'Wrong Password'){
+                localStorage.setItem("id_employer", payload.data.id_employer)
+                localStorage.setItem("access_token", payload.data.token)
+                localStorage.setItem("employerName",payload.data.employerName)
+                state.employerShow=false
+                localStorage.setItem('employerShow',state.employerShow)
+            }
         });
         builder.addCase(logout.fulfilled,(state,{payload})=>{
             state.employerShow=true

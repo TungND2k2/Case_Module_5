@@ -70,7 +70,13 @@ class PostService {
                 acc1[idPost].jobName.push(jobName);
             return acc1;
         }, {});
-        return Object.values(result);
+        let posts=[]
+        for (let i=Object.values(result).length-1; i>=Object.values(result).length-3; i--){
+            if (Object.values(result)[i]!==null&&Object.values(result)[i]!==undefined){
+                posts.push(Object.values(result)[i])
+            }
+        }
+        return posts;
     }
     countPosts = async () => {
         try {
@@ -104,7 +110,7 @@ class PostService {
             return this.postRepository.delete({idPost: id});
         }
     }
-    search = async (req: Request, res: Response, limit, offset) => {
+    search = async (req: Request, res: Response) => {
         console.log(req.query)
         let sql = `select idPost,
                           title,
@@ -223,7 +229,6 @@ class PostService {
             return acc;
         }, {});
         let listPost = []
-        console.log(listJob)
         for (let i = 0; i < Object.values(result).length; i++) {
             // @ts-ignore
             if (Object.values(result)[i].jobName.length === listJob.length || listJob.length===0){
@@ -231,7 +236,6 @@ class PostService {
             }
         }
         console.log(listPost)
-        ////////////////////////////////////////////////////////////////////////////////////////
         let sql1 = `select idPost,
                           title,
                           salary,

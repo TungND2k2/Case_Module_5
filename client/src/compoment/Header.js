@@ -2,19 +2,10 @@ import {Link, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {logout} from "../service/employerService";
 import {userLogout} from "../service/userServices";
-import {useEffect, useState} from "react";
 
 export default function Header() {
     let showUser = localStorage.getItem("userShow")
     let showEmployer = localStorage.getItem("employerShow")
-    // let showEmployer=useSelector(state => {
-    //     return state.employ.employerShow
-    //
-    // })
-    // let showUser=useSelector(state => {
-    //     return state.user.userShow
-    // })
-
     const dispatch = useDispatch();
     const navigate = useNavigate();
     return (
@@ -40,20 +31,9 @@ export default function Header() {
                                     <li className="nav-item"><a className="nav-link" href="">Jobs</a></li>
                                 </Link>
 
-                                <li className="nav-item"><a className="nav-link" href="">About us</a></li>
 
-                                <li className="nav-item"><a className="nav-link" href="">Blog</a></li>
 
-                                <li className="nav-item dropdown">
-                                    <a className="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
-                                       role="button" aria-haspopup="true" aria-expanded="false">More</a>
 
-                                    <div className="dropdown-menu">
-                                        <a className="dropdown-item" href="">Team</a>
-                                        <a className="dropdown-item" href="">Testimonials</a>
-                                        <a className="dropdown-item" href="">Terms</a>
-                                    </div>
-                                </li>
                                 {((showEmployer === null && (showUser === true || showUser === null)) || (showEmployer === true && (showUser === true || showUser === null))) && <>
                                     <Link to="/login">
                                         <li className="nav-item"><a className="nav-link" href="">Sign In Employer</a>
@@ -65,19 +45,24 @@ export default function Header() {
                                 </>}
 
                                 {(showEmployer === 'false' || showEmployer === false) && <>
+                                    <Link to="/add-post">
+                                        <li className="nav-item"><a className="nav-link" href="">Create Post</a></li>
+                                    </Link>
+                                    <li className="nav-item"><Link to={"/posts"} className="nav-link" >List</Link></li>
                                     <li className="nav-item"><a className="nav-link"
                                                                 href="">{localStorage.getItem('employerName')}</a></li>
                                 </>}
                                 {(showUser === 'false' || showUser === false) && <>
+
                                     <li className="nav-item"><a className="nav-link"
                                                                 href="">{localStorage.getItem('nameUser')}</a></li>
                                 </>}
                                 {(showEmployer === 'false' || showEmployer === false) && <>
 
-                                    <li className="nav-item" onClick={() => {
-                                        dispatch(logout() || userLogout())
-                                        localStorage.clear()
-                                    }}><a className="nav-link" href="">logout</a></li>
+                                        <li className="nav-item" onClick={()=>{
+                                            dispatch(logout())
+                                            localStorage.clear()
+                                        }}><a className="nav-link" href="">logout</a></li>
                                 </>}
                                 {(showUser === 'false' || showUser === false) && <>
                                     <li className="nav-item" onClick={() => {

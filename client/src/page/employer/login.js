@@ -13,7 +13,8 @@ export default function LoginEmploy() {
     };
     const handleSubmit = async (values) => {
         await dispatch(login(values));
-        if (localStorage.getItem('status') === 'Wrong User' && 'Wrong Password') {
+        console.log(1,localStorage.getItem('status'))
+        if (localStorage.getItem('status') === 'Wrong User' || localStorage.getItem('status') === 'Password is wrong' || localStorage.getItem('status') === null || localStorage.getItem('status') === undefined) {
             alert('User or password incorrect')
             navigate(('/login'))
 
@@ -24,7 +25,8 @@ export default function LoginEmploy() {
 
     return (
         <>
-            <body className="img js-fullheight" style={{backgroundImage: 'url(images/bg.jpg', width : "auto",height : "900px"}}>
+            <body className="img js-fullheight"
+                  style={{backgroundImage: 'url(images/bg.jpg', width: "auto", height: "900px"}}>
             <section className="ftco-section">
                 <div className="container">
                     <div className="row justify-content-center">
@@ -72,7 +74,7 @@ export default function LoginEmploy() {
                                 <p className="w-100 text-center">&mdash; Or Sign In With &mdash;</p>
                                 <div className="social d-flex text-center">
                                     <a href="#" className="px-2 py-2 mr-md-1 rounded"><span
-                                        className="ion-logo-facebook mr-2"></span> Facebook</a>
+                                        className="ion-logo-facebook mr-2"></span> Google</a>
                                     <a href="#" className="px-2 py-2 ml-md-1 rounded"><span
                                         className="ion-logo-twitter mr-2"></span> Twitter</a>
                                 </div>
