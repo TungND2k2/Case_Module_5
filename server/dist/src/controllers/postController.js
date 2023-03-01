@@ -67,8 +67,8 @@ class PostController {
         };
         this.delete = async (req, res) => {
             let id = req.params.id;
-            await this.postServices.delete(id);
-            await this.jobDetailServices.remove(id);
+            await this.postServices.remove(id);
+            await this.jobDetailServices.removeJobDetail(id);
             res.status(200).json('Success!');
         };
         this.search = async (req, res) => {

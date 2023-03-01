@@ -75,8 +75,8 @@ class PostController {
     }
     delete = async (req: Request, res: Response) => {
         let id = req.params.id;
-        await this.postServices.delete(id);
-        await this.jobDetailServices.remove(id);
+        await this.postServices.remove(id);
+        await this.jobDetailServices.removeJobDetail(id);
         res.status(200).json('Success!')
     }
     search = async (req: Request, res: Response) => {
@@ -90,7 +90,7 @@ class PostController {
             }
             let totalPosts =  await this.postServices.countPosts();
             const countNumber = parseInt(totalPosts[0]['count(idPost)']);
-            const  posts = await postServices.search(req,res,limit, offset);
+            const  posts = await postServices.search(req,res);
             let totalPage = Math.ceil(countNumber / limit);
             return res.status(200).json({
                 posts: posts,
