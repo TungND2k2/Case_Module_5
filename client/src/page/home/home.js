@@ -50,7 +50,7 @@ export default function Home() {
                         {post.map((item) => (
                                 <div className="col-md-4">
                                     <div className="product-item">
-                                        <a href=""><img src="/assets/images/product-1-370x270.jpg" alt=""/></a>
+                                        <a href=""><img style={{width:'350px',height:'255px'}} src="/assets/images/product-1-370x270.jpg" alt=""/></a>
                                         <div className="down-content">
                                             <a href=""><h4>Lorem ipsum dolor sit amet</h4></a>
 

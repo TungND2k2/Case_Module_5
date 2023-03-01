@@ -315,7 +315,7 @@ export default function Search() {
                                 {posts !== undefined && posts.map((item) => (
                                     <div className="col-md-6 py-5 mt-2">
                                         <div className="product-item">
-                                            <a><img src="/assets/images/product-1-370x270.jpg"
+                                            <a><img style={{width:'396px',height:'289px'}} src="/assets/images/product-1-370x270.jpg"
                                                     alt=""/></a>
                                             <div className="down-content">
                                                 <a href=""><h4>{item.title}</h4></a>
