@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 declare class PostService {
     private postRepository;
     constructor();
-    getAll: () => Promise<unknown[]>;
+    getAll: () => Promise<any[]>;
     countPosts: () => Promise<any>;
     save: (post: any) => Promise<any>;
     update: (id: any, newPost: any) => Promise<any>;

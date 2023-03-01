@@ -42,7 +42,6 @@ export const search = createAsyncThunk (
 //     'blogs/deleteBlogs',
 //     async (id)=>{
 //         const r = await customAxios.delete(`blogs/${id}`)
-//         console.log(r)
 //         const res = await customAxios.get('blogs')
 //         return res.data;
 //     }

@@ -7,6 +7,7 @@ import {Link} from "react-router-dom";
 export default function Home() {
     const dispatch = useDispatch()
     let post = useSelector(state => {
+        console.log(state.post.post)
         return state.post.post
     })
     useEffect(() => {
