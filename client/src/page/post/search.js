@@ -37,7 +37,6 @@ export default function Search() {
     }
 
 
-
     const searchParams = new URLSearchParams();
     useEffect(() => {
         for (let i = 0; i < checkedValues.length; i++) {
@@ -71,7 +70,7 @@ export default function Search() {
                 case '3':
                     name = 'experience';
                     break;
-                default :
+                case'All' :
                     name = '';
                     break;
             }
@@ -110,6 +109,14 @@ export default function Search() {
                     <div className="row">
                         <div className="col-md-3">
                             <div className="contact-form">
+
+                                <div>
+                                    <label>
+                                        <input type="checkbox" style={{height: "20px", width: "20px"}}
+                                               onChange={handleChange} value="All"/> All
+
+                                    </label>
+                                </div>
                                 <h5 style={{marginBottom: '15px'}}>Word Time</h5>
 
                                 <div>
@@ -247,7 +254,6 @@ export default function Search() {
                                                onChange={handleChange} value="HàĐông"/> Hà Đông
 
 
-
                                     </label>
                                 </div>
 
@@ -295,7 +301,7 @@ export default function Search() {
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
 
-                                    onChange={handleChange} value="3"/> 3 Year
+                                               onChange={handleChange} value="3"/> 3 Year
 
 
                                     </label>
@@ -310,16 +316,17 @@ export default function Search() {
                                     <div className="col-md-6 py-5 mt-2">
                                         <div className="product-item">
                                             <a><img src="/assets/images/product-1-370x270.jpg"
-                                                            alt=""/></a>
+                                                    alt=""/></a>
                                             <div className="down-content">
                                                 <a href=""><h4>{item.title}</h4></a>
                                                 <h4>${item.salary}</h4>
 
                                                 <h4><small><i
-                                                    className="fa fa-briefcase"></i> {item.jobName}/{item.position}
-                                                    <br/>
-                                                    <strong><i className="fa fa-building"></i>{item.title}
-                                                    </strong></small></h4>
+                                                    className="fa fa-briefcase"></i> {item.jobName+ ' '}<br/>
+                                                    <i
+                                                        className="fa fa-briefcase"></i> {item.position}<br/>
+                                                    <strong><i
+                                                        className="fa fa-building"></i> {item.title}</strong></small></h4>
                                                 <small>
                                                     <strong title="Posted on"><i
                                                         className="fa fa-calendar"></i> 15-06-2020</strong> &nbsp;&nbsp;&nbsp;&nbsp;
