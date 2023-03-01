@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {addPosts, getPosts, search, editPost, searchPost} from "../../service/postService";
+import {addPosts, getPosts, search, editPost, searchPost,deletePost} from "../../service/postService";
 const initialState = {
     post: [],
     search: [],

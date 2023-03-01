@@ -1,18 +1,26 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {getPosts} from "../../service/postService";
-import {Link} from "react-router-dom";
+import {getPosts,deletePost} from "../../service/postService";
+import {Link, useNavigate} from "react-router-dom";
+import swal from 'sweetalert';
 // import Edit from "../post/editPost";
 
 export default function Home() {
     const dispatch = useDispatch()
     let post = useSelector(state => {
-        console.log(state.post.post)
         return state.post.post
     })
     useEffect(() => {
         dispatch(getPosts());
     }, []);
+    const navigate = useNavigate()
+    const handleDelete = async (id) => {
+        dispatch(deletePost(id)).then(()=>(
+            dispatch(getPosts()).then(()=>{
+                navigate('/home')
+            })
+        ))
+    }
     return (
         <>
             <div className="banner header-text">
@@ -71,6 +79,32 @@ export default function Home() {
                                                 <strong title="Location"><i
                                                     className="fa fa-map-marker"></i> {item.workLocation}</strong>
                                             </small>
+                                            <div className="container">
+                                                <Link to={`/posts/${item.idPost}`}>
+                                                    <button className="btn btn-primary mt-2">Edit</button>
+                                                </Link>
+                                                <button className="btn btn-danger mt-2" onClick={()=>{
+                                                    swal({
+                                                        title: "Are you sure?",
+                                                        text: "Once deleted, you will not be able to recover this imaginary file!",
+                                                        icon: "warning",
+                                                        buttons: true,
+                                                        dangerMode: true,
+                                                    })
+                                                        .then((willDelete) => {
+                                                            console.log(item)
+                                                            if (willDelete) {
+                                                                swal("Poof! Your imaginary file has been deleted!", {
+                                                                    icon: "success",
+                                                                }).then(() => {
+                                                                    handleDelete(item.idPost)
+                                                                });
+                                                            } else {
+                                                                swal("Your imaginary file is safe!")
+                                                            }
+                                                        });
+                                                }}>Delete</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

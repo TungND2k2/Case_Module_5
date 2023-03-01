@@ -19,8 +19,10 @@ export const addPosts = createAsyncThunk (
 export const editPost = createAsyncThunk (
     'posts/editPost',
     async (data) => {
+        console.log(data)
         await axios.put('http://localhost:4000/posts/'+ data[1],data[0]);
         const response = await axios.get('http://localhost:4000/posts');
+        console.log(response)
         return response.data;
     }
 )
@@ -38,11 +40,12 @@ export const search = createAsyncThunk (
         return await axios.get('http://localhost:4000/posts/search?' + search);
     }
 )
-// export const deletePosts = createAsyncThunk(
-//     'blogs/deleteBlogs',
-//     async (id)=>{
-//         const r = await customAxios.delete(`blogs/${id}`)
-//         const res = await customAxios.get('blogs')
-//         return res.data;
-//     }
-// )
+export const deletePost = createAsyncThunk(
+    'blogs/deleteBlogs',
+    async (id)=>{
+        console.log(id)
+        await axios.delete(`http://localhost:4000/posts/${id}`)
+        const res = await axios.get('http://localhost:4000/posts')
+        return res.data;
+    }
+)
