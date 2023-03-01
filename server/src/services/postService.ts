@@ -92,6 +92,7 @@ class PostService {
         }
 
         newPost.idPost = id;
+
         return this.postRepository.update({idPost: id}, newPost);
 
     }

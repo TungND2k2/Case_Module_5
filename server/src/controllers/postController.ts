@@ -53,12 +53,21 @@ class PostController {
                 position : req.body.position,
                 experience: req.body.experience,
                 workTime : req.body.workTime,
-                endTime : req.body.description,
+                endTime: req.body.endTime,
+                description : req.body.description,
                 recruitmentsNumber : req.body.recruitmentsNumber,
                 status : req.body.status,
                 image : req.body.image
             }
             let editPost = await this.postServices.update(id, post)
+            await jobDetailService.update(id)
+            for (let i = 0; i < req.body.job.length; i++) {
+                let newJobDetail ={
+                    postId: id,
+                    jobId: req.body.job[i]
+                }
+                let saveJobDetail = await jobDetailService.save(newJobDetail)
+            }
             res.status(200).json({ok: editPost, message: 'Success!'})
         } catch (e) {
             res.status(500).json(e.message)

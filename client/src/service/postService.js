@@ -40,12 +40,12 @@ export const search = createAsyncThunk (
         return await axios.get('http://localhost:4000/posts/search?' + search);
     }
 )
-export const deletePosts = createAsyncThunk(
+export const deletePost = createAsyncThunk(
     'blogs/deleteBlogs',
     async (id)=>{
-        const r = await customAxios.delete(`blogs/${id}`)
-        console.log(r)
-        const res = await customAxios.get('blogs')
+        console.log(id)
+        await axios.delete(`http://localhost:4000/posts/${id}`)
+        const res = await axios.get('http://localhost:4000/posts')
         return res.data;
     }
 )

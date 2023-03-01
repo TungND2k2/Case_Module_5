@@ -1,7 +1,8 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {getPosts} from "../../service/postService";
-import {Link} from "react-router-dom";
+import {getPosts,deletePost} from "../../service/postService";
+import {Link, useNavigate} from "react-router-dom";
+import swal from 'sweetalert';
 // import Edit from "../post/editPost";
 
 export default function Home() {
@@ -12,9 +13,10 @@ export default function Home() {
     useEffect(() => {
         dispatch(getPosts());
     }, []);
+    const navigate = useNavigate()
     const handleDelete = async (id) => {
-        dispatch(deleteBlogs(id)).then(()=>(
-            dispatch(getBlogs()).then(()=>{
+        dispatch(deletePost(id)).then(()=>(
+            dispatch(getPosts()).then(()=>{
                 navigate('/home')
             })
         ))
