@@ -103,7 +103,7 @@ class PostService {
             return this.postRepository.delete({idPost: id});
         }
     }
-    search = async (req: Request, res: Response, limit, offset) => {
+    search = async (req: Request, res: Response) => {
         console.log(req.query)
         let sql = `select idPost,
                           title,
