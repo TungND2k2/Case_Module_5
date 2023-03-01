@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {editPost, searchPost} from "../../service/postService";
+import {editPost, getPosts, searchPost} from "../../service/postService";
 import {Field, Form, Formik} from "formik";
 
 const Edit = () => {
@@ -32,19 +32,21 @@ const Edit = () => {
     const navigate = useNavigate();
     let {id} = useParams()
     const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(searchPost(id))
-    }, []);
     const posts = useSelector(state => {
-        return state.post.post[0];
+        return state.post.post;
     })
     const handleEdit = (values) => {
         let data = [{...values}, id];
         dispatch(editPost(data)).then(() => {
-            navigate('/home');
+            dispatch(getPosts()).then(()=>{
+                navigate('/home');
+            })
         })
 
     }
+    useEffect(() => {
+        dispatch(searchPost(id))
+    }, []);
     return (
         <>
             <body className="img js-fullheight">
