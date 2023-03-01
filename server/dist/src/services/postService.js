@@ -50,8 +50,8 @@ class PostService {
                 return acc1;
             }, {});
             let posts = [];
-            for (let i = Object.values(result).length - 1; i >= Object.values(result).length - 3; i--) {
-                if (Object.values(result)[i] !== null) {
+            for (let i = Object.values(result).length - 1; i >= Object.values(result).length - 7; i--) {
+                if (Object.values(result)[i] !== null && Object.values(result)[i] !== undefined) {
                     posts.push(Object.values(result)[i]);
                 }
             }
