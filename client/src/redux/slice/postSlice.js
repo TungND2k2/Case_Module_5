@@ -22,8 +22,8 @@ const postSlice = createSlice({
         builder.addCase(editPost.fulfilled, (state, {payload}) => {
             state.postOne = payload[0];
         });
-        builder.addCase(searchPost.fulfilled, (state, action) => {
-            state.post = action.payload;
+        builder.addCase(searchPost.fulfilled, (state, action) =>
+            state.search = action.payload;
         });
     }
 })
