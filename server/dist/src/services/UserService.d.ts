@@ -3,6 +3,7 @@ declare class UserService {
     constructor();
     getAll: () => Promise<any>;
     findById: (id: any) => Promise<any>;
+    update: (id: any, newUser: any) => Promise<any>;
     checkUser: (user: any) => Promise<"User is not exit" | "Password is wrong" | {
         idUser: any;
         username: any;

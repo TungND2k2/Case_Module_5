@@ -1,7 +1,8 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {getPosts} from "../../service/postService";
-import {Link} from "react-router-dom";
+import {getPosts,deletePost} from "../../service/postService";
+import {Link, useNavigate} from "react-router-dom";
+import swal from 'sweetalert';
 // import Edit from "../post/editPost";
 
 export default function Home() {
@@ -12,6 +13,14 @@ export default function Home() {
     useEffect(() => {
         dispatch(getPosts());
     }, []);
+    const navigate = useNavigate()
+    const handleDelete = async (id) => {
+        dispatch(deletePost(id)).then(()=>(
+            dispatch(getPosts()).then(()=>{
+                navigate('/home')
+            })
+        ))
+    }
     return (
         <>
             <div className="banner header-text">
@@ -49,17 +58,20 @@ export default function Home() {
                         {post.map((item) => (
                                 <div className="col-md-4">
                                     <div className="product-item">
-                                        <a href=""><img src={item.image} alt=""/></a>
+                                        <a href=""><img style={{width:'350px',height:'255px'}} src={item.image} alt=""/></a>
                                         <div className="down-content">
-                                            <a href=""><h4>Lorem ipsum dolor sit amet</h4></a>
+                                            <a href=""><h4><i
+                                                className="fa fa-building"></i>{item.title}</h4></a>
 
                                             <h4>${item.salary}</h4>
                                             <h4><small><i
                                                 className="fa fa-briefcase"></i> {item.jobName+ ' '}<br/>
                                                 <i
-                                                className="fa fa-briefcase"></i> {item.position}<br/>
-                                                <strong><i
-                                                    className="fa fa-building"></i> {item.title}</strong></small>
+                                                className="fa fa-briefcase"></i> {item.position}
+                                               <strong><br/>
+                                                   <Link to={'/jobs-detail'}><i
+                                                       className="fa-solid fa-circle-info"></i> Detail</Link>
+                                                    </strong></small>
                                             </h4>
                                             <small>
                                                 <strong title="Posted on"><i
@@ -70,6 +82,32 @@ export default function Home() {
                                                 <strong title="Location"><i
                                                     className="fa fa-map-marker"></i> {item.workLocation}</strong>
                                             </small>
+                                            <div className="container">
+                                                <Link to={`/posts/${item.idPost}`}>
+                                                    <button className="btn btn-primary mt-2">Edit</button>
+                                                </Link>
+                                                <button className="btn btn-danger mt-2" onClick={()=>{
+                                                    swal({
+                                                        title: "Are you sure?",
+                                                        text: "Once deleted, you will not be able to recover this imaginary file!",
+                                                        icon: "warning",
+                                                        buttons: true,
+                                                        dangerMode: true,
+                                                    })
+                                                        .then((willDelete) => {
+                                                            console.log(item)
+                                                            if (willDelete) {
+                                                                swal("Poof! Your imaginary file has been deleted!", {
+                                                                    icon: "success",
+                                                                }).then(() => {
+                                                                    handleDelete(item.idPost)
+                                                                });
+                                                            } else {
+                                                                swal("Your imaginary file is safe!")
+                                                            }
+                                                        });
+                                                }}>Delete</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

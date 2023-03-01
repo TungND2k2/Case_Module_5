@@ -1,6 +1,7 @@
 import {Request, Response} from "express";
 import postServices from "../services/postService";
 import jobDetailService from "../services/jobDetailService";
+import {Post} from "../models/post";
 
 
 class PostController {
@@ -51,24 +52,30 @@ class PostController {
                 position : req.body.position,
                 experience: req.body.experience,
                 workTime : req.body.workTime,
-                endTime : req.body.endTime,
+                endTime: req.body.endTime,
+                description : req.body.description,
                 recruitmentsNumber : req.body.recruitmentsNumber,
                 status : req.body.status,
-                image : req.body.image,
-                description: req.body.description,
-                idJob : req.body.jobId
+                image : req.body.image
             }
             let editPost = await this.postServices.update(id, post)
-            console.log(post,4)
-             res.status(200).json({ok: editPost, message: 'Success!'})
+            await jobDetailService.update(id)
+            for (let i = 0; i < req.body.job.length; i++) {
+                let newJobDetail ={
+                    postId: id,
+                    jobId: req.body.job[i]
+                }
+                let saveJobDetail = await jobDetailService.save(newJobDetail)
+            }
+            res.status(200).json({ok: editPost, message: 'Success!'})
         } catch (e) {
-             res.status(500).json(e.message)
+            res.status(500).json(e.message)
         }
     }
     delete = async (req: Request, res: Response) => {
         let id = req.params.id;
-        await this.postServices.delete(id);
-        await this.jobDetailServices.remove(id);
+        await this.postServices.remove(id);
+        await this.jobDetailServices.removeJobDetail(id);
         res.status(200).json('Success!')
     }
     search = async (req: Request, res: Response) => {

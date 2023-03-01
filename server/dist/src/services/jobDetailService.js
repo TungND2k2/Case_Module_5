@@ -15,12 +15,22 @@ class JobDetailService {
         this.save = async (jobDetail) => {
             return this.jobDetailRepository.save(jobDetail);
         };
+        this.edit = async (jobDetail) => {
+            return this.jobDetailRepository.save(jobDetail);
+        };
+        this.update = async (id) => {
+            let jobDetail = await this.jobDetailRepository.findBy({ postId: id });
+            if (!jobDetail) {
+                return null;
+            }
+            return await this.jobDetailRepository.delete({ postId: id });
+        };
         this.removeJobDetail = async (idJobDetails) => {
-            let jobDetails = await this.jobDetailRepository.findOneBy({ idJobDetails: idJobDetails });
+            let jobDetails = await this.jobDetailRepository.findOneBy({ id: idJobDetails });
             if (!jobDetails) {
                 return null;
             }
-            return this.jobDetailRepository.delete({ idJobDetails: idJobDetails });
+            return this.jobDetailRepository.delete({ id: idJobDetails });
         };
         this.jobDetailRepository = data_source_1.AppDataSource.getRepository(jobDetail_1.JobDetail);
     }

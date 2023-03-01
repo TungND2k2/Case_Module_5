@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {addPosts, getPosts, search, editPost, searchPost} from "../../service/postService";
+import {addPosts, getPosts, search, editPost, searchPost,deletePost} from "../../service/postService";
 const initialState = {
     post: [],
     search: [],
@@ -25,6 +25,9 @@ const postSlice = createSlice({
         builder.addCase(searchPost.fulfilled, (state, action) => {
             state.post = action.payload;
         });
+        // builder.addCase(deletePost.fulfilled, (state, action) => {
+        //     state.post = action.payload;
+        // });
     }
 })
 export default postSlice.reducer;

@@ -1,7 +1,7 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import {getPosts, search} from "../../service/postService";
-import {useNavigate, useSearchParams} from "react-router-dom";
+import {Link, useNavigate, useSearchParams} from "react-router-dom";
 
 export default function Search() {
     const navigate = useNavigate()
@@ -117,7 +117,7 @@ export default function Search() {
 
                                     </label>
                                 </div>
-                                <h5 style={{marginBottom: '15px'}}>Word Time</h5>
+                                <h5 style={{marginBottom: '15px'}}>Work  Time</h5>
 
                                 <div>
                                     <label>
@@ -315,18 +315,21 @@ export default function Search() {
                                 {posts !== undefined && posts.map((item) => (
                                     <div className="col-md-6 py-5 mt-2">
                                         <div className="product-item">
-                                            <a><img src="/assets/images/product-1-370x270.jpg"
+                                            <a><img style={{width:'396px',height:'289px'}} src={item.image}
                                                     alt=""/></a>
                                             <div className="down-content">
-                                                <a href=""><h4>{item.title}</h4></a>
+                                                <a href=""><h4><i
+                                                    className="fa fa-building"></i>{item.title}</h4></a>
                                                 <h4>${item.salary}</h4>
 
                                                 <h4><small><i
                                                     className="fa fa-briefcase"></i> {item.jobName+ ' '}<br/>
                                                     <i
-                                                        className="fa fa-briefcase"></i> {item.position}<br/>
-                                                    <strong><i
-                                                        className="fa fa-building"></i> {item.title}</strong></small></h4>
+                                                        className="fa fa-briefcase"></i> {item.position}
+                                                    <strong><br/>
+                                                        <Link to={'/jobs-detail'}> <i
+                                                            className="fa-solid fa-circle-info"></i> Detail</Link>
+                                                       </strong></small></h4>
                                                 <small>
                                                     <strong title="Posted on"><i
                                                         className="fa fa-calendar"></i> 15-06-2020</strong> &nbsp;&nbsp;&nbsp;&nbsp;
