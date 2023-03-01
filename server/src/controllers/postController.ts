@@ -55,10 +55,11 @@ class PostController {
                 recruitmentsNumber : req.body.recruitmentsNumber,
                 status : req.body.status,
                 image : req.body.image,
-                description: req.body.description
+                description: req.body.description,
+                idJob : req.body.jobId
             }
             let editPost = await this.postServices.update(id, post)
-            console.log(post)
+            console.log(post,4)
              res.status(200).json({ok: editPost, message: 'Success!'})
         } catch (e) {
              res.status(500).json(e.message)

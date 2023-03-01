@@ -6,7 +6,7 @@ import {Field, Form, Formik} from "formik";
 import {getDownloadURL, ref, uploadBytesResumable} from "firebase/storage";
 import {storage} from "../../service/fireBase";
 import {getJobs} from "../../service/jobService";
-import './post.css'
+// import './post.css'
 const Edit = () => {
     const [images, setImages] = useState([]);
 
@@ -109,45 +109,45 @@ const Edit = () => {
                                         <div className="mb-3 col-lg-6 col-md-6 col-12">
                                             <label className="form-label">salary</label>
                                             <Field type="text" name="salary"
-                                                   className="form-control text-dark border-dark"/>
+                                                   className="form-control border-dark"/>
                                         </div>
                                         <div className="mb-3 mb-3 col-lg-6 col-md-6 col-12">
                                             <label className="form-label">workLocation</label>
                                             <Field type="text"
                                                    name="workLocation"
-                                                   className="form-control"/>
+                                                   className="form-control border-dark"/>
                                         </div>
                                         <div className="mb-3 mb-3 col-lg-6 col-md-6 col-12">
                                             <label className="form-label">position</label>
                                             <Field type="text" name="position"
-                                                   className="form-control"/>
+                                                   className="form-control border-dark"/>
                                         </div>
                                         <div className="mb-3 mb-3 col-lg-6 col-md-6 col-12">
                                             <label className="form-label">experience</label>
                                             <Field type="text"
                                                    name="experience"
-                                                   className="form-control"/>
+                                                   className="form-control border-dark"/>
                                         </div>
                                         <div className="mb-3 mb-3 col-lg-6 col-md-6 col-12">
                                             <label className="form-label">workTime</label>
                                             <Field type="text" name="workTime"
-                                                   className="form-control"/>
+                                                   className="form-control border-dark"/>
                                         </div>
                                         <div className="mb-3 mb-3 col-lg-6 col-md-6 col-12">
                                             <label className="form-label">endTime</label>
                                             <Field type="date" name="endTime"
-                                                   className="form-control"/>
+                                                   className="form-control border-dark"/>
                                         </div>
                                         <div className="mb-3 mb-3 col-lg-12 col-md-12 col-12">
                                             <label className="form-label">recruitmentsNumber</label>
                                             <Field name='recruitmentsNumber'
 
-                                                   className="form-control"/>
+                                                   className="form-control border-dark"/>
                                         </div>
                                         <div className="mb-3 mb-3 col-lg-12 col-md-12 col-12">
                                             <label className="form-label">status</label>
                                             <Field name='status'
-                                                   className="form-control"/>
+                                                   className="form-control border-dark"/>
                                         </div>
                                         <div className="mb-3 mb-3 col-lg-12 col-md-12 col-12">
                                             <label className="form-label">image</label>
@@ -167,17 +167,17 @@ const Edit = () => {
                                         <div className="mb-3 mb-3 col-lg-12 col-md-12 col-12">
                                             <label className="form-label">title</label>
                                             <Field name='title'
-                                                   className="form-control"/>
+                                                   className="form-control border-dark"/>
                                         </div>
                                         <div className="mb-3 mb-3 col-lg-12 col-md-12 col-12">
                                             <label className="form-label">idEmployer</label>
                                             <Field name='idEmployer'
-                                                   className="form-control"/>
+                                                   className="form-control border-dark"/>
                                         </div>
                                         <div className="mb-3 mb-3 col-lg-12 col-md-12 col-12">
                                             <label className="form-label">Description</label>
                                             <Field name='description'
-                                                   className="form-control" cols='30' rows='4'></Field>
+                                                   className="form-control border-dark" cols='30' rows='4'></Field>
                                         </div>
                                         <div id="checkbox-group"></div>
                                         <div role="group" aria-labelledby="checkbox-group" style={{display:'flex', justifyContent:"space-evenly", flex:'1'}}>

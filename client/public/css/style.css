@@ -1697,7 +1697,6 @@ pre {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #495057;
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid #ced4da;
@@ -8249,7 +8248,7 @@ body {
     right: 0;
     bottom: 0;
     content: '';
-    background: #000;
+    background: #e9f5ec;
     opacity: .3;
     z-index: -1; }
 
@@ -8325,9 +8324,8 @@ h1, h2, h3, h4, h5,
 
 .form-control {
   background: transparent;
-  border: none;
+  border: black;
   height: 50px;
-  color: white !important;
   border: 1px solid transparent;
   background: rgba(255, 255, 255, 0.08);
   border-radius: 40px;
