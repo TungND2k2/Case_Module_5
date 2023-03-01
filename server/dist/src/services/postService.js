@@ -77,6 +77,9 @@ class PostService {
             if (req.query.title !== undefined) {
                 sql += `and title like '%${req.query.title}'`;
             }
+            if (req.query.idPost !== undefined) {
+                sql += `and idPost like '%${req.query.idPost}'`;
+            }
             if (req.query.salary !== undefined) {
                 sql += `and salary like '%${req.query.salary}'`;
             }
