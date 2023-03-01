@@ -72,7 +72,7 @@ class PostService {
         }, {});
         let posts=[]
         for (let i=Object.values(result).length-1; i>=Object.values(result).length-3; i--){
-            if (Object.values(result)[i]!==null){
+            if (Object.values(result)[i]!==null&&Object.values(result)[i]!==undefined){
                 posts.push(Object.values(result)[i])
             }
         }
