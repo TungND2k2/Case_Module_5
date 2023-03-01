@@ -13,6 +13,7 @@ import Search from "./page/post/search";
 import React from "react";
 import EditUser from "./page/user/editUser";
 import ListPost from "./page/post/listPost";
+import PostDetail from "./page/post/postDetail";
 function App() {
   return (
     <>
@@ -25,6 +26,7 @@ function App() {
             <Route path="users/login" element={<LoginUser/>}></Route>
             <Route path="posts/:id" element={<Edit/>}/>
             <Route path="posts" element={<ListPost/>}/>
+            <Route path="jobs-detail" element={<PostDetail/>}/>
             {/*<Route path="users/edit/:id" element={<EditUser/>}></Route>*/}
             <Route path="users/edit/:id" element={<EditUser/>}></Route>
             <Route path="users/register" element={<RegisterUser/>}></Route>
