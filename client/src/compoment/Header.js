@@ -32,6 +32,7 @@ export default function Header() {
                                 </Link>
 
 
+                                <li className="nav-item"><Link to={"/posts"} className="nav-link" >List</Link></li>
 
                                 {((showEmployer === null && (showUser === true || showUser === null)) || (showEmployer === true && (showUser === true || showUser === null))) && <>
                                     <Link to="/login">
@@ -57,7 +58,7 @@ export default function Header() {
                                 {(showEmployer === 'false' || showEmployer === false) && <>
 
                                         <li className="nav-item" onClick={()=>{
-                                            dispatch(logout()||userLogout())
+                                            dispatch(logout())
                                             localStorage.clear()
                                         }}><a className="nav-link" href="">logout</a></li>
                                 </>}

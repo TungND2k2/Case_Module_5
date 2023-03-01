@@ -117,7 +117,7 @@ export default function Search() {
 
                                     </label>
                                 </div>
-                                <h5 style={{marginBottom: '15px'}}>Word Time</h5>
+                                <h5 style={{marginBottom: '15px'}}>Work Time</h5>
 
                                 <div>
                                     <label>

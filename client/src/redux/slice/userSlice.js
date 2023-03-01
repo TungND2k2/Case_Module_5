@@ -2,6 +2,7 @@ import {createSlice} from "@reduxjs/toolkit";
 import {findById, userLogin, userLogout, userRegister} from "../../service/userServices";
 const initialState = {
     user: [],
+    userShow :localStorage.getItem('userShow'),
 }
 const blogSlice = createSlice({
     name: 'users',
@@ -16,7 +17,6 @@ const blogSlice = createSlice({
         });
         builder.addCase(userLogin.fulfilled, (state, {payload}) => {
             state.user = payload.data;
-            console.log(state.user)
             localStorage.setItem("status",payload.data)
             if(state.user!='User is not exit'&&state.user!='Password is wrong')
             {

@@ -1,56 +1,78 @@
 import React, {useEffect, useState} from 'react';
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {editPost, searchPost} from "../../service/postService";
+import {editPost, getPosts, searchPost} from "../../service/postService";
 import {Field, Form, Formik} from "formik";
+import {getDownloadURL, ref, uploadBytesResumable} from "firebase/storage";
+import {storage} from "../../service/fireBase";
 
 const Edit = () => {
-    // const [input, setInput] = useState({
-    //     salary: '',
-    //     workLocation: '',
-    //     position: '',
-    //     experience: '',
-    //     workTime: '',
-    //     endTime: '',
-    //     description: '',
-    //     recruitmentsNumber: '',
-    //     status: '',
-    //     image: '',
-    //     title: '',
-    //     idEmployer: '',
-    //     idJob: ''
-    // });
-    // const setData = (e) => {
-    //     const {name, value} = e.target;
-    //     setInput((prevail) => {
-    //         return {
-    //             ...prevail,
-    //             [name]: value
-    //         }
-    //     })
-    // }
+    const [images, setImages] = useState([]);
+
+    const [urls, setUrls] = useState([]);
+
+    const [progress, setProgress] = useState(0);
+
     const navigate = useNavigate();
     let {id} = useParams()
     const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(searchPost(id))
-    }, []);
     const posts = useSelector(state => {
-
-        return state.post.post[0];
+        return state.post.post;
     })
     const handleEdit = (values) => {
         let data = [{...values}, id];
-
         dispatch(editPost(data)).then(() => {
-            navigate('/home');
+            dispatch(getPosts()).then(() => {
+                navigate('/home');
+            })
         })
+    }
+    const handleUpload = () => {
+        const promises = [];
+        if (images.length > 0) {
+            images.map((image) => {
+                const storageRef = ref(storage, `images/${image.name}`);
+                const uploadTask = uploadBytesResumable(storageRef, image);
+                promises.push(uploadTask);
+                uploadTask.on(
+                    "state_changed",
+                    (snapshot) => {
+                        const progress = Math.round(
+                            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                        );
+                        setProgress(progress);
+                    },
+                    (error) => {
+                        console.log(error);
+                    },
+                    async () => {
+                        await getDownloadURL(uploadTask.snapshot.ref).then((downloadURLs) => {
+                            setUrls(prevState => [...prevState, downloadURLs])
+                            console.log("File available at", downloadURLs);
+                        });
+                    }
+                );
+            });
+        }
+        Promise.all(promises)
+            .then(() => alert("All images uploaded"))
+            .catch((err) => console.log(err));
 
     }
+    const handleChange = (e) => {
+        for (let i = 0; i < e.target.files.length; i++) {
+            const newImage = e.target.files[i];
+            newImage["id"] = Math.random();
+            setImages((prevState) => [...prevState, newImage]);
+        }
+    };
+    let idEmployer = localStorage.getItem('id_employer')
+    useEffect(() => {
+        dispatch(searchPost(id))
+    }, []);
     return (
         <>
-
-            <body className="img js-fullheight" background-images="images/bg.jpg">
+            <body className="img js-fullheight" >
             <div className="container mt-2 py-5">
                 <div className="container mt-2 form-group">
                     <div className="row mt-2 ">
@@ -67,85 +89,97 @@ const Edit = () => {
                                 status: posts.status,
                                 image: posts.image,
                                 title: posts.title,
-                                idEmployer: posts.idEmployer,
-                                idJob: posts.idJob
-                            }} onSubmit={(values) => (handleEdit(values))}
-                                    enableReinitialize={true}
-                            >
-                                <Form className="mt-5 container py-5">
+                                idEmployer: idEmployer,
+                                jobId: posts.jobId
+                            }}
+                                    onSubmit={(values) => {
+                                        values.image = urls[urls.length-1]
+                                        handleEdit(values)
+                                    }}
+                                    enableReinitialize={true}>
+                                <Form className="mt-5 container py-5 ">
                                     <div className="row">
-                                    <div className="mb-3 col-lg-6 col-md-6 col-12">
-                                        <label className="form-label">salary</label>
-                                        <Field type="text" name="salary"
-                                               className="form-control"/>
-                                    </div>
-                                    <div className="mb-3 mb-3 col-lg-6 col-md-6 col-12">
-                                        <label className="form-label">workLocation</label>
-                                        <Field type="text"
-                                               name="workLocation"
-                                               className="form-control"/>
-                                    </div>
-                                    <div className="mb-3 mb-3 col-lg-6 col-md-6 col-12">
-                                        <label className="form-label">position</label>
-                                        <Field type="text" name="position"
-                                               className="form-control"/>
-                                    </div>
-                                    <div className="mb-3 mb-3 col-lg-6 col-md-6 col-12">
-                                        <label className="form-label">experience</label>
-                                        <Field type="text"
-                                               name="experience"
-                                               className="form-control"/>
-                                    </div>
-                                    <div className="mb-3 mb-3 col-lg-6 col-md-6 col-12">
-                                        <label className="form-label">workTime</label>
-                                        <Field type="text" name="workTime"
-                                               className="form-control"/>
-                                    </div>
-                                    <div className="mb-3 mb-3 col-lg-6 col-md-6 col-12">
-                                        <label className="form-label">endTime</label>
-                                        <Field type="date" name="endTime"
-                                               className="form-control"/>
-                                    </div>
-                                    <div className="mb-3 mb-3 col-lg-12 col-md-12 col-12">
-                                        <label className="form-label">recruitmentsNumber</label>
-                                        <Field name='recruitmentsNumber'
+                                        <div className="mb-3 col-lg-6 col-md-6 col-12">
+                                            <label className="form-label">salary</label>
+                                            <Field type="text" name="salary"
+                                                   className="form-control text-dark border-dark"/>
+                                        </div>
+                                        <div className="mb-3 mb-3 col-lg-6 col-md-6 col-12">
+                                            <label className="form-label">workLocation</label>
+                                            <Field type="text"
+                                                   name="workLocation"
+                                                   className="form-control"/>
+                                        </div>
+                                        <div className="mb-3 mb-3 col-lg-6 col-md-6 col-12">
+                                            <label className="form-label">position</label>
+                                            <Field type="text" name="position"
+                                                   className="form-control"/>
+                                        </div>
+                                        <div className="mb-3 mb-3 col-lg-6 col-md-6 col-12">
+                                            <label className="form-label">experience</label>
+                                            <Field type="text"
+                                                   name="experience"
+                                                   className="form-control"/>
+                                        </div>
+                                        <div className="mb-3 mb-3 col-lg-6 col-md-6 col-12">
+                                            <label className="form-label">workTime</label>
+                                            <Field type="text" name="workTime"
+                                                   className="form-control"/>
+                                        </div>
+                                        <div className="mb-3 mb-3 col-lg-6 col-md-6 col-12">
+                                            <label className="form-label">endTime</label>
+                                            <Field type="date" name="endTime"
+                                                   className="form-control"/>
+                                        </div>
+                                        <div className="mb-3 mb-3 col-lg-12 col-md-12 col-12">
+                                            <label className="form-label">recruitmentsNumber</label>
+                                            <Field name='recruitmentsNumber'
 
-                                               className="form-control"/>
-                                    </div>
-                                    <div className="mb-3 mb-3 col-lg-12 col-md-12 col-12">
-                                        <label className="form-label">status</label>
-                                        <Field name='status'
-                                               className="form-control"/>
-                                    </div>
-                                    <div className="mb-3 mb-3 col-lg-12 col-md-12 col-12">
-                                        <label className="form-label">image</label>
-                                        <Field name='image'
-                                               className="form-control"/>
-                                    </div>
-                                    <div className="mb-3 mb-3 col-lg-12 col-md-12 col-12">
-                                        <label className="form-label">title</label>
-                                        <Field name='title'
-                                               className="form-control"/>
-                                    </div>
-                                    <div className="mb-3 mb-3 col-lg-12 col-md-12 col-12">
-                                        <label className="form-label">idEmployer</label>
-                                        <Field name='idEmployer'
-                                               className="form-control"/>
-                                    </div>
-                                    <div className="mb-3 mb-3 col-lg-12 col-md-12 col-12">
-                                        <label className="form-label">idJob</label>
-                                        <Field name='idJob'
-                                               className="form-control"/>
-                                    </div>
-                                    <div className="mb-3 mb-3 col-lg-12 col-md-12 col-12">
-                                        <label className="form-label">Description</label>
-                                        <textarea name='description'
-                                                  className="form-control" cols='30' rows='4'></textarea>
-                                    </div>
-                                    <button type="submit" className="btn btn-primary">Submit</button>
+                                                   className="form-control"/>
+                                        </div>
+                                        <div className="mb-3 mb-3 col-lg-12 col-md-12 col-12">
+                                            <label className="form-label">status</label>
+                                            <Field name='status'
+                                                   className="form-control"/>
+                                        </div>
+                                        <div className="mb-3 mb-3 col-lg-12 col-md-12 col-12">
+                                            <label className="form-label">image</label>
+                                            <br/>
+                                            {urls.map(item => (
+                                                <>
+                                                    <img src={item} alt="" style={{width: 50}}/></>
+                                            ))}
+                                            <br/>
+                                            <input type='file' name="image" onChange={handleChange}>
+                                            </input>
+                                            <button className="btn btn-outline-success" style={{marginRight: 10}} type='button'
+                                                    onClick={handleUpload}>Up
+                                            </button>
+
+                                        </div>
+                                        <div className="mb-3 mb-3 col-lg-12 col-md-12 col-12">
+                                            <label className="form-label">title</label>
+                                            <Field name='title'
+                                                   className="form-control"/>
+                                        </div>
+                                        <div className="mb-3 mb-3 col-lg-12 col-md-12 col-12">
+                                            <label className="form-label">idEmployer</label>
+                                            <Field name='idEmployer'
+                                                   className="form-control"/>
+                                        </div>
+                                        <div className="mb-3 mb-3 col-lg-12 col-md-12 col-12">
+                                            <label className="form-label">idJob</label>
+                                            <Field name='jobId'
+                                                   className="form-control"/>
+                                        </div>
+                                        <div className="mb-3 mb-3 col-lg-12 col-md-12 col-12">
+                                            <label className="form-label">Description</label>
+                                            <Field name='description'
+                                                   className="form-control" cols='30' rows='4'></Field>
+                                        </div>
+                                        <button type="submit" className="btn btn-primary">Submit</button>
                                     </div>
                                 </Form>
-
                             </Formik>
 
                         </> : <>

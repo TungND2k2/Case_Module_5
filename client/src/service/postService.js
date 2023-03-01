@@ -19,11 +19,8 @@ export const addPosts = createAsyncThunk (
 export const editPost = createAsyncThunk (
     'posts/editPost',
     async (data) => {
-        console.log(data)
         await axios.put('http://localhost:4000/posts/'+ data[1],data[0]);
-        console.log(11111111111111111111111111111111)
         const response = await axios.get('http://localhost:4000/posts');
-        console.log(response)
         return response.data;
     }
 )
@@ -31,7 +28,7 @@ export const searchPost = createAsyncThunk (
     'post/searchPost',
     async (a) => {
         const response = await axios.get(`http://localhost:4000/posts/search?idPost=${a}`);
-        return response.data;
+        return response.data.posts[0];
     }
 )
 
