@@ -17,6 +17,7 @@ class PostController {
             }
         };
         this.create = async (req, res) => {
+            console.log(req.body);
             try {
                 let newPost = await postService_1.default.save(req.body);
                 for (let i = 0; i < req.body.job.length; i++) {

@@ -23,7 +23,7 @@ class PostController {
 
     }
     create = async (req: Request, res: Response) => {
-
+        console.log(req.body)
         try {
             let newPost = await postServices.save(req.body)
             for (let i = 0; i < req.body.job.length; i++) {

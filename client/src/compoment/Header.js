@@ -2,10 +2,20 @@ import {Link, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {logout} from "../service/employerService";
 import {userLogout} from "../service/userServices";
+import {useEffect, useState} from "react";
 
 export default function Header() {
     let showUser = localStorage.getItem("userShow")
     let showEmployer = localStorage.getItem("employerShow")
+    // let showEmployer=useSelector(state => {
+    //     return state.employ.employerShow
+    //
+    // })
+    let idUser=useSelector(state => {
+        console.log(state)
+        return state.user.user.idUser
+    })
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
     return (
@@ -45,14 +55,13 @@ export default function Header() {
                                 </>}
 
                                 {(showEmployer === 'false' || showEmployer === false) && <>
-                                    <Link to="/add-post">
-                                        <li className="nav-item"><a className="nav-link" href="">Create Post</a></li>
-                                    </Link>
-                                    <li className="nav-item"><Link to={"/posts"} className="nav-link" >List</Link></li>
-                                    <li className="nav-item"><a className="nav-link"
-                                                                href="">{localStorage.getItem('employerName')}</a></li>
+                                    <Link to="/add-post"> <a className="nav-link" href="">Add Post
+                                        <span className="sr-only"></span>
+                                    </a></Link>
+                                    <li className="nav-item"><a className="nav-link" href="">{localStorage.getItem('employerName')}</a></li>
                                 </>}
                                 {(showUser === 'false' || showUser === false) && <>
+                                    <Link to={`users/edit/${idUser}`}><li className="nav-item"><a className="nav-link" href="">{localStorage.getItem('nameUser')}</a></li> </Link>
 
                                     <li className="nav-item"><a className="nav-link"
                                                                 href="">{localStorage.getItem('nameUser')}</a></li>

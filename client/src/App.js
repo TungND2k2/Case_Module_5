@@ -7,9 +7,11 @@ import RegisterEmploy from "./page/employer/register";
 import Footer from "./compoment/Footer";
 import LoginUser from "./page/user/login";
 import RegisterUser from "./page/user/register";
-import Edit from "./page/post/EditPost";
+import Edit from "./page/post/editPost";
 import AddPosts from "./page/post/addPost";
 import Search from "./page/post/search";
+import React from "react";
+import EditUser from "./page/user/editUser";
 import ListPost from "./page/post/listPost";
 function App() {
   return (
@@ -24,6 +26,7 @@ function App() {
             <Route path="posts/:id" element={<Edit/>}/>
             <Route path="posts" element={<ListPost/>}/>
             {/*<Route path="users/edit/:id" element={<EditUser/>}></Route>*/}
+            <Route path="users/edit/:id" element={<EditUser/>}></Route>
             <Route path="users/register" element={<RegisterUser/>}></Route>
             <Route path="/jobs/search" element={<Search/>}></Route>
         </Routes>

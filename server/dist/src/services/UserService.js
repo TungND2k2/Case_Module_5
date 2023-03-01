@@ -14,11 +14,14 @@ class UserService {
             return await this.userRepository.find();
         };
         this.findById = async (id) => {
-            let user = await this.userRepository.findOneBy({ id: id });
+            let user = await this.userRepository.findOneBy({ idUser: id });
             if (!user) {
                 return null;
             }
             return user;
+        };
+        this.update = async (id, newUser) => {
+            return await this.userRepository.update({ idUser: id }, newUser);
         };
         this.checkUser = async (user) => {
             let userCheck = await this.userRepository.findOneBy({ username: user.username });
