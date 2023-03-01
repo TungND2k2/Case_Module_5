@@ -23,35 +23,17 @@ class PostController {
 
     }
     create = async (req: Request, res: Response) => {
-
+        console.log(req.body)
         try {
-
-            let a = req.body
-            console.log(req.body)
-            let posts = {
-                salary : a.salary,
-                workLocation : a.workLocation,
-                position :  a.position,
-                experience:  a.experience,
-                workTime: a.workTime,
-                endTime: a.endTime,
-                description :a.description,
-                recruitmentsNumber: a.recruitmentsNumber,
-                status: a.status,
-                image: a.image,
-                title: a.title,
-                idEmployer: a.idEmployer
-            }
-            let newPost = await postServices.save(a)
-            let jd = {
-                postId: newPost.idPost,
-                jobId : a.idJob
+            let newPost = await postServices.save(req.body)
+            for (let i = 0; i < req.body.job.length; i++) {
+                let newJobDetail ={
+                    postId: req.body.idPost,
+                    jobId: req.body.job[i]
+                }
+                let saveJobDetail = await jobDetailService.save(newJobDetail)
 
             }
-            console.log(jd)
-
-            let saveJobDetail = await jobDetailService.save(jd)
-
             res.status(200).json(newPost);
         } catch (e) {
             res.status(500).json(e.message)

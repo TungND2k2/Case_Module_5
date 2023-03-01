@@ -21,9 +21,10 @@ class userController {
         let response = await this.userService.checkUser(user);
         res.status(200).json(response)
     }
-    findById = async (req: Request, res: Response) => {
+    findByIdUser = async (req: Request, res: Response) => {
         try{
             let id = req.params.id
+            console.log(id)
             let user = await this.userService.findById(id);
             res.status(200).json(user)
         } catch (e) {
@@ -53,6 +54,12 @@ class userController {
     getAll = async (req: Request, res: Response) => {
         let user = await userService.getAll()
         res.status(201).json(user)
+    }
+    editUser = async (req: Request, res: Response) => {
+        let id = req.params.id;
+        let newUser = req.body;
+        await this.userService.update(id, newUser);
+        res.status(200).json('Success!')
     }
 
 }
