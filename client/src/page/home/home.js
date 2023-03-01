@@ -12,6 +12,13 @@ export default function Home() {
     useEffect(() => {
         dispatch(getPosts());
     }, []);
+    const handleDelete = async (id) => {
+        dispatch(deleteBlogs(id)).then(()=>(
+            dispatch(getBlogs()).then(()=>{
+                navigate('/home')
+            })
+        ))
+    }
     return (
         <>
             <div className="banner header-text">
@@ -72,7 +79,27 @@ export default function Home() {
                                                 <Link to={`/posts/${item.idPost}`}>
                                                     <button className="btn btn-primary mt-2">Edit</button>
                                                 </Link>
-                                                <button className="btn btn-danger mt-2">Delete</button>
+                                                <button className="btn btn-danger mt-2" onClick={()=>{
+                                                    swal({
+                                                        title: "Are you sure?",
+                                                        text: "Once deleted, you will not be able to recover this imaginary file!",
+                                                        icon: "warning",
+                                                        buttons: true,
+                                                        dangerMode: true,
+                                                    })
+                                                        .then((willDelete) => {
+                                                            console.log(item)
+                                                            if (willDelete) {
+                                                                swal("Poof! Your imaginary file has been deleted!", {
+                                                                    icon: "success",
+                                                                }).then(() => {
+                                                                    handleDelete(item.idPost)
+                                                                });
+                                                            } else {
+                                                                swal("Your imaginary file is safe!")
+                                                            }
+                                                        });
+                                                }}>Delete</button>
                                             </div>
                                         </div>
                                     </div>
