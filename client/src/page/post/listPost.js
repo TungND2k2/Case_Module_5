@@ -5,12 +5,12 @@ import {Link} from "react-router-dom";
 
 
 export default function ListPost() {
-    const dispatch = useDispatch()
+
     let post = useSelector(state => {
         console.log(state.post.post)
         return state.post.post
     })
-
+    const dispatch = useDispatch()
     let currentUser = localStorage.getItem('employerName');
     useEffect(() => {
         dispatch(getPosts());
@@ -49,7 +49,7 @@ export default function ListPost() {
                                 <a href="">view more <i className="fa fa-angle-right"></i></a>
                             </div>
                         </div>
-                        {post.map((item) => {
+                        { post.map((item) => {
                             if (item.employerName === currentUser) {
                                 return <>
                                     <div className="col-md-4">

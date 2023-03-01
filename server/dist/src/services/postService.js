@@ -38,8 +38,7 @@ class PostService {
         this.countPosts = async () => {
             try {
                 let sql = `select count(idPost) from post`;
-                let posts = await this.postRepository.query(sql);
-                return posts;
+                return await this.postRepository.query(sql);
             }
             catch (e) {
                 console.log(e);
@@ -66,6 +65,7 @@ class PostService {
         };
         this.search = async (req, res) => {
             let sql = `select idPost,
+                          title,
                           salary,
                           workLocation,
                           position,
@@ -77,7 +77,6 @@ class PostService {
                           p.status,
                           e.employerName,
                           image,
-                          title,
                           j.jobName
                    from post p join employer e on p.idEmployer = e.idEmployer
                                join job_detail jd on p.idPost = jd.postId

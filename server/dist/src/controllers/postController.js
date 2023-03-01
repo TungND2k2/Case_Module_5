@@ -53,7 +53,6 @@ class PostController {
                 res.status(200).json({ ok: editPost, message: 'Success!' });
             }
             catch (e) {
-                console.log(e);
                 res.status(500).json(e.message);
             }
         };

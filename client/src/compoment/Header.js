@@ -50,7 +50,6 @@ export default function Header() {
                                     </Link>
                                     <li className="nav-item"><a className="nav-link"
                                                                 href="">{localStorage.getItem('employerName')}</a></li>
-                                    <li className="nav-item"><a className="nav-link">{localStorage.getItem('employerName')}</a></li>
                                 </>}
                                 {(showUser === 'false' || showUser === false) && <>
                                     <li className="nav-item"><a className="nav-link"
@@ -59,7 +58,7 @@ export default function Header() {
                                 {(showEmployer === 'false' || showEmployer === false) && <>
 
                                         <li className="nav-item" onClick={()=>{
-                                            dispatch(logout()||userLogout())
+                                            dispatch(logout())
                                             localStorage.clear()
                                         }}><a className="nav-link" href="">logout</a></li>
                                 </>}
