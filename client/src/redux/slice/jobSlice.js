@@ -1,4 +1,4 @@
-import {createSlice} from "@reduxjs/toolkit";
+import  {createSlice} from "@reduxjs/toolkit";
 import {getJobs} from "../../service/jobService";
 
 const initialState = {

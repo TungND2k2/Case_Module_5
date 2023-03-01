@@ -54,7 +54,7 @@ export default function ListPost() {
                                 return <>
                                     <div className="col-md-4">
                                         <div className="product-item">
-                                            <a href=""><img src="/assets/images/product-1-370x270.jpg" alt=""/></a>
+                                            <a href=""><img src={item.image} alt=""/></a>
                                             <div className="down-content">
                                                 <a href=""><h4>Lorem ipsum dolor sit amet</h4></a>
 

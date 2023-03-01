@@ -5,7 +5,8 @@ import {editPost, getPosts, searchPost} from "../../service/postService";
 import {Field, Form, Formik} from "formik";
 import {getDownloadURL, ref, uploadBytesResumable} from "firebase/storage";
 import {storage} from "../../service/fireBase";
-
+import {getJobs} from "../../service/jobService";
+import './post.css'
 const Edit = () => {
     const [images, setImages] = useState([]);
 
@@ -18,6 +19,9 @@ const Edit = () => {
     const dispatch = useDispatch();
     const posts = useSelector(state => {
         return state.post.post;
+    })
+    const jobs = useSelector(state => {
+        return state.job.jobs;
     })
     const handleEdit = (values) => {
         let data = [{...values}, id];
@@ -70,6 +74,9 @@ const Edit = () => {
     useEffect(() => {
         dispatch(searchPost(id))
     }, []);
+    useEffect(()=>{
+        dispatch(getJobs())
+    },[])
     return (
         <>
             <body className="img js-fullheight" >
@@ -90,7 +97,7 @@ const Edit = () => {
                                 image: posts.image,
                                 title: posts.title,
                                 idEmployer: idEmployer,
-                                jobId: posts.jobId
+                                jobId: []
                             }}
                                     onSubmit={(values) => {
                                         values.image = urls[urls.length-1]
@@ -168,14 +175,22 @@ const Edit = () => {
                                                    className="form-control"/>
                                         </div>
                                         <div className="mb-3 mb-3 col-lg-12 col-md-12 col-12">
-                                            <label className="form-label">idJob</label>
-                                            <Field name='jobId'
-                                                   className="form-control"/>
-                                        </div>
-                                        <div className="mb-3 mb-3 col-lg-12 col-md-12 col-12">
                                             <label className="form-label">Description</label>
                                             <Field name='description'
                                                    className="form-control" cols='30' rows='4'></Field>
+                                        </div>
+                                        <div id="checkbox-group"></div>
+                                        <div role="group" aria-labelledby="checkbox-group" style={{display:'flex', justifyContent:"space-evenly", flex:'1'}}>
+                                            {
+                                                jobs.map((item) => (
+                                                    <label style={{marginLeft:'30px', marginRight:'95px'}}>
+
+                                                        <Field type="checkbox" name="jobId" value= {''+(item.jobId)} />
+                                                        <h5 style={{padding:'-30px'}}>{item.jobName} &nbsp;&nbsp;&nbsp;&nbsp;</h5>
+
+                                                    </label>
+                                                ))
+                                            }
                                         </div>
                                         <button type="submit" className="btn btn-primary">Submit</button>
                                     </div>
