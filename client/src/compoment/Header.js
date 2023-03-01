@@ -63,8 +63,6 @@ export default function Header() {
                                 {(showUser === 'false' || showUser === false) && <>
                                     <Link to={`users/edit/${idUser}`}><li className="nav-item"><a className="nav-link" href="">{localStorage.getItem('nameUser')}</a></li> </Link>
 
-                                    <li className="nav-item"><a className="nav-link"
-                                                                href="">{localStorage.getItem('nameUser')}</a></li>
                                 </>}
                                 {(showEmployer === 'false' || showEmployer === false) && <>
 
