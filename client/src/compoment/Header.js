@@ -11,9 +11,10 @@ export default function Header() {
     //     return state.employ.employerShow
     //
     // })
-    // let showUser=useSelector(state => {
-    //     return state.user.userShow
-    // })
+    let idUser=useSelector(state => {
+        console.log(state)
+        return state.user.user.idUser
+    })
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -47,11 +48,10 @@ export default function Header() {
                                 <li className="nav-item dropdown">
                                     <a className="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
                                        role="button" aria-haspopup="true" aria-expanded="false">More</a>
-
                                     <div className="dropdown-menu">
-                                        <a className="dropdown-item" href="">Team</a>
-                                        <a className="dropdown-item" href="">Testimonials</a>
-                                        <a className="dropdown-item" href="">Terms</a>
+                                        <a className="dropdown-item" href="">1</a>
+                                        <a className="dropdown-item" href="">2</a>
+                                        <a className="dropdown-item" href="">3</a>
                                     </div>
                                 </li>
                                 {((showEmployer === null && (showUser === true || showUser === null)) || (showEmployer === true && (showUser === true || showUser === null))) && <>
@@ -65,12 +65,13 @@ export default function Header() {
                                 </>}
 
                                 {(showEmployer === 'false' || showEmployer === false) && <>
-                                    <li className="nav-item"><a className="nav-link"
-                                                                href="">{localStorage.getItem('employerName')}</a></li>
+                                    <Link to="/add-post"> <a className="nav-link" href="">Add Post
+                                        <span className="sr-only"></span>
+                                    </a></Link>
+                                    <li className="nav-item"><a className="nav-link" href="">{localStorage.getItem('employerName')}</a></li>
                                 </>}
                                 {(showUser === 'false' || showUser === false) && <>
-                                    <li className="nav-item"><a className="nav-link"
-                                                                href="">{localStorage.getItem('nameUser')}</a></li>
+                                    <Link to={`users/edit/${idUser}`}><li className="nav-item"><a className="nav-link" href="">{localStorage.getItem('nameUser')}</a></li> </Link>
                                 </>}
                                 {(showEmployer === 'false' || showEmployer === false) && <>
 
