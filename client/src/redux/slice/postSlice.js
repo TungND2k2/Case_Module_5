@@ -13,6 +13,7 @@ const postSlice = createSlice({
             state.post = payload.data;
         });
         builder.addCase(addPosts.fulfilled, (state, action) => {
+            console.log(state)
             state.post.push(action.payload);
         });
         builder.addCase(search.fulfilled, (state, {payload}) => {
