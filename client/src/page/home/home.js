@@ -54,14 +54,12 @@ export default function Home() {
                                         <Link to={'/jobs-detail'}> <div className="product-item">
                                             <a href=""><img style={{width:'350px',height:'255px'}} src={item.image} alt=""/></a>
                                             <div className="down-content">
-                                                <a href=""><h4><i
-                                                    className="fa fa-building"></i>{item.title}</h4></a>
+                                                <a href=""><h4 style={{fontStyle : "italic"}}>{item.title}</h4></a>
 
                                                 <h4>${item.salary}</h4>
                                                 <h4><small><i
                                                     className="fa fa-briefcase"></i> {item.jobName+ ' '}<br/>
-                                                    <i
-                                                        className="fa fa-briefcase"></i> {item.position}
+                                                    <i className="fa-solid fa-person"></i> {item.position}
                                                     <strong><br/>
                                                     </strong></small>
                                                 </h4>
