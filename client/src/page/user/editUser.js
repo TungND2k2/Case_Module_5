@@ -68,6 +68,7 @@ export default function EditUser(){
                 );
             });
         }
+
         Promise.all(promises)
             .then(() => alert("All images uploaded"))
             .catch((err) => console.log(err));
@@ -90,19 +91,19 @@ export default function EditUser(){
                         <Form className="mt-5 container py-5">
                             <div className="form-group" style={{marginTop: '100px'}}>
                                 <label htmlFor="exampleInputPassword1">Address</label>
-                                <Field type="text"  name={'address'}  className="form-control"/>
+                                <Field type="text"  name={'address'}  className="form-control border-dark"/>
                             </div>
                             <div className="form-group">
                                 <label htmlFor="exampleInputPassword1">Age</label>
-                                <Field type="text"  name={'age'}  className="form-control"/>
+                                <Field type="text"  name={'age'}  className="form-control border-dark"/>
                             </div>
                             <div className="form-group">
                                 <label htmlFor="exampleInputPassword1">Gender</label>
-                                <Field type="text"  name={'gender'}  className="form-control"/>
+                                <Field type="text"  name={'gender'}  className="form-control border-dark"/>
                             </div>
                             <div className="form-group">
                                 <label htmlFor="exampleInputPassword1">Email</label>
-                                <Field type="text" name={'email'}  className="form-control"/>
+                                <Field type="text" name={'email'}  className="form-control border-dark"/>
                             </div>
                             <div className="ml-3 form-group">
                                 <label htmlFor="exampleInputPassword">Avatar</label>

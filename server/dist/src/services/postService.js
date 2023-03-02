@@ -124,7 +124,10 @@ class PostService {
                         sql += `and salary between 2000 AND 4000 `;
                         break;
                     case 'upto4000':
-                        sql += `and salary between 4000 AND 100000000 `;
+                    case '2000-4000':
+                        sql += `and salary between 2001 AND 4000 `;
+                    case '4000':
+                        sql += `and salary between 4001 AND 100000000 `;
                         break;
                 }
             }

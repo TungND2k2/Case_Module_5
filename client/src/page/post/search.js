@@ -70,6 +70,11 @@ export default function Search() {
                 case '3':
                     name = 'experience';
                     break;
+                case '0-2000' :
+                case '2000-4000' :
+                case '4000':
+                    name = 'salary';
+                    break;
                 case'All' :
                     name = '';
                     break;
@@ -117,7 +122,7 @@ export default function Search() {
 
                                     </label>
                                 </div>
-                                <h5 style={{marginBottom: '15px'}}>Work  Time</h5>
+                                <h5 style={{marginBottom: '15px'}}>Work Time</h5>
 
                                 <div>
                                     <label>
@@ -231,6 +236,39 @@ export default function Search() {
 
                                     </label>
                                 </div>
+                                <br/>
+                                <h5 style={{marginBottom: '15px'}}>Salary</h5>
+                                <div>
+                                    <label>
+                                        <input type="checkbox" style={{height: "20px", width: "20px"}}
+
+
+                                               onChange={handleChange} value="0-2000"/> 0-2000
+
+
+                                    </label>
+                                </div>
+
+                                <div>
+                                    <label>
+                                        <input type="checkbox" style={{height: "20px", width: "20px"}}
+
+                                               onChange={handleChange} value="2000-4000"/> 2000-4000
+
+
+                                    </label>
+                                </div>
+
+                                <div>
+                                    <label>
+                                        <input type="checkbox" style={{height: "20px", width: "20px"}}
+
+
+                                               onChange={handleChange} value="4000"/> >4000
+
+
+                                    </label>
+                                </div>
 
                                 <br/>
 
@@ -313,38 +351,39 @@ export default function Search() {
                         <div className="container col-md-9">
                             <div className="row">
                                 {posts !== undefined && posts.map((item) => (
-                                    <Link to={`jobs-detail/${item.idPost}`}>
-                                        <div className="col-md-6 py-5 mt-2">
-                                        <div className="product-item">
-                                            <a><img style={{width:'396px',height:'289px'}} src={item.image}
-                                                    alt=""/></a>
-                                            <div className="down-content">
-                                                <a href=""><h4><i
-                                                    className="fa fa-building"></i>{item.title}</h4></a>
-                                                <h4>${item.salary}</h4>
+                                    <div className="col-md-6 py-5 mt-2">
+                                        <Link to={'/jobs-detail/' + item.idPost}>
+                                            <div className="product-item">
+                                                <a><img style={{width: '396px', height: '289px'}} src={item.image}
+                                                        alt=""/></a>
+                                                <div className="down-content">
+                                                    <a href=""><h4><i
+                                                        className="fa fa-building"></i>{item.title}</h4></a>
+                                                    <h4>${item.salary}</h4>
 
-                                                <h4><small><i
-                                                    className="fa fa-briefcase"></i> {item.jobName+ ' '}<br/>
-                                                    <i
-                                                        className="fa fa-briefcase"></i> {item.position}
-                                                    <strong><br/>
-                                                        <Link to={'/jobs-detail'}> <i
-                                                            className="fa-solid fa-circle-info"></i> Detail</Link>
-                                                    </strong></small></h4>
-                                                <small>
-                                                    <strong title="Posted on"><i
-                                                        className="fa fa-calendar"></i> 15-06-2020</strong> &nbsp;&nbsp;&nbsp;&nbsp;
-                                                    <strong title="Type"><i
-                                                        className="fa fa-file"></i> {item.workTime}
-                                                    </strong> &nbsp;&nbsp;&nbsp;&nbsp;
-                                                    <strong title="Location"><i
-                                                        className="fa fa-map-marker"></i> {item.workLocation}</strong>
-                                                </small>
+                                                    <h4><small><i
+                                                        className="fa fa-briefcase"></i> {item.jobName + ' '}<br/>
+                                                        <i
+                                                            className="fa fa-briefcase"></i> {item.position}
+                                                        <strong><br/>
+
+                                                        </strong></small></h4>
+                                                    <small>
+                                                        <strong title="Posted on"><i
+                                                            className="fa fa-calendar"></i> 15-06-2020</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                                                        <strong title="Type"><i
+                                                            className="fa fa-file"></i> {item.workTime}
+                                                        </strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                                                        <strong title="Location"><i
+                                                            className="fa fa-map-marker"></i> {item.workLocation}
+                                                        </strong>
+                                                    </small>
+                                                </div>
+
                                             </div>
+                                        </Link>
 
-                                        </div>
-                                    </div></Link>
-
+                                    </div>
 
                                 ))}
 
@@ -358,6 +397,7 @@ export default function Search() {
                                     </ul>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>

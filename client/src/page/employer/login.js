@@ -26,7 +26,7 @@ export default function LoginEmploy() {
     return (
         <>
             <body className="img js-fullheight"
-                  style={{backgroundImage: 'url(images/bg.jpg', width: "auto", height: "900px"}}>
+                  style={{backgroundImage: 'url(images/bg.jpg)', width: "auto", height: "900px"}}>
             <section className="ftco-section">
                 <div className="container">
                     <div className="row justify-content-center">

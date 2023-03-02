@@ -6,7 +6,6 @@ import {Field, Form, Formik} from "formik";
 import {getDownloadURL, ref, uploadBytesResumable} from "firebase/storage";
 import {storage} from "../../service/fireBase";
 import {getJobs} from "../../service/jobService";
-// import './post.css'
 const Edit = () => {
     const [images, setImages] = useState([]);
 
@@ -77,6 +76,7 @@ const Edit = () => {
     useEffect(() => {
         dispatch(getJobs())
     }, [])
+
     return (
         <>
             <body className="img js-fullheight">
@@ -98,6 +98,7 @@ const Edit = () => {
                                 title: posts.title,
                                 idEmployer: idEmployer,
                                 job: []
+
                             }}
                                     onSubmit={(values) => {
                                         values.image = urls[urls.length - 1]
