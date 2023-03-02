@@ -8,7 +8,7 @@ export default function PostDetail() {
     let {id} = useParams()
     let post = useSelector(state => {
         console.log(state.post.post)
-        return state.post.post
+        return state.post.currentPost
     })
     const dispatch = useDispatch()
 
