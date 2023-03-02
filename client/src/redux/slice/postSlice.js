@@ -3,6 +3,8 @@ import {addPosts, getPosts, search, editPost, searchPost,deletePost} from "../..
 const initialState = {
     post: [],
     search: [],
+    currentPost: {}
+
 }
 const postSlice = createSlice({
     name: 'posts',
@@ -25,7 +27,7 @@ const postSlice = createSlice({
 
         });
         builder.addCase(searchPost.fulfilled, (state, action) => {
-            state.post = action.payload;
+            state.currentPost = action.payload;
         });
         // builder.addCase(deletePost.fulfilled, (state, action) => {
         //     state.post = action.payload;

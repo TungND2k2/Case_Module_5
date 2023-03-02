@@ -19,10 +19,8 @@ export const addPosts = createAsyncThunk (
 export const editPost = createAsyncThunk (
     'posts/editPost',
     async (data) => {
-        console.log(data)
         await axios.put('http://localhost:4000/posts/'+ data[1],data[0]);
         const response = await axios.get('http://localhost:4000/posts');
-        console.log(response)
         return response.data;
     }
 )

@@ -7,17 +7,18 @@ import {Link, useNavigate} from "react-router-dom";
 export default function Home() {
     const dispatch = useDispatch()
     let posts = useSelector(state => {
-            return state.post.post
-
+        return state.post.post
     })
     useEffect(() => {
         dispatch(getPosts());
     }, []);
+
     const navigate = useNavigate()
 
     return (
         <>
-            { posts!==undefined && <>
+            {
+                posts != undefined && <>
                 <div className="banner header-text">
                     <div className="owl-banner owl-carousel">
                         <div className="banner-item-01">
@@ -50,7 +51,7 @@ export default function Home() {
                                     <a href="">view more <i className="fa fa-angle-right"></i></a>
                                 </div>
                             </div>
-                            { posts.map((item) => (
+                            { posts !== undefined && posts.map((item) => (
                                     <div className="col-md-4">
                                         <Link to={'/jobs-detail/'+item.idPost}> <div className="product-item">
                                             <a href=""><img style={{width:'350px',height:'255px'}} src={item.image} alt=""/></a>
@@ -76,8 +77,6 @@ export default function Home() {
 
                                             </div>
                                         </div></Link>
-
-
                                     </div>
                                 )
                             )}
@@ -294,8 +293,8 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-            </>}
-
+            </>
+            }
         </>
     )
 }
