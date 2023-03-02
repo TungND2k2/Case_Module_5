@@ -160,13 +160,19 @@ export default function AddPosts() {
                                                     <img src={item} alt="" style={{width: 50}}/></>
                                             ))}
                                             <br/>
-                                            <input type='file' name="image" onChange={handleChange}>
-                                            </input>
-                                            <button className="btn btn-outline-success" style={{marginRight: 10}}
-                                                    type='button'
-                                                    onClick={handleUpload}>Up
-                                            </button>
-
+                                            <div className="col-md-6">
+                                                <div className="row">
+                                                    <div className="col-6">
+                                                        <input type='file' name="image" onChange={handleChange}></input>
+                                                    </div>
+                                                    <div className="col-6">
+                                                        <button className="btn btn-outline-success"
+                                                                type='button'
+                                                                onClick={handleUpload}>Up
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div id="checkbox-group">Choose Job : &nbsp;&nbsp;&nbsp;&nbsp; </div>
                                         <div role="group" aria-labelledby="checkbox-group"

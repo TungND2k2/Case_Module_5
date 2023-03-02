@@ -17,7 +17,7 @@ const Edit = () => {
     let {id} = useParams()
     const dispatch = useDispatch();
     const posts = useSelector(state => {
-        return state.post.post;
+        return state.post.currentPost;
     })
     const jobs = useSelector(state => {
         return state.job.jobs;

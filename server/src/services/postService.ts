@@ -164,15 +164,6 @@ class PostService {
             sql += `and experience like '%${req.query.experience}'`
         }
         let listJob = []
-        // if (Array.isArray(req.query.jobName)){
-        //     listJob = req.query.jobName
-        // }
-        // else if(req.query.jobName === undefined){
-        //     listJob = []
-        // }
-        // else {
-        //     listJob.push(req.query.jobName)
-        // }
         if (req.query.jobName !== undefined){
             if (Array.isArray(req.query.jobName)){
                 listJob = req.query.jobName
@@ -190,14 +181,6 @@ class PostService {
                 sql += `)`
             }
         }
-        // if (req.query.jobName !== undefined ) {
-        //     sql += `and (jobName like (1=1)`
-        //     for (let i = 0; i < listJob.length; i++) {
-        //         sql+= `or jobName like '%${listJob[i]}'`
-        //     }
-        //     sql += `)`
-        // }
-
         sql += `order by idPost DESC`
         console.log(sql)
         let post = await this.postRepository.query(sql);
@@ -246,7 +229,6 @@ class PostService {
                 listPost.push(Object.values(result)[i])
             }
         }
-        console.log(listPost)
         let sql1 = `select idPost,
                           title,
                           salary,
