@@ -22,7 +22,6 @@ const blogSlice = createSlice({
             state.user = action.payload
         });
         builder.addCase(userLogin.fulfilled, (state, {payload}) => {
-            console.log(payload.data)
             state.user = payload.data;
             localStorage.setItem("status",payload.data)
             if(state.user!='User is not exit'&&state.user!='Password is wrong')

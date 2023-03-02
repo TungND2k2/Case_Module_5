@@ -58,10 +58,8 @@ export default function Home() {
                                                 className="fa fa-building"></i>{item.title}</h4></a>
 
                                             <h4>${item.salary}</h4>
-                                            <h4><small><i
-                                                className="fa fa-briefcase"></i> {item.jobName+ ' '}<br/>
-                                                <i
-                                                className="fa fa-briefcase"></i> {item.position}
+                                            <h4><small><i className="fa fa-briefcase"></i> {item.jobName + ' '} <br/>
+                                                <i className="fa fa-briefcase"></i> {item.position}
                                                <strong><br/>
                                                    <Link to={'/jobs-detail'}><i
                                                        className="fa-solid fa-circle-info"></i> Detail</Link>

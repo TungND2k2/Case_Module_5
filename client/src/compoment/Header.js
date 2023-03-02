@@ -42,8 +42,6 @@ export default function Header() {
                                 </Link>
 
 
-
-
                                 {((showEmployer === null && (showUser === true || showUser === null)) || (showEmployer === true && (showUser === true || showUser === null))) && <>
                                     <Link to="/login">
                                         <li className="nav-item"><a className="nav-link" href="">Sign In Employer</a>
@@ -74,12 +72,14 @@ export default function Header() {
                                         <li className="nav-item" onClick={()=>{
                                             dispatch(logout())
                                             localStorage.clear()
+                                            navigate('/home')
                                         }}><a className="nav-link" href="">logout</a></li>
                                 </>}
                                 {(showUser === 'false' || showUser === false) && <>
                                     <li className="nav-item" onClick={() => {
                                         dispatch(userLogout())
                                         localStorage.clear()
+                                        navigate('/home')
                                     }}><a className="nav-link" href="">logout</a></li>
                                 </>}
                             </ul>

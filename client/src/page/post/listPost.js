@@ -18,8 +18,8 @@ export default function ListPost() {
         dispatch(getPosts());
     }, []);
     const handleDelete = async (id) => {
-        dispatch(deletePost(id)).then(()=>(
-            dispatch(getPosts()).then(()=>{
+        dispatch(deletePost(id)).then(() => (
+            dispatch(getPosts()).then(() => {
                 navigate('/home')
             })
         ))
@@ -58,35 +58,37 @@ export default function ListPost() {
                                 <a href="">view more <i className="fa fa-angle-right"></i></a>
                             </div>
                         </div>
-                        { post.map((item) => {
+                        {post.map((item) => {
                             if (item.employerName === currentUser) {
                                 return <>
                                     <div className="col-md-4">
                                         <div className="product-item">
-                                            <a href=""><img src={item.image} alt=""/></a>
+                                            <a href=""><img style={{width: '350px', height: '255px'}} src={item.image}
+                                                            alt=""/></a>
                                             <div className="down-content">
-                                                <a href=""><h4>Lorem ipsum dolor sit amet</h4></a>
+                                                <a href=""><h4 style={{color : "gray"}} className="mt-2">{item.title}</h4></a>
 
                                                 <h4>${item.salary}</h4>
                                                 <h4><small><i
-                                                    className="fa fa-briefcase"></i> {item.jobName}/{item.position}<br/>
-                                                    <strong><i
-                                                        className="fa fa-building"></i> {item.title}</strong></small>
+                                                    className="fa fa-briefcase mt-3"></i> {item.jobName + " "}<br/>
+                                                    <i className="fa fa-building mt-3">{item.position}</i>
+                                                    </small>
                                                 </h4>
                                                 <small>
                                                     <strong title="Posted on"><i
-                                                        className="fa fa-calendar"></i> 15-06-2020</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                                                        className="fa fa-calendar"></i> {item.endTime}</strong> &nbsp; <br/>
                                                     <strong title="Type"><i
-                                                        className="fa fa-file"></i> {item.workTime}
-                                                    </strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                                                        className="fa fa-file mt-3"></i> {item.workTime}
+                                                    </strong> &nbsp;&nbsp;&nbsp;&nbsp; <br/>
                                                     <strong title="Location"><i
-                                                        className="fa fa-map-marker"></i> {item.workLocation}</strong>
+                                                        className="fa fa-map-marker mt-3" ></i> {item.workLocation}</strong>
                                                 </small>
                                                 <div className="container">
                                                     <Link to={`/posts/${item.idPost}`}>
-                                                        <button className="btn btn-primary mt-2">Edit</button>
+                                                        <button className="btn btn-primary mt-2"><i
+                                                            className="fa-solid fa-pen"></i></button>
                                                     </Link>
-                                                    <button className="btn btn-danger mt-2" onClick={()=>{
+                                                    <button className="btn btn-danger mt-2" onClick={() => {
                                                         swal({
                                                             title: "Are you sure?",
                                                             text: "Once deleted, you will not be able to recover this imaginary file!",
@@ -106,7 +108,8 @@ export default function ListPost() {
                                                                     swal("Your imaginary file is safe!")
                                                                 }
                                                             });
-                                                    }}>Delete</button>
+                                                    }}><i className="fa-solid fa-trash"></i>
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -329,6 +332,8 @@ export default function ListPost() {
                     </div>
                 </div>
             </div>
+
         </>
     )
+
 }

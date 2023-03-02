@@ -132,7 +132,7 @@ export default function Search() {
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
 
 
-                                               onChange={handleChange} value="FullTime"/> Full time
+                                               onChange={handleChange} value="Full Time"/> Full time
 
 
                                     </label>
@@ -142,7 +142,7 @@ export default function Search() {
                                     <label>
 
 
-                                        <input type="checkbox" onChange={handleChange} value="PartTime"
+                                        <input type="checkbox" onChange={handleChange} value="Part Time"
 
                                                style={{height: "20px", width: "20px"}}/> Part time
 

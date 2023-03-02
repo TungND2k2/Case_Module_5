@@ -28,4 +28,5 @@ export const edit = createAsyncThunk (
         const response = await axios.post('http://localhost:4000/posts/:id',data)
         return response;
     }
+
 )
