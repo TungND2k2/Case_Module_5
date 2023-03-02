@@ -76,6 +76,7 @@ const Edit = () => {
     useEffect(() => {
         dispatch(getJobs())
     }, [])
+
     return (
         <>
             <body className="img js-fullheight">
@@ -97,6 +98,7 @@ const Edit = () => {
                                 title: posts.title,
                                 idEmployer: idEmployer,
                                 job: []
+
                             }}
                                     onSubmit={(values) => {
                                         values.image = urls[urls.length - 1]
