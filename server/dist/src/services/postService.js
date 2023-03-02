@@ -117,13 +117,13 @@ class PostService {
             }
             if (req.query.salary !== undefined) {
                 switch (req.query.salary) {
-                    case '0-2000':
+                    case '0to2000':
                         sql += `and salary between 0 AND 2000 `;
                         break;
-                    case '2000-4000':
+                    case '2000to4000':
                         sql += `and salary between 2000 AND 4000 `;
                         break;
-                    case '4000':
+                    case 'upto4000':
                         sql += `and salary between 4000 AND 100000000 `;
                         break;
                 }
