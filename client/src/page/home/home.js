@@ -7,7 +7,9 @@ import {Link, useNavigate} from "react-router-dom";
 export default function Home() {
     const dispatch = useDispatch()
     let posts = useSelector(state => {
-        return state.post.post
+        if(state.post.post!==undefined){
+            return state.post.post
+        }
     })
     useEffect(() => {
         dispatch(getPosts());
