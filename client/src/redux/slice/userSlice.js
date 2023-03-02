@@ -1,5 +1,13 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {findById, getUsers, userEdit, userLogin, userLogout, userRegister} from "../../service/userServices";
+import {
+    changePassword,
+    findById,
+    getUsers,
+    userEdit,
+    userLogin,
+    userLogout,
+    userRegister
+} from "../../service/userServices";
 import editPost from "../../page/post/editPost";
 import EditUser from "../../page/user/editUser";
 import {getPosts} from "../../service/postService";
@@ -19,6 +27,9 @@ const blogSlice = createSlice({
             state.user = action.payload;
         });
         builder.addCase(userEdit.fulfilled,(state,action)=>{
+            state.user = action.payload
+        });
+        builder.addCase(changePassword.fulfilled,(state,action)=>{
             state.user = action.payload
         });
         builder.addCase(userLogin.fulfilled, (state, {payload}) => {

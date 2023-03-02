@@ -12,5 +12,5 @@ exports.userRouter.put('/:id', userController_1.default.editUser);
 exports.userRouter.post('/login', userController_1.default.login);
 exports.userRouter.get('/findById/:id', userController_1.default.findByIdUser);
 exports.userRouter.post('/register', userController_1.default.register);
-exports.userRouter.post('/changepassword/:id', userController_1.default.changePassword);
+exports.userRouter.post('/changePassword/:id', userController_1.default.changePassword);
 //# sourceMappingURL=user.router.js.map

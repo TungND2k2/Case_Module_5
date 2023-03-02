@@ -15,6 +15,7 @@ import EditUser from "./page/user/editUser";
 import ListPost from "./page/post/listPost";
 import PostDetail from "./page/post/postDetail";
 import EditEmployer from "./page/employer/editEmployer";
+import ChangePassword from "./page/user/changePassword";
 function App() {
   return (
     <>
@@ -30,6 +31,7 @@ function App() {
             <Route path="posts" element={<ListPost/>}/>
             <Route path="jobs-detail" element={<PostDetail/>}/>
             <Route path="users/edit/:id" element={<EditUser/>}></Route>
+            <Route path="users/changePassword/:id" element={<ChangePassword/>}></Route>
             <Route path="users/register" element={<RegisterUser/>}></Route>
             <Route path="/jobs/search" element={<Search/>}></Route>
         </Routes>

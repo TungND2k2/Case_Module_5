@@ -24,7 +24,6 @@ class userController {
     findByIdUser = async (req: Request, res: Response) => {
         try{
             let id = req.params.id
-            console.log(id)
             let user = await this.userService.findById(id);
             res.status(200).json(user)
         } catch (e) {
@@ -35,6 +34,7 @@ class userController {
         try {
             let user = await this.userService.checkChangePassword(req.params.id, req.body.oldPassword, req.body.newPassword)
             if (!user.check) {
+
                 res.json({
                     user,
                     mess: "Old Password Is Not Correct"

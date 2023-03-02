@@ -64,17 +64,17 @@ export default function Header() {
                                     <li className="nav-item"><a className="nav-link" href=""></a></li>
                                 </>}
                                 {(showUser === 'false' || showUser === false) && <>
-                                    <DropdownButton   id="dropdown-basic-button" title={localStorage.getItem('nameUser')}>
+                                    <DropdownButton class="dropdown-toggle btn-dark"  id="dropdown-basic-button" title={localStorage.getItem('nameUser')}>
                                         <Link to={`users/edit/${idUser}`}><Dropdown.Item href="#/action-1"><i
                                             className="fa-solid fa-user-pen"></i> &nbsp;&nbsp;Edit Information</Dropdown.Item></Link>
-                                        <Dropdown.Item href="#/action-2"><i className="fa-solid fa-gear"></i>&nbsp;&nbsp;Change Password</Dropdown.Item>
+                                        <Link to={`users/changePassword/${idUser}`}><Dropdown.Item href="#/action-2"><i className="fa-solid fa-gear"></i>&nbsp;&nbsp;Change Password</Dropdown.Item></Link>
                                     </DropdownButton>
 
 
                                     <li className="nav-item"><a className="nav-link" href=""></a></li>
                                 </>}
                                 {(showEmployer === 'false' || showEmployer === false) && <>
-                                    <DropdownButton   id="dropdown-basic-button" title={localStorage.getItem('employerName')}>
+                                    <DropdownButton    id="dropdown-basic-button" title={localStorage.getItem('employerName')}>
                                         <Link to={`employers/edit/${idEmployer}`}><Dropdown.Item href="#/action-1"><i
                                             className="fa-solid fa-user-pen"></i> &nbsp;&nbsp;Edit Employer Information</Dropdown.Item></Link>
                                         <Dropdown.Item href="#/action-2"><i className="fa-solid fa-gear"></i>&nbsp;&nbsp;Change Password</Dropdown.Item>

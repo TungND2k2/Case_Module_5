@@ -29,10 +29,17 @@ export const userEdit = createAsyncThunk (
         return response.data
     }
 )
-
+export const changePassword = createAsyncThunk(
+    'users/changePassword',
+    async (data)=>{
+        const response = await axios.post(`http://localhost:4000/users/changePassword/`+data[1],data[0]);
+        return response.data
+    }
+)
 export const findById = createAsyncThunk(
     'users/findById',
     async (data)=>{
+        console.log(data)
         const res = await axios.get(`http://localhost:4000/users/findById/${data}`);
 return res.data
     }
