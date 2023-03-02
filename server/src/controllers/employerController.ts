@@ -16,6 +16,22 @@ class AuthController {
         }
 
     }
+    editEmployer = async (req: Request, res: Response) => {
+        console.log(req.body)
+        let id = req.params.id;
+        let newEmployer= req.body;
+        await this.employerService.update(id, newEmployer);
+        res.status(200).json('Success!')
+    }
+    findByIdEmployer = async (req: Request, res: Response) => {
+        try{
+            let id = req.params.id
+            let employer = await this.employerService.findById(id);
+            res.status(200).json(employer)
+        } catch (e) {
+            res.status(500).json(e.message)
+        }
+    }
 
     register = async (req, res) => {
         let employer = await this.employerService.register(req.body)

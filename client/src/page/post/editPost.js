@@ -184,7 +184,7 @@ const Edit = () => {
                                         <div className="mb-3 mb-3 col-lg-12 col-md-12 col-12">
                                             <label className="form-label">Description</label>
                                             <Field name='description'
-                                                   className="form-control border-dark" cols='30' rows='4'></Field>
+                                                   className="form-control border-dark" cols='50' rows='6'></Field>
                                         </div>
 
                                         <div className="mb-3 mb-3 col-lg-12 col-md-12 col-12">

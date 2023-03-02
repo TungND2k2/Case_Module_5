@@ -18,6 +18,7 @@ export default function EditUser(){
     },[])
     const user = useSelector(
         state => {
+            console.log(state.user)
             return state.user.user
         }
     )
@@ -109,7 +110,7 @@ export default function EditUser(){
                                 <label htmlFor="exampleInputPassword">Avatar</label>
                                 <br/>
                                 {urls !== undefined &&
-                                    <><img src={urls[urls.length-1]} alt="" style={{width: 50}}/></>
+                                    <><img src={urls[urls.length-1]} alt="" style={{width: 300}}/></>
                                 }
                                 <br/>
                                 <input type='file' onChange={handleChange}>

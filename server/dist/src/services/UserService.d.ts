@@ -10,7 +10,7 @@ declare class UserService {
         token: string;
     }>;
     register: (user: any) => Promise<any>;
-    checkChangePassword: (idUser: any, oldPassword: any, newPassword: any) => Promise<{
+    checkChangePassword: (id: any, oldPassword: any, newPassword: any) => Promise<{
         check: boolean;
         userFind: any[];
     }>;

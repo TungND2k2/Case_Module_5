@@ -2,7 +2,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {getPosts,deletePost} from "../../service/postService";
 import {Link, useNavigate} from "react-router-dom";
-
+import swal from 'sweetalert';
+// import Edit from "../post/editPost";
 
 export default function Home() {
     const dispatch = useDispatch()
