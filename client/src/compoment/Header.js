@@ -44,7 +44,6 @@ export default function Header() {
 
 
 
-
                                 {((showEmployer === null && (showUser === true || showUser === null)) || (showEmployer === true && (showUser === true || showUser === null))) && <>
                                     <Link to="/login">
                                         <li className="nav-item"><a className="nav-link" href="">Sign In Employer</a>
@@ -56,11 +55,11 @@ export default function Header() {
                                 </>}
 
                                 {(showEmployer === 'false' || showEmployer === false) && <>
-                                    <Link to="/add-post"> <a className="nav-link" href="">Add Post
+                                    <Link to="/add-post"> <a className="nav-link" href="">Create Post
                                         <span className="sr-only"></span>
 
                                     </a></Link>
-                                    <Link to="/posts"> <a className="nav-link" href="">list Post
+                                    <Link to="/posts"> <a className="nav-link" href="">My Posts
                                         <span className="sr-only"></span>
 
                                     </a></Link>

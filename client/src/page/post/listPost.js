@@ -63,9 +63,36 @@ export default function ListPost() {
                                 if (item.employerName === currentUser) {
                                     return <>
                                         <div className="col-md-4">
-                                            <Link to={'/jobs-detail'}> <div className="product-item">
+                                           <div className="product-item">
+                                               <Link to={`/posts/${item.idPost}`} style={{float:'right',color:'blue'}}>
+                                                   <i className="fa-solid fa-pen-to-square" ></i>
+                                               </Link>
+                                               <br/>
+                                               <i className="fa-solid fa-trash" style={{float:'right',color:'red'}} onClick={()=>{
+                                                   swal({
+                                                       title: "Are you sure?",
+                                                       text: "Once deleted, you will not be able to recover this imaginary file!",
+                                                       icon: "warning",
+                                                       buttons: true,
+                                                       dangerMode: true,
+                                                   })
+                                                       .then((willDelete) => {
+                                                           console.log(item)
+                                                           if (willDelete) {
+                                                               swal("Poof! Your imaginary file has been deleted!", {
+                                                                   icon: "success",
+                                                               }).then(() => {
+                                                                   handleDelete(item.idPost)
+                                                               });
+                                                           } else {
+                                                               swal("Your imaginary file is safe!")
+                                                           }
+                                                       });
+                                               }}></i>
+                                               <Link to={'/jobs-detail/'+item.idPost}>
                                                 <a href=""><img style={{width:'350px',height:'255px'}} src={item.image} alt=""/></a>
-                                                <div className="down-content">
+                                               </Link>
+                                                   <div className="down-content">
                                                     <a href=""><h4>Lorem ipsum dolor sit amet</h4></a>
 
                                                     <h4>${item.salary}</h4>
@@ -84,34 +111,10 @@ export default function ListPost() {
                                                             className="fa fa-map-marker"></i> {item.workLocation}</strong>
                                                     </small>
                                                     <div className="container">
-                                                        <Link to={`/posts/${item.idPost}`}>
-                                                            <button className="btn btn-primary mt-2">Edit</button>
-                                                        </Link>
 
-                                                        <button className="btn btn-danger mt-2" onClick={()=>{
-                                                            swal({
-                                                                title: "Are you sure?",
-                                                                text: "Once deleted, you will not be able to recover this imaginary file!",
-                                                                icon: "warning",
-                                                                buttons: true,
-                                                                dangerMode: true,
-                                                            })
-                                                                .then((willDelete) => {
-                                                                    console.log(item)
-                                                                    if (willDelete) {
-                                                                        swal("Poof! Your imaginary file has been deleted!", {
-                                                                            icon: "success",
-                                                                        }).then(() => {
-                                                                            handleDelete(item.idPost)
-                                                                        });
-                                                                    } else {
-                                                                        swal("Your imaginary file is safe!")
-                                                                    }
-                                                                });
-                                                        }}>Delete</button>
                                                     </div>
                                                 </div>
-                                            </div></Link>
+                                            </div>
 
                                         </div>
 
