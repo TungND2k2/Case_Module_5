@@ -3,15 +3,15 @@ import {useDispatch, useSelector} from "react-redux";
 import {logout} from "../service/employerService";
 import {userLogout} from "../service/userServices";
 import {useEffect, useState} from "react";
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
 
 export default function Header() {
-
     let showUser = localStorage.getItem("userShow")
     let showEmployer = localStorage.getItem("employerShow")
-    // let showEmployer=useSelector(state => {
-    //     return state.employ.employerShow
-    //
-    // })
+    let idEmployer = useSelector(state => {
+        return state.employ.employers.id_employer
+    })
     let idUser=useSelector(state => {
         return state.user.user.idUser
     })
@@ -41,8 +41,6 @@ export default function Header() {
                                     <li className="nav-item"><a className="nav-link" href="">Jobs</a></li>
                                 </Link>
 
-
-
                                 {((showEmployer === null && (showUser === true || showUser === null)) || (showEmployer === true && (showUser === true || showUser === null))) && <>
                                     <Link to="/login">
                                         <li className="nav-item"><a className="nav-link" href="">Sign In Employer</a>
@@ -53,34 +51,44 @@ export default function Header() {
                                     </Link>
                                 </>}
 
+
                                 {(showEmployer === 'false' || showEmployer === false) && <>
-                                    <Link to="/add-post"> <a className="nav-link" href="">Create Post
+                                    <Link to="/add-post"> <a className="nav-link" href="">Add Post
                                         <span className="sr-only"></span>
 
                                     </a></Link>
-                                    <Link to="/posts"> <a className="nav-link" href="">My Posts
+                                    <Link to="/posts"> <a className="nav-link" href="">list Post
                                         <span className="sr-only"></span>
 
                                     </a></Link>
-                                    <li className="nav-item"><a className="nav-link" href="">{localStorage.getItem('employerName')}</a></li>
+                                    <li className="nav-item"><a className="nav-link" href=""></a></li>
                                 </>}
                                 {(showUser === 'false' || showUser === false) && <>
-                                    <Link to={`users/edit/${idUser}`}><li className="nav-item"><a className="nav-link" href="">{localStorage.getItem('nameUser')}</a></li> </Link>
+                                    <DropdownButton   id="dropdown-basic-button" title={localStorage.getItem('nameUser')}>
+                                        <Link to={`users/edit/${idUser}`}><Dropdown.Item href="#/action-1">Edit information</Dropdown.Item></Link>
+                                        <Dropdown.Item href="#/action-2">Change Password</Dropdown.Item>
+                                        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                                    </DropdownButton>
 
+
+                                    <li className="nav-item"><a className="nav-link" href=""></a></li>
                                 </>}
                                 {(showEmployer === 'false' || showEmployer === false) && <>
+                                    <DropdownButton   id="dropdown-basic-button" title={localStorage.getItem('employerName')}>
+                                        <Link to={`employers/edit/${idEmployer}`}><Dropdown.Item href="#/action-1">Edit information</Dropdown.Item></Link>
+                                        <Dropdown.Item href="#/action-2">Change Password</Dropdown.Item>
+                                        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                                    </DropdownButton>
 
                                         <li className="nav-item" onClick={()=>{
                                             dispatch(logout())
                                             localStorage.clear()
-                                            navigate('/home')
                                         }}><a className="nav-link" href="">logout</a></li>
                                 </>}
                                 {(showUser === 'false' || showUser === false) && <>
                                     <li className="nav-item" onClick={() => {
                                         dispatch(userLogout())
                                         localStorage.clear()
-                                        navigate('/home')
                                     }}><a className="nav-link" href="">logout</a></li>
                                 </>}
                             </ul>
@@ -88,6 +96,7 @@ export default function Header() {
                     </div>
                 </nav>
             </header>
+
         </>
     )
 }

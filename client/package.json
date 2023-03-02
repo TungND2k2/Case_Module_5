@@ -46,6 +46,7 @@
     ]
   },
   "devDependencies": {
-    "firebase": "^9.17.1"
+    "firebase": "^9.17.1",
+    "react-bootstrap": "^2.7.2"
   }
 }

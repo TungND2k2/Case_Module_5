@@ -16,6 +16,23 @@ class AuthController {
                 res.status(500).json(e.message);
             }
         };
+        this.editEmployer = async (req, res) => {
+            console.log(req.body);
+            let id = req.params.id;
+            let newEmployer = req.body;
+            await this.employerService.update(id, newEmployer);
+            res.status(200).json('Success!');
+        };
+        this.findByIdEmployer = async (req, res) => {
+            try {
+                let id = req.params.id;
+                let employer = await this.employerService.findById(id);
+                res.status(200).json(employer);
+            }
+            catch (e) {
+                res.status(500).json(e.message);
+            }
+        };
         this.register = async (req, res) => {
             let employer = await this.employerService.register(req.body);
             res.status(200).json(employer);

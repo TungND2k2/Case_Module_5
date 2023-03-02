@@ -1,5 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
-import { login, logout, register} from "../../service/employerService";
+import {findByIdEmployer, login, logout, register} from "../../service/employerService";
+import {findById} from "../../service/userServices";
 const initialState = {
     employers: [],
     employerShow :localStorage.getItem('employerShow'),
@@ -11,6 +12,9 @@ const blogSlice = createSlice({
     extraReducers: builder => {
         builder.addCase(register.fulfilled, (state, {payload}) => {
             state.employers.push(payload);
+        });
+        builder.addCase(findByIdEmployer.fulfilled,(state, action)=>{
+            state.employers = action.payload;
         });
         builder.addCase(login.fulfilled, (state, {payload}) => {
             state.employers = payload.data;

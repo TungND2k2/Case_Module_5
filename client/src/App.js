@@ -14,6 +14,7 @@ import React from "react";
 import EditUser from "./page/user/editUser";
 import ListPost from "./page/post/listPost";
 import PostDetail from "./page/post/postDetail";
+import EditEmployer from "./page/employer/editEmployer";
 function App() {
   return (
     <>
@@ -23,11 +24,11 @@ function App() {
             <Route path="add-post" element={<AddPosts/>}></Route>
             <Route path="login" element={<LoginEmploy/>}></Route>
             <Route path="register" element={<RegisterEmploy/>}></Route>
+            <Route path="employers/edit/:id" element={<EditEmployer/>}></Route>
             <Route path="users/login" element={<LoginUser/>}></Route>
             <Route path="posts/:id" element={<Edit/>}/>
             <Route path="posts" element={<ListPost/>}/>
-            <Route path="jobs-detail/:id" element={<PostDetail/>}/>
-            {/*<Route path="users/edit/:id" element={<EditUser/>}></Route>*/}
+            <Route path="jobs-detail" element={<PostDetail/>}/>
             <Route path="users/edit/:id" element={<EditUser/>}></Route>
             <Route path="users/register" element={<RegisterUser/>}></Route>
             <Route path="/jobs/search" element={<Search/>}></Route>

@@ -103,7 +103,6 @@ export default function AddPosts() {
                                     values.image = urls[0]
                                     handleAddPost(values);
                                 }}>
-                            {({values}) => (
                                 <Form className="mt-5 container py-5">
                                     <div className="row">
                                         <div className="mb-3 col-lg-6 col-md-6 col-12">
@@ -111,46 +110,66 @@ export default function AddPosts() {
                                             <Field type="number" className="form-control border-dark" name={'salary'}/>
                                         </div>
                                         <div className="mb-3 mb-3 col-lg-6 col-md-6 col-12">
-                                             <label className="form-label">workLocation</label>
-                                            <Field type="text" className="form-control border-dark" name={'workLocation'}/>
+                                                <label className="form-label">Work Location</label>
+                                                <Field className="form-control border-dark" as='select'
+                                                       name={'workLocation'}>
+                                                    <option value={'CầuGiấy'}>Cầu Giấy</option>
+                                                    <option value={'HàĐông'}>Hà Đông</option>
+                                                    <option value={'HoàngMai'}>Hoàng Mai</option>
+                                                    <option value={'HaiBàTrưng'}>Hai Bà Trưng</option>
+                                                    <option value={'ThanhXuân'}>Thanh Xuân</option>
+                                                </Field>
+                                        </div>
+                                        <div className="mb-3 mb-3 col-lg-6 col-md-6 col-12">
+
+                                                <label className="form-label">Position</label>
+                                                <Field className="form-control border-dark" as='select'
+                                                       name={'position'}>
+                                                    <option value={'Staff'}>Staff</option>
+                                                    <option value={'Leader'}>Leader</option>
+                                                    <option value={'Technicians'}>Technicians</option>
+                                                </Field>
 
                                         </div>
                                         <div className="mb-3 mb-3 col-lg-6 col-md-6 col-12">
-                                             <label className="form-label">Position</label>
-                                            <Field type="text" className="form-control border-dark" name={'position'}/>
-
+                                                <label className="form-label">Years of experience</label>
+                                                <Field className="form-control border-dark" as='select'
+                                                       name={'experience'}>
+                                                    <option value={'1Year'}>1 Year</option>
+                                                    <option value={'2Year'}>2 Year</option>
+                                                    <option value={'3Year'}>3 Year</option>
+                                                </Field>
                                         </div>
                                         <div className="mb-3 mb-3 col-lg-6 col-md-6 col-12">
-                                             <label className="form-label">Experience</label>
-                                            <Field type="text" className="form-control border-dark" name={'experience'}/>
+                                                <label className="form-label">Work Time</label>
+                                                <Field className="form-control border-dark" as='select'
+                                                       name={'workTime'}>
+                                                    <option value={'Contract'}>Contract</option>
+                                                    <option value={'Fulltime'}>Full time</option>
+                                                    <option value={'Parttime'}>Part time</option>
+                                                </Field>
                                         </div>
                                         <div className="mb-3 mb-3 col-lg-6 col-md-6 col-12">
-                                             <label className="form-label">WorkTime</label>
-                                            <Field type="text" className="form-control border-dark" name={'workTime'}/>
-                                        </div>
-                                        <div className="mb-3 mb-3 col-lg-6 col-md-6 col-12">
-                                             <label className="form-label">End time</label>
+                                            <label className="form-label">End time</label>
                                             <Field type="date" className="form-control border-dark" name={'endTime'}/>
                                         </div>
 
                                         <div className="mb-3 mb-3 col-lg-6 col-md-6 col-12">
-                                             <label className="form-label">Recruitments Number</label>
+                                            <label className="form-label">Recruitments Number</label>
                                             <Field type="number" className="form-control border-dark"
                                                    name={'recruitmentsNumber'}/>
                                         </div>
                                         <div className="mb-3 mb-3 col-lg-6 col-md-6 col-12">
-                                             <label className="form-label">Status</label>
+                                            <label className="form-label">Status</label>
                                             <Field type="text" className="form-control border-dark" name={'status'}/>
                                         </div>
                                         <div className="mb-3 mb-3 col-lg-6 col-md-6 col-12">
-                                             <label className="form-label">Title</label>
+                                            <label className="form-label">Title</label>
                                             <Field type="text" className="form-control border-dark" name={'title'}/>
                                         </div>
-
-                                        <div className="mb-3 mb-3 col-lg-12 col-md-12 col-12">
+                                        <div className="mb-3 mb-3 col-lg-6 col-md-6 col-12">
                                             <label className="form-label">Description</label>
-                                            <textarea name='description'
-                                                      className="form-control border-dark" cols='30' rows='4'></textarea>
+                                            <Field as={'textarea'} type="text" className="form-control border-dark" name={'description'}/>
                                         </div>
                                         <div className="mb-3 mb-3 col-lg-12 col-md-12 col-12">
                                             <label className="form-label">image</label>
@@ -181,17 +200,16 @@ export default function AddPosts() {
                                                 jobs.map((item) => (
                                                     <label style={{marginLeft: '30px', marginRight: '95px'}}>
 
-                                                        <Field type="checkbox" name="job"  value={'' + (item.jobId)}/>
+                                                        <Field type="checkbox" name="job" value={'' + (item.jobId)}/>
                                                         <h5 style={{padding: '-30px'}}>{item.jobName} &nbsp;&nbsp;&nbsp;&nbsp;</h5>
 
                                                     </label>
                                                 ))
                                             }
                                         </div>
-
                                         <button type="submit" className="btn btn-primary">Add</button>
                                     </div>
-                                </Form>)}
+                                </Form>
 
                         </Formik>
                     </div>
