@@ -43,8 +43,6 @@ export default function Header() {
                                 </Link>
 
 
-
-
                                 {((showEmployer === null && (showUser === true || showUser === null)) || (showEmployer === true && (showUser === true || showUser === null))) && <>
                                     <Link to="/login">
                                         <li className="nav-item"><a className="nav-link" href="">Sign In Employer</a>
