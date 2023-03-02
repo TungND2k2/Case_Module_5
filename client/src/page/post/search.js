@@ -231,6 +231,40 @@ export default function Search() {
 
                                     </label>
                                 </div>
+                                <br/>
+                                <h5 style={{marginBottom: '15px'}}>Salary</h5>
+
+                                <div>
+                                    <label>
+                                        <input type="checkbox" style={{height: "20px", width: "20px"}}
+
+
+                                               onChange={handleChange} value="0-2000"/> 0-2000
+
+
+                                    </label>
+                                </div>
+
+                                <div>
+                                    <label>
+                                        <input type="checkbox" style={{height: "20px", width: "20px"}}
+
+                                               onChange={handleChange} value="2000-4000"/> 2000-4000
+
+
+                                    </label>
+                                </div>
+
+                                <div>
+                                    <label>
+                                        <input type="checkbox" style={{height: "20px", width: "20px"}}
+
+
+                                               onChange={handleChange} value="4000"/> >4000
+
+
+                                    </label>
+                                </div>
 
                                 <br/>
 
