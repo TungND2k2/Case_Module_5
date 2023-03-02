@@ -7,7 +7,7 @@ import {deletePost, getPosts, searchPost} from "../../service/postService";
 export default function PostDetail() {
     let {id} = useParams()
     let post = useSelector(state => {
-        return state.post.post
+        return state.post.currentPost
     })
     const dispatch = useDispatch()
 
