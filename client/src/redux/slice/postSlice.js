@@ -10,7 +10,8 @@ const postSlice = createSlice({
     reducers: {},
     extraReducers: builder => {
         builder.addCase(getPosts.fulfilled, (state, {payload}) => {
-            state.post = payload.data;
+                state.post = payload.data;
+
         });
         builder.addCase(addPosts.fulfilled, (state, action) => {
             state.post.push(action.payload);
