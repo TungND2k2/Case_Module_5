@@ -30,6 +30,7 @@ class userController {
             }
         };
         this.changePassword = async (req, res) => {
+            console.log(req.params.id);
             try {
                 let user = await this.userService.checkChangePassword(req.params.id, req.body.oldPassword, req.body.newPassword);
                 if (!user.check) {
@@ -47,7 +48,7 @@ class userController {
             }
             catch (e) {
                 res.json({
-                    mess: e.message,
+                    mess: e.message + 1,
                 });
             }
         };
