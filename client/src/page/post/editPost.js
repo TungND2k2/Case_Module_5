@@ -6,7 +6,6 @@ import {Field, Form, Formik} from "formik";
 import {getDownloadURL, ref, uploadBytesResumable} from "firebase/storage";
 import {storage} from "../../service/fireBase";
 import {getJobs} from "../../service/jobService";
-// import './post.css'
 const Edit = () => {
     const [images, setImages] = useState([]);
 

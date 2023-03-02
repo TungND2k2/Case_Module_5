@@ -5,6 +5,7 @@ import {userLogout} from "../service/userServices";
 import {useEffect, useState} from "react";
 
 export default function Header() {
+
     let showUser = localStorage.getItem("userShow")
     let showEmployer = localStorage.getItem("employerShow")
     // let showEmployer=useSelector(state => {
@@ -20,7 +21,7 @@ export default function Header() {
     const navigate = useNavigate();
     return (
         <>
-            <header className="">
+            <header className="" style={{backgroundColor:'black'}}>
                 <nav className="navbar navbar-expand-lg">
                     <div className="container">
                         <a className="navbar-brand" href=""><h2>Job Agency <em>Website</em></h2></a>
@@ -74,12 +75,14 @@ export default function Header() {
                                         <li className="nav-item" onClick={()=>{
                                             dispatch(logout())
                                             localStorage.clear()
+                                            navigate('/home')
                                         }}><a className="nav-link" href="">logout</a></li>
                                 </>}
                                 {(showUser === 'false' || showUser === false) && <>
                                     <li className="nav-item" onClick={() => {
                                         dispatch(userLogout())
                                         localStorage.clear()
+                                        navigate('/home')
                                     }}><a className="nav-link" href="">logout</a></li>
                                 </>}
                             </ul>

@@ -311,7 +311,7 @@ export default function Search() {
                         </div>
 
                         <div className="container col-md-9">
-                            <div className="row">
+                            <Link to={'/jobs-detail'}><div className="row">
                                 {posts !== undefined && posts.map((item) => (
                                     <div className="col-md-6 py-5 mt-2">
                                         <div className="product-item">
@@ -327,9 +327,8 @@ export default function Search() {
                                                     <i
                                                         className="fa fa-briefcase"></i> {item.position}
                                                     <strong><br/>
-                                                        <Link to={'/jobs-detail'}> <i
-                                                            className="fa-solid fa-circle-info"></i> Detail</Link>
-                                                       </strong></small></h4>
+
+                                                    </strong></small></h4>
                                                 <small>
                                                     <strong title="Posted on"><i
                                                         className="fa fa-calendar"></i> 15-06-2020</strong> &nbsp;&nbsp;&nbsp;&nbsp;
@@ -355,7 +354,8 @@ export default function Search() {
                                         <li><a href="#"><i className="fa fa-angle-double-right"></i></a></li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div> </Link>
+
                         </div>
                     </div>
                 </div>
