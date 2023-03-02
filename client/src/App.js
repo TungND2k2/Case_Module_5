@@ -26,7 +26,7 @@ function App() {
             <Route path="users/login" element={<LoginUser/>}></Route>
             <Route path="posts/:id" element={<Edit/>}/>
             <Route path="posts" element={<ListPost/>}/>
-            <Route path="jobs-detail" element={<PostDetail/>}/>
+            <Route path="/jobs/search/jobs-detail/:id" element={<PostDetail/>}/>
             {/*<Route path="users/edit/:id" element={<EditUser/>}></Route>*/}
             <Route path="users/edit/:id" element={<EditUser/>}></Route>
             <Route path="users/register" element={<RegisterUser/>}></Route>

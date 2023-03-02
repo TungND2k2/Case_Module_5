@@ -313,7 +313,8 @@ export default function Search() {
                         <div className="container col-md-9">
                             <div className="row">
                                 {posts !== undefined && posts.map((item) => (
-                                    <div className="col-md-6 py-5 mt-2">
+                                    <Link to={`jobs-detail/${item.idPost}`}>
+                                        <div className="col-md-6 py-5 mt-2">
                                         <div className="product-item">
                                             <a><img style={{width:'396px',height:'289px'}} src={item.image}
                                                     alt=""/></a>
@@ -329,7 +330,7 @@ export default function Search() {
                                                     <strong><br/>
                                                         <Link to={'/jobs-detail'}> <i
                                                             className="fa-solid fa-circle-info"></i> Detail</Link>
-                                                       </strong></small></h4>
+                                                    </strong></small></h4>
                                                 <small>
                                                     <strong title="Posted on"><i
                                                         className="fa fa-calendar"></i> 15-06-2020</strong> &nbsp;&nbsp;&nbsp;&nbsp;
@@ -342,7 +343,8 @@ export default function Search() {
                                             </div>
 
                                         </div>
-                                    </div>
+                                    </div></Link>
+
 
                                 ))}
 
