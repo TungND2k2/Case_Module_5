@@ -17,6 +17,16 @@ class AuthService {
         }
         return employers;
     }
+    findById = async (id)=> {
+        let employer = await this.employerRepository.findOneBy({idEmployer:id});
+        if(!employer){
+            return null;
+        }
+        return employer;
+    }
+    update = async (id, newEmployer)=> {
+        return await this.employerRepository.update({idEmployer: id}, newEmployer);
+    }
 
     register = async (employer) => {
         employer.employerPassword = await bcrypt.hash(employer.employerPassword, 10)

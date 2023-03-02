@@ -21,11 +21,19 @@ export const logout = createAsyncThunk (
         return false
     }
 )
-
-export const edit = createAsyncThunk (
-    'employers/edit',
+export const employerEdit = createAsyncThunk (
+    'employers/employerEdit',
     async (data) => {
-        const response = await axios.post('http://localhost:4000/posts/:id',data)
-        return response;
+        await axios.put(`http://localhost:4000/employer/${data.idEmployer}`,data);
+        const response = await axios.get('http://localhost:4000/employer');
+        return response.data
+    }
+)
+
+export const findByIdEmployer = createAsyncThunk(
+    'employers/findByIdEmployer',
+    async (data)=>{
+        const res = await axios.get(`http://localhost:4000/employer/findById/${data}`);
+        return res.data
     }
 )

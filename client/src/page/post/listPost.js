@@ -68,8 +68,9 @@ export default function ListPost() {
                                                 <a href=""><h4>Lorem ipsum dolor sit amet</h4></a>
 
                                                 <h4>${item.salary}</h4>
-                                                <h4><small><i
-                                                    className="fa fa-briefcase"></i> {item.jobName}/{item.position}<br/>
+                                                <h4><small>
+                                                    <i className="fa fa-briefcase"></i> {item.jobName+ ' '}<br/>
+                                                    <i className="fa fa-briefcase"></i> {item.position}
                                                     <strong><i
                                                         className="fa fa-building"></i> {item.title}</strong></small>
                                                 </h4>

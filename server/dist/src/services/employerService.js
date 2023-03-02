@@ -18,6 +18,16 @@ class AuthService {
             }
             return employers;
         };
+        this.findById = async (id) => {
+            let employer = await this.employerRepository.findOneBy({ idEmployer: id });
+            if (!employer) {
+                return null;
+            }
+            return employer;
+        };
+        this.update = async (id, newEmployer) => {
+            return await this.employerRepository.update({ idEmployer: id }, newEmployer);
+        };
         this.register = async (employer) => {
             employer.employerPassword = await bcrypt_1.default.hash(employer.employerPassword, 10);
             return this.employerRepository.save(employer);
