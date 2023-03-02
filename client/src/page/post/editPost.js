@@ -113,26 +113,50 @@ const Edit = () => {
                                                    className="form-control border-dark"/>
                                         </div>
                                         <div className="mb-3 mb-3 col-lg-6 col-md-6 col-12">
-                                            <label className="form-label">workLocation</label>
-                                            <Field type="text"
-                                                   name="workLocation"
-                                                   className="form-control border-dark"/>
+                                            <>
+                                                <label className="form-label">workLocation</label>
+                                                <Field className="form-control border-dark" as='select'
+                                                       name={'workLocation'}>
+                                                    <option value="CầuGiấy">Cầu Giấy</option>
+                                                    <option value="HàĐông">Hà Đông</option>
+                                                    <option value="HoàngMai">Hoàng Mai</option>
+                                                    <option value="HaiBàTrưng">Hai Bà Trưng</option>
+                                                    <option value="ThanhXuân">Thanh Xuân</option>
+                                                </Field>
+                                            </>
                                         </div>
                                         <div className="mb-3 mb-3 col-lg-6 col-md-6 col-12">
-                                            <label className="form-label">position</label>
-                                            <Field type="text" name="position"
-                                                   className="form-control border-dark"/>
+                                            <>
+                                                <label className="form-label">Position</label>
+                                                <Field className="form-control border-dark" as='select'
+                                                       name={'position'}>
+                                                    <option value="Staff">Staff</option>
+                                                    <option value="Leader">Leader</option>
+                                                    <option value="Technicians">Technicians</option>
+                                                </Field>
+                                            </>
                                         </div>
                                         <div className="mb-3 mb-3 col-lg-6 col-md-6 col-12">
-                                            <label className="form-label">experience</label>
-                                            <Field type="text"
-                                                   name="experience"
-                                                   className="form-control border-dark"/>
+                                            <>
+                                                <label className="form-label">Experience</label>
+                                                <Field className="form-control border-dark" as='select'
+                                                       name={'experience'}>
+                                                    <option value="1">1 Year</option>
+                                                    <option value="2">2 Year</option>
+                                                    <option value="3">3 Year</option>
+                                                </Field>
+                                            </>
                                         </div>
                                         <div className="mb-3 mb-3 col-lg-6 col-md-6 col-12">
-                                            <label className="form-label">workTime</label>
-                                            <Field type="text" name="workTime"
-                                                   className="form-control border-dark"/>
+                                            <>
+                                                <label className="form-label">Work Time</label>
+                                                <Field className="form-control border-dark" as='select'
+                                                       name={'workTime'}>
+                                                    <option value="Contract">Contract</option>
+                                                    <option value="Fulltime">Full time</option>
+                                                    <option value="Parttime">Part time</option>
+                                                </Field>
+                                            </>
                                         </div>
                                         <div className="mb-3 mb-3 col-lg-6 col-md-6 col-12">
                                             <label className="form-label">endTime</label>
@@ -147,25 +171,11 @@ const Edit = () => {
                                         </div>
                                         <div className="mb-3 mb-3 col-lg-12 col-md-12 col-12">
                                             <label className="form-label">status</label>
-                                            <Field name='status'
-                                                   className="form-control border-dark"/>
-                                        </div>
-                                        <div className="mb-3 mb-3 col-lg-12 col-md-12 col-12">
-                                            <label className="form-label">image</label>
-                                            <br/>
-                                            {urls.map(item => (
-                                                <>
-                                                    <img src={item} alt="" style={{width: 50}}/></>
-                                            ))}
-                                            <br/>
-                                            <input type='file' name="image" onChange={handleChange}>
-                                            </input>
-                                            <button className="btn btn-outline-success" style={{marginRight: 10}}
-                                                    type='button'
-                                                    onClick={handleUpload}>Up
-                                            </button>
+                                            <Field name='status' className="form-control border-dark"/>
 
                                         </div>
+
+
                                         <div className="mb-3 mb-3 col-lg-12 col-md-12 col-12">
                                             <label className="form-label">title</label>
                                             <Field name='title'
@@ -175,6 +185,29 @@ const Edit = () => {
                                             <label className="form-label">Description</label>
                                             <Field name='description'
                                                    className="form-control border-dark" cols='30' rows='4'></Field>
+                                        </div>
+
+                                        <div className="mb-3 mb-3 col-lg-12 col-md-12 col-12">
+                                            <label className="form-label">image</label>
+                                            <br/>
+                                            {urls.map(item => (
+                                                <>
+                                                    <img src={item} alt="" style={{width: "450px"}}/></>
+                                            ))}
+                                            <br/>
+                                            <div className="row mt-4">
+                                                <div>
+                                                    <input type='file' name="image" onChange={handleChange}>
+                                                    </input>
+                                                </div>
+                                                <div className="col-lg-3">
+                                                    <button className="btn btn-outline-success" style={{marginRight: 10}}
+                                                            type='button'
+                                                            onClick={handleUpload}>Up
+                                                    </button>
+
+                                                </div>
+                                            </div>
                                         </div>
                                         <div className="mb-3 mb-3 col-lg-12 col-md-12 col-12">
                                             <Field name='idEmployer' style={{visibility:" hidden"}}
@@ -189,7 +222,6 @@ const Edit = () => {
 
                                                         <Field type="checkbox" name="job"  value={'' + (item.jobId)}/>
                                                         <h5 style={{padding: '-30px'}}>{item.jobName} &nbsp;&nbsp;&nbsp;&nbsp;</h5>
-
                                                     </label>
                                                 ))
                                             }

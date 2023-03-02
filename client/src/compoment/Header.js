@@ -13,7 +13,6 @@ export default function Header() {
     //
     // })
     let idUser=useSelector(state => {
-        console.log(state)
         return state.user.user.idUser
     })
 
