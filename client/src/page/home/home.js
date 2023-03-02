@@ -51,7 +51,7 @@ export default function Home() {
                             </div>
                             { posts.map((item) => (
                                     <div className="col-md-4">
-                                        <Link to={'/jobs-detail'}> <div className="product-item">
+                                        <Link to={'/jobs-detail/'+item.idPost}> <div className="product-item">
                                             <a href=""><img style={{width:'350px',height:'255px'}} src={item.image} alt=""/></a>
                                             <div className="down-content">
                                                 <a href=""><h4><i

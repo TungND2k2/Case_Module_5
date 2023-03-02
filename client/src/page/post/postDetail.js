@@ -64,7 +64,7 @@ export default function PostDetail() {
                             </div>
 
                             <div>
-                                <img src="/assets/images/product-1-370x270.jpg" alt="" className="img-fluid wc-image"/>
+                                <img src={post.image} alt="" className="img-fluid wc-image"/>
                             </div>
 
                             <br/>

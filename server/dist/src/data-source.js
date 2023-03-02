@@ -14,7 +14,7 @@ exports.AppDataSource = new typeorm_1.DataSource({
     port: 3306,
     username: "root",
     password: "123456",
-    database: "case-md5",
+    database: "case_md5",
     synchronize: false,
     entities: [post_1.Post, jobDetail_1.JobDetail, user_1.User, employer_1.Employer, job_1.Job]
 });

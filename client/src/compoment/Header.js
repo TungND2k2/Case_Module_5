@@ -24,7 +24,7 @@ export default function Header() {
             <header className="" style={{backgroundColor:'black'}}>
                 <nav className="navbar navbar-expand-lg">
                     <div className="container">
-                        <a className="navbar-brand" href=""><h2>Job Agency <em>Website</em></h2></a>
+                        <Link to={'/home'}><a className="navbar-brand" href=""><h2>Job Agency <em>Website</em></h2></a></Link>
                         <button className="navbar-toggler" type="button" data-toggle="collapse"
                                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                                 aria-label="Toggle navigation">

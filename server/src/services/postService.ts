@@ -143,10 +143,10 @@ class PostService {
                     sql += `and salary between 0 AND 2000 `
                     break;
                 case '2000-4000':
-                    sql += `and salary between 2000 AND 4000 `
+                    sql += `and salary between 2001 AND 4000 `
                     break;
                 case '4000':
-                    sql += `and salary between 4000 AND 100000000 `
+                    sql += `and salary between 4001 AND 100000000 `
                     break;
             }
 
