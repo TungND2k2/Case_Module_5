@@ -7,9 +7,8 @@ import {Link, useNavigate} from "react-router-dom";
 export default function Home() {
     const dispatch = useDispatch()
     let posts = useSelector(state => {
-        if(state.post.post!==undefined){
             return state.post.post
-        }
+
     })
     useEffect(() => {
         dispatch(getPosts());
@@ -18,7 +17,7 @@ export default function Home() {
 
     return (
         <>
-            {posts!==undefined && <>
+            { posts!==undefined && <>
                 <div className="banner header-text">
                     <div className="owl-banner owl-carousel">
                         <div className="banner-item-01">
