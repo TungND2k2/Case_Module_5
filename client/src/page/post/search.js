@@ -238,7 +238,6 @@ export default function Search() {
                                 </div>
                                 <br/>
                                 <h5 style={{marginBottom: '15px'}}>Salary</h5>
-
                                 <div>
                                     <label>
                                         <input type="checkbox" style={{height: "20px", width: "20px"}}
