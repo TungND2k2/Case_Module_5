@@ -12,9 +12,6 @@ export default function Header() {
     let idEmployer = useSelector(state => {
         return state.employ.employers.id_employer
     })
-    let idUser=useSelector(state => {
-        return state.user.user.idUser
-    })
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -60,12 +57,13 @@ export default function Header() {
                                     <Link to="/posts"> <a className="nav-link" href="">list Post
                                         <span className="sr-only"></span>
 
+
                                     </a></Link>
                                     <li className="nav-item"><a className="nav-link" href=""></a></li>
                                 </>}
                                 {(showUser === 'false' || showUser === false) && <>
                                     <DropdownButton   id="dropdown-basic-button" title={localStorage.getItem('nameUser')}>
-                                        <Link to={`users/edit/${idUser}`}><Dropdown.Item href="#/action-1">Edit information</Dropdown.Item></Link>
+                                        <Link to={`users/edit/`+localStorage.getItem('isUser')}><Dropdown.Item href="#/action-1">Edit information</Dropdown.Item></Link>
                                         <Dropdown.Item href="#/action-2">Change Password</Dropdown.Item>
                                         <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
                                     </DropdownButton>
