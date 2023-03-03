@@ -69,6 +69,7 @@ export default function EditUser(){
                 );
             });
         }
+
         Promise.all(promises)
             .then(() => alert("All images uploaded"))
             .catch((err) => console.log(err));

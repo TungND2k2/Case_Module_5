@@ -3,6 +3,8 @@ import {addPosts, getPosts, search, editPost, searchPost,deletePost} from "../..
 const initialState = {
     post: [],
     search: [],
+    currentPost: {}
+
 }
 const postSlice = createSlice({
     name: 'posts',
@@ -10,7 +12,8 @@ const postSlice = createSlice({
     reducers: {},
     extraReducers: builder => {
         builder.addCase(getPosts.fulfilled, (state, {payload}) => {
-            state.post = payload.data;
+                state.post = payload.data;
+
         });
         builder.addCase(addPosts.fulfilled, (state, action) => {
             state.post.push(action.payload);
@@ -19,11 +22,12 @@ const postSlice = createSlice({
             state.search = payload.data;
         });
         builder.addCase(editPost.fulfilled, (state, {payload}) => {
+            console.log(state)
             state.post = payload[0];
 
         });
         builder.addCase(searchPost.fulfilled, (state, action) => {
-            state.post = action.payload;
+            state.currentPost = action.payload;
         });
         // builder.addCase(deletePost.fulfilled, (state, action) => {
         //     state.post = action.payload;

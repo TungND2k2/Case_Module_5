@@ -36,4 +36,5 @@ export const findByIdEmployer = createAsyncThunk(
         const res = await axios.get(`http://localhost:4000/employer/findById/${data}`);
         return res.data
     }
+
 )

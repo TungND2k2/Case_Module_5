@@ -138,7 +138,18 @@ class PostService {
             sql += `and idPost like '%${req.query.idPost}'`
         }
         if (req.query.salary !== undefined) {
-            sql += `and salary like '%${req.query.salary}'`
+            switch (req.query.salary){
+                case '0-2000':
+                    sql += `and salary between 0 AND 2000 `
+                    break;
+                case '2000-4000':
+                    sql += `and salary between 2001 AND 4000 `
+                    break;
+                case '4000':
+                    sql += `and salary between 4001 AND 100000000 `
+                    break;
+            }
+
         }
         if (req.query.workLocation !== undefined) {
             sql += `and workLocation like '%${req.query.workLocation}'`
@@ -153,15 +164,6 @@ class PostService {
             sql += `and experience like '%${req.query.experience}'`
         }
         let listJob = []
-        // if (Array.isArray(req.query.jobName)){
-        //     listJob = req.query.jobName
-        // }
-        // else if(req.query.jobName === undefined){
-        //     listJob = []
-        // }
-        // else {
-        //     listJob.push(req.query.jobName)
-        // }
         if (req.query.jobName !== undefined){
             if (Array.isArray(req.query.jobName)){
                 listJob = req.query.jobName
@@ -179,14 +181,6 @@ class PostService {
                 sql += `)`
             }
         }
-        // if (req.query.jobName !== undefined ) {
-        //     sql += `and (jobName like (1=1)`
-        //     for (let i = 0; i < listJob.length; i++) {
-        //         sql+= `or jobName like '%${listJob[i]}'`
-        //     }
-        //     sql += `)`
-        // }
-
         sql += `order by idPost DESC`
         console.log(sql)
         let post = await this.postRepository.query(sql);
@@ -235,7 +229,6 @@ class PostService {
                 listPost.push(Object.values(result)[i])
             }
         }
-        console.log(listPost)
         let sql1 = `select idPost,
                           title,
                           salary,

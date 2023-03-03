@@ -20,10 +20,10 @@ export default function Header() {
     const navigate = useNavigate();
     return (
         <>
-            <header className="">
+            <header className="" style={{backgroundColor:'black'}}>
                 <nav className="navbar navbar-expand-lg">
                     <div className="container">
-                        <a className="navbar-brand" href=""><h2>Job Agency <em>Website</em></h2></a>
+                        <Link to={'/home'}><a className="navbar-brand" href=""><h2>Job Agency <em>Website</em></h2></a></Link>
                         <button className="navbar-toggler" type="button" data-toggle="collapse"
                                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                                 aria-label="Toggle navigation">
@@ -64,7 +64,7 @@ export default function Header() {
                                     <li className="nav-item"><a className="nav-link" href=""></a></li>
                                 </>}
                                 {(showUser === 'false' || showUser === false) && <>
-                                    <DropdownButton class="dropdown-toggle btn-dark"  id="dropdown-basic-button" title={localStorage.getItem('nameUser')}>
+                                    <DropdownButton variant="dark" style={{background : '0',color :'black'}}  id="dropdown-basic-button" title={localStorage.getItem('nameUser')}>
                                         <Link to={`users/edit/${idUser}`}><Dropdown.Item href="#/action-1"><i
                                             className="fa-solid fa-user-pen"></i> &nbsp;&nbsp;Edit Information</Dropdown.Item></Link>
                                         <Link to={`users/changePassword/${idUser}`}><Dropdown.Item href="#/action-2"><i className="fa-solid fa-gear"></i>&nbsp;&nbsp;Change Password</Dropdown.Item></Link>
@@ -74,26 +74,23 @@ export default function Header() {
                                     <li className="nav-item"><a className="nav-link" href=""></a></li>
                                 </>}
                                 {(showEmployer === 'false' || showEmployer === false) && <>
-                                    <DropdownButton    id="dropdown-basic-button" title={localStorage.getItem('employerName')}>
+                                    <DropdownButton variant="dark" bg="dark" expand="lg"  id="dropdown-basic-button" title={localStorage.getItem('employerName')}>
                                         <Link to={`employers/edit/${idEmployer}`}><Dropdown.Item href="#/action-1"><i
                                             className="fa-solid fa-user-pen"></i> &nbsp;&nbsp;Edit Employer Information</Dropdown.Item></Link>
-                                        <Dropdown.Item href="#/action-2"><i className="fa-solid fa-gear"></i>&nbsp;&nbsp;Change Password</Dropdown.Item>
-
                                     </DropdownButton>
 
                                         <li className="nav-item" onClick={()=>{
                                             dispatch(logout())
                                             localStorage.clear()
-                                            navigate('/home')
                                         }}><a className="nav-link" href="">logout</a></li>
                                 </>}
                                 {(showUser === 'false' || showUser === false) && <>
                                     <li className="nav-item" onClick={() => {
                                         dispatch(userLogout())
                                         localStorage.clear()
-                                        navigate('/home')
                                     }}><a className="nav-link" href="">logout</a></li>
                                 </>}
+
                             </ul>
                         </div>
                     </div>

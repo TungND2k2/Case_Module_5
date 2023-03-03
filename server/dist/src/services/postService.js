@@ -116,7 +116,17 @@ class PostService {
                 sql += `and idPost like '%${req.query.idPost}'`;
             }
             if (req.query.salary !== undefined) {
-                sql += `and salary like '%${req.query.salary}'`;
+                switch (req.query.salary) {
+                    case '0-2000':
+                        sql += `and salary between 0 AND 2000 `;
+                        break;
+                    case '2000-4000':
+                        sql += `and salary between 2001 AND 4000 `;
+                        break;
+                    case '4000':
+                        sql += `and salary between 4001 AND 100000000 `;
+                        break;
+                }
             }
             if (req.query.workLocation !== undefined) {
                 sql += `and workLocation like '%${req.query.workLocation}'`;
@@ -182,7 +192,6 @@ class PostService {
                     listPost.push(Object.values(result)[i]);
                 }
             }
-            console.log(listPost);
             let sql1 = `select idPost,
                           title,
                           salary,

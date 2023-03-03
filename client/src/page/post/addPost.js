@@ -180,15 +180,17 @@ export default function AddPosts() {
                                             <br/>
                                             {urls.map(item => (
                                                 <>
-                                                    <img src={item} alt="" style={{width: 50}}/></>
+                                                    <img src={item} alt="" style={{width: 300}}/></>
                                             ))}
                                             <br/>
+
                                             <input type='file' name="image" onChange={handleChange}>
                                             </input>
                                             <button className="btn btn-outline-success" style={{marginRight: 10}}
                                                     type='button'
                                                     onClick={handleUpload}>Up
                                             </button>
+
                                         </div>
                                         <div id="checkbox-group">Choose Job : &nbsp;&nbsp;&nbsp;&nbsp;<i
                                             className="fa-solid fa-user-doctor"></i> </div>
