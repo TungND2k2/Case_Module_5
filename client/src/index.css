@@ -211,7 +211,6 @@ input:valid ~ label {
     outline: none;
     font-size: 1em;
     padding: 0 35px 0 5px;
-    color: #fff;
 }
 
 .inputbox ion-icon {

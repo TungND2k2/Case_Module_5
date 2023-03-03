@@ -5,7 +5,7 @@ import {jobRouter} from "./jobRouter";
 import {jobDetailRouter} from "./jobDetailRouter";
 import employerRouter from "./employer";
 export const router = Router()
-router.use('/employer',employerRouter)
+router.use('/employers',employerRouter)
 router.use('/posts',PostRouter);
 router.use('/users',userRouter);
 router.use('/jobs',jobRouter)

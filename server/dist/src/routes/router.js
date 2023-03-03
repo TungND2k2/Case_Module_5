@@ -11,7 +11,7 @@ const jobRouter_1 = require("./jobRouter");
 const jobDetailRouter_1 = require("./jobDetailRouter");
 const employer_1 = __importDefault(require("./employer"));
 exports.router = (0, express_1.Router)();
-exports.router.use('/employer', employer_1.default);
+exports.router.use('/employers', employer_1.default);
 exports.router.use('/posts', post_1.PostRouter);
 exports.router.use('/users', user_router_1.userRouter);
 exports.router.use('/jobs', jobRouter_1.jobRouter);

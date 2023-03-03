@@ -64,8 +64,7 @@ export default function Header() {
                                 {(showUser === 'false' || showUser === false) && <>
                                     <DropdownButton   id="dropdown-basic-button" title={localStorage.getItem('nameUser')}>
                                         <Link to={`users/edit/`+localStorage.getItem('isUser')}><Dropdown.Item href="#/action-1">Edit information</Dropdown.Item></Link>
-                                        <Dropdown.Item href="#/action-2">Change Password</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                                        <Link to={`users/changePassword/`+localStorage.getItem('isUser')}><Dropdown.Item href="#/action-2"> Change Password</Dropdown.Item></Link>
                                     </DropdownButton>
 
 
@@ -74,19 +73,19 @@ export default function Header() {
                                 {(showEmployer === 'false' || showEmployer === false) && <>
                                     <DropdownButton   id="dropdown-basic-button" title={localStorage.getItem('employerName')}>
                                         <Link to={`employers/edit/${idEmployer}`}><Dropdown.Item href="#/action-1">Edit information</Dropdown.Item></Link>
-                                        <Dropdown.Item href="#/action-2">Change Password</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
                                     </DropdownButton>
 
                                         <li className="nav-item" onClick={()=>{
                                             dispatch(logout())
                                             localStorage.clear()
+                                            navigate('/home')
                                         }}><a className="nav-link" href="">logout</a></li>
                                 </>}
                                 {(showUser === 'false' || showUser === false) && <>
                                     <li className="nav-item" onClick={() => {
                                         dispatch(userLogout())
                                         localStorage.clear()
+                                        navigate('/home')
                                     }}><a className="nav-link" href="">logout</a></li>
                                 </>}
 

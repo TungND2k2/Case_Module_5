@@ -11,7 +11,7 @@ export const register = createAsyncThunk (
 export const login = createAsyncThunk (
     'employers/login',
     async (data) => {
-        const response = await axios.post('http://localhost:4000/employer/login',data)
+        const response = await axios.post('http://localhost:4000/employers/login',data)
         return response;
     }
 )
@@ -24,8 +24,8 @@ export const logout = createAsyncThunk (
 export const employerEdit = createAsyncThunk (
     'employers/employerEdit',
     async (data) => {
-        await axios.put(`http://localhost:4000/employer/${data.idEmployer}`,data);
-        const response = await axios.get('http://localhost:4000/employer');
+        await axios.put(`http://localhost:4000/employers/${data.idEmployer}`,data);
+        const response = await axios.get('http://localhost:4000/employers');
         return response.data
     }
 )

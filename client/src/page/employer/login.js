@@ -53,8 +53,7 @@ export default function LoginEmploy() {
                                         </div>
                                         <div className="form-group">
                                             <button type="submit"
-                                                    className="form-control btn btn-primary submit px-3">Sign
-                                                In
+                                                    className="form-control btn btn-primary submit px-3">Login
                                             </button>
                                         </div>
                                         <div className="form-group d-md-flex">

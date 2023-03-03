@@ -16,12 +16,24 @@ export default function ChangePassword(){
         }
     )
     const handleChangePassword = (values)=> {
-        let data = [{...values},id]
-        dispatch(changePassword(data)).then(()=>{
-            console.log(data,444)
-            navigate('/home')
-        })
-    }
+        console.log(values)
+        if (values.newPassword!==values.newPasswordAgain){
+            alert('Password incorect')
+        }else {
+            let dataInput={
+                oldPassword:values.oldPassword,
+                newPassword:values.newPassword
+            }
+            let data=[{...dataInput},id]
+            dispatch(changePassword(data)).then(()=>{
+                    navigate('/home')
+                }
+
+            )
+            }
+         }
+
+
     useEffect(()=>{
         dispatch(findById(id)).then(()=>{
         });
@@ -34,7 +46,8 @@ export default function ChangePassword(){
                     <div className="row mt-2 ">
                         <Formik initialValues={{
                             oldPassword : '',
-                            newPassword  : ''
+                            newPassword  : '',
+                            newPasswordAgain  : ''
                         }} onSubmit={(values )=>{
                             console.log(values,5)
                             handleChangePassword(values)
@@ -43,11 +56,15 @@ export default function ChangePassword(){
                             <Form className="mt-5 container py-5">
                                 <div className="form-group" style={{marginTop: '100px'}}>
                                     <label htmlFor="exampleInputPassword1">Old password</label>
-                                    <Field type="text"  name={'oldPassword'}  className="form-control border-dark"/>
+                                    <Field type="password"  name={'oldPassword'}  className="form-control border-dark"/>
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="exampleInputPassword1">New Password</label>
-                                    <Field type="text"  name={'newPassword'}  className="form-control border-dark"/>
+                                    <Field type="password"  name={'newPassword'}  className="form-control border-dark"/>
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="exampleInputPassword1">Input Password Again</label>
+                                    <Field type="password"  name={'newPasswordAgain'}  className="form-control border-dark"/>
                                 </div>
                                 <button type="submit" className="btn btn-primary">UPDATE</button>
                             </Form>
