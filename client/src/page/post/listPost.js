@@ -18,15 +18,15 @@ export default function ListPost() {
         dispatch(getPosts());
     }, []);
     const handleDelete = async (id) => {
-        dispatch(deletePost(id)).then(()=>(
-            dispatch(getPosts()).then(()=>{
+        dispatch(deletePost(id)).then(() => (
+            dispatch(getPosts()).then(() => {
                 navigate('/home')
             })
         ))
     }
     return (
         <>
-            {posts!==undefined&& <>
+            {posts !== undefined && <>
                 <div className="banner header-text">
                     <div className="owl-banner owl-carousel">
                         <div className="banner-item-01">
@@ -59,31 +59,35 @@ export default function ListPost() {
                                     <a href="">view more <i className="fa fa-angle-right"></i></a>
                                 </div>
                             </div>
-                            { posts.map((item) => {
+                            {posts.map((item) => {
                                 if (item.employerName === currentUser) {
                                     return <>
                                         <div className="col-md-4">
-                                           <div className="product-item">
+                                            <div className="product-item">
 
-                                               <br/>
-                                               <Link to={'/jobs-detail/'+item.idPost}>
-                                                <a href=""><img style={{width:'350px',height:'255px'}} src={item.image} alt=""/></a>
-                                               </Link>
-                                                   <div className="down-content">
-                                                    <a href=""><h4>Lorem ipsum dolor sit amet</h4></a>
+                                                <br/>
+                                                <Link to={'/jobs-detail/' + item.idPost}>
+                                                    <a href=""><img style={{width: '350px', height: '255px'}}
+                                                                    src={item.image} alt=""/></a>
+                                                </Link>
+                                                <div className="down-content">
+                                                    <a href="">{item.title}</a>
 
                                                     <h4>${item.salary}</h4>
                                                     <h4><small><i
-                                                        className="fa fa-briefcase"></i> {item.jobName+' '}<br/>
+                                                        className="fa fa-briefcase"></i> {item.jobName + ' '}<br/>
                                                         <i
-                                                        className="fa fa-briefcase"></i>{item.position}<br/>
+                                                            className="fa fa-briefcase"></i>{item.position}<br/>
                                                         <strong><i
-                                                            className="fa fa-building"></i> {item.title}</strong></small>
-                                                        <Link to={`/posts/${item.idPost}`} style={{float:'right',color:'blue'}}>
-                                                            <i className="fa-solid fa-pen-to-square" ></i>
+                                                            className="fa fa-building"></i> {item.title}
+                                                        </strong></small>
+                                                        <Link to={`/posts/${item.idPost}`}
+                                                              style={{float: 'right', color: 'blue'}}>
+                                                            <i className="fa-solid fa-pen-to-square"></i>
                                                         </Link>
                                                         <br/>
-                                                        <i className="fa-solid fa-trash" style={{float:'right',color:'red'}} onClick={()=>{
+                                                        <i className="fa-solid fa-trash"
+                                                           style={{float: 'right', color: 'red'}} onClick={() => {
                                                             swal({
                                                                 title: "Are you sure?",
                                                                 text: "Once deleted, you will not be able to recover this imaginary file!",
@@ -107,14 +111,15 @@ export default function ListPost() {
 
 
                                                     </h4>
-                                                       <small>
+                                                    <small>
                                                         <strong title="Posted on"><i
                                                             className="fa fa-calendar"></i> 15-06-2020</strong> &nbsp;&nbsp;&nbsp;&nbsp;
                                                         <strong title="Type"><i
                                                             className="fa fa-file"></i> {item.workTime}
                                                         </strong> &nbsp;&nbsp;&nbsp;&nbsp;
                                                         <strong title="Location"><i
-                                                            className="fa fa-map-marker"></i> {item.workLocation}</strong>
+                                                            className="fa fa-map-marker"></i> {item.workLocation}
+                                                        </strong>
                                                     </small>
                                                     <div className="container">
 
@@ -133,7 +138,7 @@ export default function ListPost() {
                 </div>
 
             </>}
+            )
+        </>)
 
-        </>
-    )
 }

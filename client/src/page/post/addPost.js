@@ -154,46 +154,46 @@ export default function AddPosts() {
                                             <Field type="date" className="form-control border-dark" name={'endTime'}/>
                                         </div>
 
-                                        <div className="mb-3 mb-3 col-lg-6 col-md-6 col-12">
-                                            <label className="form-label">Recruitments Number</label>
-                                            <Field type="number" className="form-control border-dark"
-                                                   name={'recruitmentsNumber'}/>
-                                        </div>
-                                        <div className="mb-3 mb-3 col-lg-6 col-md-6 col-12">
-                                            <label className="form-label">Status</label>
-                                            <Field type="text" className="form-control border-dark" name={'status'}/>
-                                        </div>
-                                        <div className="mb-3 mb-3 col-lg-6 col-md-6 col-12">
-                                            <label className="form-label">Title</label>
-                                            <Field type="text" className="form-control border-dark" name={'title'}/>
-                                        </div>
-                                        <div className="mb-3 mb-3 col-lg-6 col-md-6 col-12">
-                                            <label className="form-label">Description</label>
-                                            <Field as={'textarea'} type="text" className="form-control border-dark" name={'description'}/>
-                                        </div>
+
+                                    </div>
+                                    <div className=" col-12">
+                                        <label className="form-label">Recruitments Number</label>
+                                        <Field type="number" className="form-control border-dark"
+                                               name={'recruitmentsNumber'}/>
+                                    </div>
+                                    <div className=" col-12">
+                                        <label className="form-label">Status</label>
+                                        <Field type="text" className="form-control border-dark" name={'status'}/>
+                                    </div>
+                                    <div className=" col-12">
+                                        <label className="form-label">Title</label>
+                                        <Field type="text" className="form-control border-dark" name={'title'}/>
+                                    </div>
+                                    <div className=" col-12">
+                                        <label className="form-label">Description</label>
+                                        <Field style={{height : '150px'}}  type="text" className="form-control border-dark" name={'description'}/>
+                                    </div>
+                                        <div className="row">
+
                                         <div className="mb-3 mb-3 col-lg-12 col-md-12 col-12">
                                             <label className="form-label">image</label>
                                             <br/>
                                             {urls.map(item => (
                                                 <>
-                                                    <img src={item} alt="" style={{width: 50}}/></>
+                                                    <img src={item} alt="" style={{width: 300}}/></>
                                             ))}
                                             <br/>
-                                            <div className="col-md-6">
-                                                <div className="row">
-                                                    <div className="col-6">
-                                                        <input type='file' name="image" onChange={handleChange}></input>
-                                                    </div>
-                                                    <div className="col-6">
-                                                        <button className="btn btn-outline-success"
-                                                                type='button'
-                                                                onClick={handleUpload}>Up
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
+
+                                            <input type='file' name="image" onChange={handleChange}>
+                                            </input>
+                                            <button className="btn btn-outline-success" style={{marginRight: 10}}
+                                                    type='button'
+                                                    onClick={handleUpload}>Up
+                                            </button>
+
                                         </div>
-                                        <div id="checkbox-group">Choose Job : &nbsp;&nbsp;&nbsp;&nbsp; </div>
+                                        <div id="checkbox-group">Choose Job : &nbsp;&nbsp;&nbsp;&nbsp;<i
+                                            className="fa-solid fa-user-doctor"></i> </div>
                                         <div role="group" aria-labelledby="checkbox-group"
                                              style={{display: 'flex', justifyContent: "space-evenly", flex: '1'}}>
                                             {
